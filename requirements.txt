@@ -1,10 +1,17 @@
-# Phase 1. Versions are the ones the tests were run with.
+# Versions are the ones the tests were run with.
+
+# Phase 1: indexing
 chromadb==1.5.9
 tree-sitter==0.26.0
 tree-sitter-java==0.23.5
 tree-sitter-javascript==0.25.0
 tree-sitter-typescript==0.23.2
 httpx==0.28.1
+
+# Phase 2: question answering and the web API
+fastapi==0.162.0
+pydantic==2.14.2
+uvicorn==0.54.0
 
 # only needed to run the tests
 pytest==9.2.0

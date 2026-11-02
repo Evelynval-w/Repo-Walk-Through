@@ -1,8 +1,8 @@
-# Repo-Walk-Through
+# codecite
 
 A chatbot that answers questions about my own GitHub repos and points to the file and function the answer comes from.
 
-**Status: phase 1 of 8 (indexing).** The chatbot itself does not exist yet. Right now the project reads five repos, cuts the code into pieces, turns each piece into a vector and stores it in a local database. The plan for all phases is in [docs/PLAN.md](docs/PLAN.md).
+**Status: phase 2 of 8 (first working answers).** The project reads five repos, cuts the code into pieces, turns each piece into a vector and stores it in a local database (phase 1). Now it can also answer a question: it finds the closest pieces, asks Gemini, checks the reply, and returns the answer with the file and function it came from (phase 2). It has no UI yet, no way to say "I don't know", and nobody has measured how good the answers are. Those come in later phases. The plan for all phases is in [docs/PLAN.md](docs/PLAN.md).
 
 ## The five repos
 
@@ -72,11 +72,47 @@ Put the embedding model name from `list_models` into `GEMINI_EMBED_MODEL` in `.e
 
 If I change the embedding model, the old index cannot be used. The program stops and asks for `--reset`.
 
+## Ask a question (phase 2)
+
+Settings for this part go in `.env`. `GEMINI_CHAT_MODEL` defaults to `gemini-2.5-flash`. `OPENROUTER_API_KEY` and `OPENROUTER_MODEL` are optional and turn on the fallback.
+
+From the terminal, in `backend`:
+
+```
+python -m app.qa.ask "Where is the discount code created?"
+python -m app.qa.ask "How is the model evaluated?" --repo credit_risk_ML_model --top-k 8 --show-chunks
+```
+
+As a web API, in `backend`:
+
+```
+uvicorn app.main:app --port 8000
+```
+
+Then, in a second terminal:
+
+```
+curl -s localhost:8000/health
+curl -s -X POST localhost:8000/ask -H "Content-Type: application/json" \
+  -d '{"question": "Where is the discount code created?", "top_k": 6}'
+```
+
+To pick a fallback model: `python -m app.tools.list_openrouter_models`. Models marked with `*` say they can return JSON, which the fallback needs.
+
+### How an answer is made
+
+1. The question is turned into a vector and the `top_k` closest chunks are fetched (6 by default).
+2. The chunks are numbered and sent to Gemini with the rule "answer only from these excerpts" and a request for JSON: `{"answer": "...", "used": [1, 3]}`.
+3. Pydantic checks the JSON. If it is not JSON, has the wrong shape, or points at an excerpt number that does not exist, the answer is rejected with a 502 and nothing is shown.
+4. The references are built from the metadata of the excerpts the model pointed at (repo, file, function, lines or notebook cell, plus the chunk text). The model never writes a file name, so it cannot invent one.
+5. If Gemini is rate limited or down (429, 5xx, no network) after its own retries, the same prompt goes to OpenRouter. A 400 does not trigger the fallback, because a wrong request would fail there too.
+
 ## What is tested and what is not
 
-- Tested with `pytest` and a fake embedder: the walker, all chunkers, secret handling, the Chroma store, the index command, and the Gemini client against a fake HTTP server (batching, retry on rate limit, error messages, key in header only).
-- Also run on my five real repos with `--dry-run` and with fake vectors.
-- **Not tested yet:** a real call to the Gemini API. The client follows the public REST documentation. The first real run is the check.
+- Tested with `pytest` and fakes: the walker, all chunkers, secret handling, the Chroma store, the index command, the Gemini embedding client against a fake HTTP server, the chat clients (Gemini and OpenRouter) against a fake HTTP server, the fallback switch, the answer checks, and the `/ask` and `/health` endpoints.
+- I broke the code on purpose in two places (skipping the "excerpt does not exist" check, and letting the fallback switch on a 400) and the tests failed each time.
+- Also run on my five real repos with `--dry-run` and with fake vectors, and indexed for real with Gemini embeddings (1,321 chunks).
+- **Not tested yet:** a real Gemini chat call and a real OpenRouter call. Both clients follow the public REST documentation. The first real questions are the check.
 
 ## Known limits
 
@@ -84,7 +120,28 @@ If I change the embedding model, the old index cannot be used. The program stops
 - Some chunks are very small, for example `app.use('/auth', authRoutes);`. They are kept so every route has a reference.
 - The owner tags for `timeout-airline` come from the repo README. They need a check against the real history.
 - Parts of a long function are cut with no overlap.
-- No tests exist yet for the chat part, because it is not built.
+- The chatbot tries to answer every question. It cannot say "this is not in the code" yet. That is phase 5.
+- A reference proves the chunk was shown to the model. It does not prove the chunk supports the claim. The model can point at the wrong excerpt.
+- Retrieval is vector search only. Exact names (a function called `rewardMiles`) can be missed. Hybrid search is phase 4.
+- If the model returns broken JSON, the request fails with a 502. There is no second try yet.
+- Free OpenRouter models may ignore the JSON request or be slow. The fallback has not been run for real.
+- Answers are not measured. The evaluation set is phase 3.
+
+## Files in phase 2
+
+| File | What it does |
+|---|---|
+| `backend/app/http_retry.py` | sends a POST and retries on 429 and 5xx. Used by every Gemini and OpenRouter client |
+| `backend/app/qa/models.py` | the Pydantic shapes: request, reference, response, and what the model must return |
+| `backend/app/qa/chat.py` | Gemini chat, OpenRouter chat, the fallback switch, and a fake chat for tests |
+| `backend/app/qa/retrieve.py` | embeds the question and fetches the closest chunks |
+| `backend/app/qa/prompt.py` | the instructions and the numbered excerpts sent to the model |
+| `backend/app/qa/answer.py` | runs the steps, checks the reply, builds the references |
+| `backend/app/qa/services.py` | builds the real embedder, store and chat from `.env` |
+| `backend/app/qa/ask.py` | ask one question from the terminal |
+| `backend/app/api.py` | the FastAPI app: `POST /ask`, `GET /health` |
+| `backend/app/main.py` | starts the real server |
+| `backend/app/tools/list_openrouter_models.py` | lists OpenRouter models for the fallback |
 
 ## Files in phase 1
 

@@ -101,6 +101,14 @@ data/chroma/           vector store (git-ignored)
 
 **Test without a key:** fake model returns a fixed JSON. Tests check validation, the fallback switch and bad model output.
 
+**As built**
+- The model sends `{"answer", "used": [excerpt numbers]}`. Our code turns the numbers into references. A number that does not exist rejects the whole answer.
+- `references` also carry the chunk text, so the UI in phase 6 can show it on click. `chunks_used` lists every chunk the model saw.
+- The fallback switches only on 429, 5xx and network errors (after Gemini's own retries). A 400 or 401 is shown as it is.
+- One shared retry helper (`http_retry.py`) serves the embedding client and both chat clients.
+- No refusal yet. The prompt says "only these excerpts", but there is no "not answerable" field. Phase 5 adds it, after phase 3 measures how often the bot answers when it should not.
+- Chat model default is `gemini-2.5-flash`. Temperature is 0.2, so repeated questions give close but not identical answers. Phase 3 should run each question more than once or fix the temperature to 0.
+
 **Decisions**
 - Ask the model for structured JSON and validate it with Pydantic. Why: a broken answer is caught, not shown. Other way: free text, then regex for references.
 - References come from chunk metadata, not from what the model writes. Why: the model cannot invent a file name. Other way: let the model cite and check afterwards.

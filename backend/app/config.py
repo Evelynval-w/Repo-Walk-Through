@@ -46,6 +46,11 @@ class Settings:
     embed_pause_seconds: float
     max_file_bytes: int
     config_file_max_bytes: int
+    # Phase 2. These have defaults so the phase 1 tests did not need to change.
+    gemini_chat_model: str = "gemini-2.5-flash"
+    openrouter_model: str = ""  # no default on purpose, see list_openrouter_models
+    top_k: int = 6
+    chat_temperature: float = 0.2
 
 
 def _path(value: str) -> Path:
@@ -70,4 +75,8 @@ def load_settings() -> Settings:
         embed_pause_seconds=float(get("EMBED_PAUSE_SECONDS", "0.5")),
         max_file_bytes=int(get("MAX_FILE_BYTES", "300000")),
         config_file_max_bytes=int(get("CONFIG_FILE_MAX_BYTES", "60000")),
+        gemini_chat_model=get("GEMINI_CHAT_MODEL", "gemini-2.5-flash"),
+        openrouter_model=get("OPENROUTER_MODEL", ""),
+        top_k=int(get("TOP_K", "6")),
+        chat_temperature=float(get("CHAT_TEMPERATURE", "0.2")),
     )

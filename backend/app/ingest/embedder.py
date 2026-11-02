@@ -15,8 +15,9 @@ from typing import Callable, Protocol
 
 import httpx
 
+from app.http_retry import NetworkFailure, post_with_retries
+
 API_ROOT = "https://generativelanguage.googleapis.com/v1beta"
-RETRY_STATUS = {429, 500, 502, 503, 504}
 MAX_BATCH = 100  # the batch endpoint accepts at most 100 texts per call
 
 
@@ -81,23 +82,17 @@ class GeminiEmbedder:
         self.max_tries = max_tries
 
     def _post(self, url: str, body: dict) -> dict:
-        """POST with retries for rate limits and server errors."""
+        """POST with retries for rate limits and server errors (see http_retry.py)."""
         headers = {"x-goog-api-key": self.api_key}  # the key goes in a header, not the URL
-        for attempt in range(1, self.max_tries + 1):
-            try:
-                response = self.client.post(url, json=body, headers=headers)
-            except httpx.TransportError as error:
-                if attempt == self.max_tries:
-                    raise EmbeddingError(f"network error: {type(error).__name__}") from error
-                self.sleep(2 ** attempt)
-                continue
-            if response.status_code in RETRY_STATUS and attempt < self.max_tries:
-                self.sleep(2 ** attempt)
-                continue
-            if response.status_code != 200:
-                raise EmbeddingError(f"Gemini returned {response.status_code}: {response.text[:300]}")
-            return response.json()
-        raise EmbeddingError("too many retries")  # not reached, kept for safety
+        try:
+            response = post_with_retries(
+                self.client, url, body, headers, sleep=self.sleep, max_tries=self.max_tries
+            )
+        except NetworkFailure as error:
+            raise EmbeddingError(str(error)) from error
+        if response.status_code != 200:
+            raise EmbeddingError(f"Gemini returned {response.status_code}: {response.text[:300]}")
+        return response.json()
 
     def _request(self, text: str, task_type: str) -> dict:
         return {
