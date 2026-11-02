@@ -1,4 +1,4 @@
-# codecite
+# Repo-Walk-Through
 
 A chatbot that answers questions about my own GitHub repos and points to the file and function the answer comes from.
 
