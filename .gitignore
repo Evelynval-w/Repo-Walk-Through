@@ -1,0 +1,24 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# data made by the app
+data/repos/
+data/chroma/
+data/index_report.json
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# node (UI comes in phase 6)
+node_modules/
+.next/
+
+# editors and OS
+.idea/
+.vscode/
+.DS_Store

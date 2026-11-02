@@ -1,0 +1,40 @@
+# The repos to index. Each repo must be cloned into data/repos/<name>.
+#
+# exclude: path prefixes (inside the repo) that are skipped.
+# owners:  files whose name matches a glob get that owner instead of "me".
+#          The owner shows up in the chunk data, so answers can say when a file
+#          was written by a teammate.
+
+[[repos]]
+name = "credit_risk_ML_model"
+exclude = ["images/", "models/", "data/"]
+
+[[repos]]
+name = "synergyhack"
+exclude = ["scripts/fixtures/", "server/src/data/"]
+
+[[repos]]
+name = "timeout-airline"
+# bin/ is build output, docs/ is generated Javadoc
+exclude = ["bin/", "docs/", ".mvn/"]
+# From the repo README: the teammate did Plane, Airport, Flight and Flight Search.
+# Check this list against the real history before relying on it.
+[[repos.owners]]
+glob = "*Plane*"
+owner = "Hetvi (teammate)"
+[[repos.owners]]
+glob = "*Airport*"
+owner = "Hetvi (teammate)"
+[[repos.owners]]
+glob = "*Flight*"
+owner = "Hetvi (teammate)"
+
+[[repos]]
+name = "GameHub"
+# modules/ holds the course exercises, not my own code.
+exclude = ["modules/"]
+
+[[repos]]
+name = "fracton-scanner"
+# data/ holds scan results about real people. Never index it.
+exclude = ["data/"]
