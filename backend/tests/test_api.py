@@ -56,6 +56,7 @@ def test_ask_returns_an_answer_with_references(store):
     assert body["answer"] == "BookingService.book does it."
     assert body["references"][0]["path"] == "BookingService.java"
     assert body["references"][0]["start_line"] == 10
+    assert body["references"][0]["owner"] == "me"
     assert len(body["chunks_used"]) == 2
     assert body["model_used"] == "fake-chat" and body["fell_back"] is False
 

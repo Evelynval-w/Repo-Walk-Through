@@ -11,10 +11,10 @@ A chatbot that answers questions about my own GitHub repos and points to the fil
 | credit_risk_ML_model | Python (notebooks) | one chunk per code cell, with the markdown above it. Saved outputs are dropped |
 | synergyhack | JavaScript, JSX | functions, classes, Express routes, README and docs |
 | timeout-airline | Java | classes and methods with their Javadoc. Some files are tagged with my teammate as owner |
-| GameHub | Python, TypeScript | the services, frontend, infra and docs. The course exercises in `modules/` are skipped |
+| GameHub | Python, TypeScript | the services, frontend, infra and docs. The course exercises in `modules/` are skipped. Everything except my `user-service` is tagged `course template`, so answers say who wrote it |
 | fracton-scanner | Python | the code, README, workflows and Dockerfile. The `data/` folder is never read |
 
-GameHub is a fork of a course template. Only the parts I wrote are meant to be answered as "my code".
+GameHub is a fork of a course template. Git history shows 39 commits by the course author and 3 by me, all in `services/user-service`. Only that folder is tagged as mine. Every other file is tagged `course template`, the prompt tells the model to say so, and each reference in the answer carries an `owner` field.
 
 ## How the cutting works
 
@@ -86,8 +86,10 @@ python -m app.qa.ask "How is the model evaluated?" --repo credit_risk_ML_model -
 As a web API, in `backend`:
 
 ```
-uvicorn app.main:app --port 8000
+python -m uvicorn app.main:app --port 8000
 ```
+
+Use `python -m uvicorn`, not plain `uvicorn`. Plain `uvicorn` can pick up a copy installed outside the virtual environment, which then cannot find `chromadb`.
 
 Then, in a second terminal:
 
@@ -118,7 +120,7 @@ To pick a fallback model: `python -m app.tools.list_openrouter_models`. Models m
 
 - A class attribute that sits after the first method is not in the class chunk. It ends up in a "top-level code" chunk.
 - Some chunks are very small, for example `app.use('/auth', authRoutes);`. They are kept so every route has a reference.
-- The owner tags for `timeout-airline` come from the repo README. They need a check against the real history.
+- The owner tags for `timeout-airline` come from the repo README. Git history only shows my teammate committing the three model files (Plane, Airport, Flight). I still have to decide the tags with that in mind.
 - Parts of a long function are cut with no overlap.
 - The chatbot tries to answer every question. It cannot say "this is not in the code" yet. That is phase 5.
 - A reference proves the chunk was shown to the model. It does not prove the chunk supports the claim. The model can point at the wrong excerpt.

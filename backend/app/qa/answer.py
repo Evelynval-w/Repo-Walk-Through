@@ -83,6 +83,7 @@ def answer_question(
                 start_line=meta.get("start_line"),
                 end_line=meta.get("end_line"),
                 cell=meta.get("cell"),
+                owner=meta.get("owner", "me"),
                 text=chunk.text,
             )
         )

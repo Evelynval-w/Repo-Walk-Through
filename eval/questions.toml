@@ -1,0 +1,457 @@
+# Evaluation questions for Repo-Walk-Through (phase 3).
+#
+# How to read an entry:
+#   id              short name, used in reports
+#   repo            which repo the question is about
+#   kind            what sort of question it is (fact, how, why, numbers, list)
+#   question        what gets asked, word for word
+#   expected_files  ANY ONE of these files holding the answer counts as a retrieval hit.
+#                   Written as repo/path. Several files are listed when the README
+#                   or a doc says the same thing as the code.
+#   must_say        the short facts a correct answer has to contain (the judge checks these)
+#   answerable      false means the answer is NOT in the code and the bot should say so
+#   note            why the question is here, or what to check
+#
+# Status: DRAFT. Every gold answer was read from the real files, but you check them.
+# Change anything you would not say yourself. Delete questions you could not defend.
+# The six unanswerable questions at the bottom are yours to write.
+
+# ---------------------------------------------------------------------------
+# credit_risk_ML_model
+# ---------------------------------------------------------------------------
+
+[[questions]]
+id = "cr-01"
+repo = "credit_risk_ML_model"
+kind = "fact"
+question = "How is a loan marked as a default in the target column?"
+expected_files = [
+  "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+  "credit_risk_ML_model/README.md",
+]
+must_say = [
+  "Charged Off, Default and the late statuses (16-30 and 31-120 days) count as default",
+  "Current loans are dropped because their outcome is unknown",
+]
+answerable = true
+note = "Cells 11 and 12 of notebook 01."
+
+[[questions]]
+id = "cr-02"
+repo = "credit_risk_ML_model"
+kind = "why"
+question = "Why is missing-value imputation not done in the data cleaning notebook?"
+expected_files = [
+  "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+  "credit_risk_ML_model/notebooks/03_feature_engineering.ipynb",
+]
+must_say = [
+  "the imputer (median, mean, scaler) must be fit on the training split only",
+  "fitting it before the split leaks test information into training",
+]
+answerable = true
+note = "Cell 19 of notebook 01. Notebook 03 does the split first, then fits."
+
+[[questions]]
+id = "cr-03"
+repo = "credit_risk_ML_model"
+kind = "why"
+question = "Why does the modeling notebook not rely on accuracy, and which metric is the main one?"
+expected_files = [
+  "credit_risk_ML_model/notebooks/04_modeling.ipynb",
+  "credit_risk_ML_model/README.md",
+]
+must_say = [
+  "about 80 percent of loans are fully paid, so always predicting paid already gets 80 percent accuracy",
+  "PR-AUC is the primary metric",
+]
+answerable = true
+note = "Cell 5 of notebook 04."
+
+[[questions]]
+id = "cr-04"
+repo = "credit_risk_ML_model"
+kind = "list"
+question = "Which models are compared in the modeling notebook, and which one is the champion?"
+expected_files = [
+  "credit_risk_ML_model/notebooks/04_modeling.ipynb",
+  "credit_risk_ML_model/README.md",
+]
+must_say = [
+  "a majority-class baseline, logistic regression variants, a random forest and XGBoost",
+  "XGBoost is the champion",
+]
+answerable = true
+note = "Cell 1 and the later sections of notebook 04. Check the README agrees."
+
+[[questions]]
+id = "cr-05"
+repo = "credit_risk_ML_model"
+kind = "numbers"
+question = "At the best decision threshold, how many applications does the model approve and how much more profit does it make than approving everyone?"
+expected_files = [
+  "credit_risk_ML_model/notebooks/05_business_metrics.ipynb",
+  "credit_risk_ML_model/README.md",
+]
+must_say = [
+  "threshold 0.58",
+  "approves 95.5 percent of applications",
+  "about 1.76 million dollars (13 percent) more than approving everyone",
+]
+answerable = true
+note = "Cell 22 of notebook 05. These numbers come from your own notebook text."
+
+# ---------------------------------------------------------------------------
+# synergyhack
+# ---------------------------------------------------------------------------
+
+[[questions]]
+id = "sh-01"
+repo = "synergyhack"
+kind = "fact"
+question = "How are passwords stored and how long does a login token last?"
+expected_files = [
+  "synergyhack/server/src/services/auth.service.js",
+  "synergyhack/README.md",
+]
+must_say = [
+  "passwords are hashed with bcrypt using 10 salt rounds",
+  "tokens are JWTs that expire after 24 hours by default (JWT_EXPIRES_IN)",
+]
+answerable = true
+note = "auth.service.js: SALT_ROUNDS = 10, getExpiresIn() defaults to 24h."
+
+[[questions]]
+id = "sh-02"
+repo = "synergyhack"
+kind = "how"
+question = "How does the team match algorithm score a candidate?"
+expected_files = [
+  "synergyhack/server/src/services/match.service.js",
+  "synergyhack/docs/neo4j-schema.md",
+  "synergyhack/README.md",
+]
+must_say = [
+  "it runs in Neo4j and only counts candidate skills the team does not already have",
+  "it sums the COMPLEMENTS strengths from those skills to the team's skills",
+  "candidates with a score of zero are dropped and the top N (20 by default) are returned",
+]
+answerable = true
+note = "findMatches in match.service.js."
+
+[[questions]]
+id = "sh-03"
+repo = "synergyhack"
+kind = "how"
+question = "How does the OAuth login protect against forged callbacks?"
+expected_files = [
+  "synergyhack/server/src/services/oauth.service.js",
+]
+must_say = [
+  "a random state value is saved in Redis and expires after 10 minutes",
+  "the state is deleted when it is used, so it works only once",
+]
+answerable = true
+note = "createState and consumeState, STATE_TTL = 600."
+
+[[questions]]
+id = "sh-04"
+repo = "synergyhack"
+kind = "list"
+question = "Which databases does synergyhack use and what is each one used for?"
+expected_files = [
+  "synergyhack/README.md",
+  "synergyhack/docs/architecture.md",
+]
+must_say = [
+  "MongoDB for profiles, teams, events and other documents",
+  "Neo4j for the skill graph and the matching",
+  "Redis for sessions and chat streams",
+]
+answerable = true
+note = "Aggregate question: the answer is spread over several chunks, so top-k may hurt."
+
+[[questions]]
+id = "sh-05"
+repo = "synergyhack"
+kind = "how"
+question = "How is a user kept in sync between MongoDB and Neo4j?"
+expected_files = [
+  "synergyhack/server/src/services/graph-sync.service.js",
+  "synergyhack/README.md",
+]
+must_say = [
+  "graph-sync.service is the single place that touches both databases",
+  "it uses MERGE, so operations can be repeated safely",
+]
+answerable = true
+note = "Header comment and syncUser in graph-sync.service.js."
+
+# ---------------------------------------------------------------------------
+# timeout-airline
+# ---------------------------------------------------------------------------
+
+[[questions]]
+id = "ta-01"
+repo = "timeout-airline"
+kind = "how"
+question = "When is a discount code generated for a client, and what does the code look like?"
+expected_files = [
+  "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+  "timeout-airline/README.md",
+]
+must_say = [
+  "on every third flight of the client in the current year",
+  "the code is DISC- followed by 8 random uppercase characters taken from a UUID",
+]
+answerable = true
+note = "recordMilesReward and generateDiscountCode in BookingService."
+
+[[questions]]
+id = "ta-02"
+repo = "timeout-airline"
+kind = "how"
+question = "What happens when someone books a flight that has no seat left?"
+expected_files = [
+  "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+  "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/NoSeatAvailableException.java",
+]
+must_say = [
+  "a NoSeatAvailableException is thrown",
+  "this happens when the number of booked seats is at least the flight's number of seats",
+]
+answerable = true
+note = "createBooking in BookingService."
+
+[[questions]]
+id = "ta-03"
+repo = "timeout-airline"
+kind = "how"
+question = "How does createBookingFromRequest handle a passenger who is not a client yet?"
+expected_files = [
+  "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+]
+must_say = [
+  "it looks the client up by passport number",
+  "if none exists it creates and saves a new client from the request data",
+]
+answerable = true
+note = "The 'Feature #7' method."
+
+[[questions]]
+id = "ta-04"
+repo = "timeout-airline"
+kind = "fact"
+question = "How is the number of available seats on a flight calculated?"
+expected_files = [
+  "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+  "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java",
+]
+must_say = [
+  "the flight's total number of seats minus the number of bookings for that flight",
+]
+answerable = true
+note = "getAvailableSeats in BookingService, exposed by BookingController."
+
+[[questions]]
+id = "ta-05"
+repo = "timeout-airline"
+kind = "fact"
+question = "What does the MilesReward entity store?"
+expected_files = [
+  "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java",
+]
+must_say = [
+  "a link to the client and a link to the flight",
+  "a date and an optional discount code",
+]
+answerable = true
+note = "MilesReward.java."
+
+# ---------------------------------------------------------------------------
+# fracton-scanner
+# ---------------------------------------------------------------------------
+
+[[questions]]
+id = "fs-01"
+repo = "fracton-scanner"
+kind = "numbers"
+question = "How is the fit score of a streamer computed and what are its parts?"
+expected_files = [
+  "fracton-scanner/streamer_finder_v3.py",
+]
+must_say = [
+  "a score from 0 to 100 with the breakdown kept visible",
+  "engagement up to 30, consistency 20, giveaway and brand signal 20, location 15, audience size 15",
+]
+answerable = true
+note = "fit_score."
+
+[[questions]]
+id = "fs-02"
+repo = "fracton-scanner"
+kind = "how"
+question = "How does the Twitch client handle rate limits and failed requests?"
+expected_files = [
+  "fracton-scanner/streamer_finder_v3.py",
+]
+must_say = [
+  "it retries up to 8 times",
+  "on 429 or a 5xx error it waits until the rate limit reset time",
+  "on 401 it refreshes the token",
+]
+answerable = true
+note = "Twitch.get."
+
+[[questions]]
+id = "fs-03"
+repo = "fracton-scanner"
+kind = "why"
+question = "Why does the scanner use an app access token instead of user OAuth?"
+expected_files = [
+  "fracton-scanner/README.md",
+]
+must_say = [
+  "follower totals can be read with a client-credentials token",
+  "so the scheduled job needs no browser login and no refresh token in CI secrets",
+]
+answerable = true
+note = "README, design decisions."
+
+[[questions]]
+id = "fs-04"
+repo = "fracton-scanner"
+kind = "how"
+question = "How does the scanner decide where a streamer is located, and how reliable is that?"
+expected_files = [
+  "fracton-scanner/streamer_finder_v3.py",
+  "fracton-scanner/README.md",
+]
+must_say = [
+  "location is inferred because Twitch publishes no country",
+  "profile text gives high confidence, timezone mentions medium, streaming hours alone only a low-confidence guess",
+]
+answerable = true
+note = "guess_region and the README."
+
+[[questions]]
+id = "fs-05"
+repo = "fracton-scanner"
+kind = "how"
+question = "How does the scanner deal with 24/7 rerun channels, and why?"
+expected_files = [
+  "fracton-scanner/README.md",
+  "fracton-scanner/streamer_finder_v3.py",
+]
+must_say = [
+  "they are detected by name patterns, title patterns and average stream length",
+  "they are excluded with the reason recorded, because they would dominate engagement rankings",
+]
+answerable = true
+note = "README: 'Excluding the easy wins'."
+
+# ---------------------------------------------------------------------------
+# GameHub. Only the user-service is yours; the rest is tagged "course template".
+# gh-01 to gh-04 are about your user-service. gh-05 checks that the bot owns up to template code.
+# ---------------------------------------------------------------------------
+
+[[questions]]
+id = "gh-01"
+repo = "GameHub"
+kind = "how"
+question = "How is the user-service organised into layers?"
+expected_files = [
+  "GameHub/services/user-service/app/routes.py",
+  "GameHub/services/user-service/app/service.py",
+  "GameHub/services/user-service/app/repository.py",
+]
+must_say = [
+  "routes handle HTTP, the service layer holds the business logic, the repository does the database queries",
+  "routes call the service and never the repository directly",
+]
+answerable = true
+note = "Header comments of the three files."
+
+[[questions]]
+id = "gh-02"
+repo = "GameHub"
+kind = "fact"
+question = "How does the user-service store passwords?"
+expected_files = [
+  "GameHub/services/user-service/app/service.py",
+]
+must_say = [
+  "it is only a placeholder that appends _hashed to the plain password",
+  "it is not real hashing and is meant to be replaced with passlib later",
+]
+answerable = true
+note = "Tests honesty: the correct answer admits the code is a placeholder."
+
+[[questions]]
+id = "gh-03"
+repo = "GameHub"
+kind = "how"
+question = "How does listing users work with pagination in the user-service?"
+expected_files = [
+  "GameHub/services/user-service/app/repository.py",
+  "GameHub/services/user-service/app/service.py",
+  "GameHub/services/user-service/app/routes.py",
+]
+must_say = [
+  "limit and offset parameters, defaulting to 20 and 0",
+  "the result contains the items plus the total, limit and offset",
+]
+answerable = true
+note = "list_users, fetch_all_users, the GET / route."
+
+[[questions]]
+id = "gh-04"
+repo = "GameHub"
+kind = "how"
+question = "What happens in the user-service when a user id does not exist?"
+expected_files = [
+  "GameHub/services/user-service/app/service.py",
+  "GameHub/services/user-service/app/routes.py",
+]
+must_say = [
+  "the service raises a ValueError saying the user was not found",
+  "the route turns it into an HTTP 404",
+]
+answerable = true
+note = "fetch_user and the GET /{user_id} route."
+
+[[questions]]
+id = "gh-05"
+repo = "GameHub"
+kind = "how"
+question = "How does the activity-service check that a user exists before it logs an activity?"
+expected_files = [
+  "GameHub/services/activity-service/app/main.py",
+]
+must_say = [
+  "validate_user is not implemented in the repo, it raises NotImplementedError",
+  "the intended behaviour is described in its docstring and the code comes from the course template, not from the repo owner",
+]
+answerable = true
+note = "Ownership test. The file is template code with a stub. A good answer says so and does not claim the call works."
+
+# ---------------------------------------------------------------------------
+# YOUR SIX: questions whose answer is NOT in the code.
+#
+# Write them yourself. Good ones are close to something real, because a question
+# about Kubernetes in an airline app is too easy. Ideas for the kind to write:
+#   - a feature that sounds like it should exist but does not
+#   - something one repo has and another does not
+#   - a detail the code never states (a deadline, a score, a team size)
+# Copy this block six times and fill it in. Keep expected_files and must_say empty.
+#
+# [[questions]]
+# id = "un-01"
+# repo = "synergyhack"
+# kind = "unanswerable"
+# question = "..."
+# expected_files = []
+# must_say = []
+# answerable = false
+# note = "why you know it is not in the code"
+# ---------------------------------------------------------------------------

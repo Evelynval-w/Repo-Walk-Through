@@ -90,3 +90,39 @@ def test_words_that_only_contain_sk_dash_are_not_flagged(tmp_path, settings):
     result = chunk_repo(RepoConfig("demo"), root, settings)
     assert result.dropped_for_secret == []
     assert len(result.chunks) == 1
+
+
+def test_default_owner_and_path_globs(tmp_path, settings):
+    root = tmp_path / "demo"
+    write(root, "services/user-service/app/service.py", "def add():\n    return 1\n")
+    write(root, "services/auth-service/app/main.py", "def login():\n    return 2\n")
+    write(root, "Plane/helper.py", "def help():\n    return 3\n")
+    write(root, "README.md", "# Demo\nText.\n")
+    config = RepoConfig(
+        "demo",
+        owners=(
+            OwnerRule("services/user-service/*", "me"),  # has a slash: matched on the whole path
+            OwnerRule("*Plane*", "Hetvi (teammate)"),  # no slash: matched on the file name only
+        ),
+        default_owner="course template",
+    )
+
+    owners = {c.path: c.owner for c in chunk_repo(config, root, settings).chunks}
+
+    assert owners["services/user-service/app/service.py"] == "me"
+    assert owners["services/auth-service/app/main.py"] == "course template"
+    assert owners["README.md"] == "course template"
+    assert owners["Plane/helper.py"] == "course template"  # the folder is called Plane, the file is not
+
+
+def test_repos_toml_marks_gamehub_as_template_except_the_user_service():
+    from app.config import PROJECT_ROOT
+    from app.ingest.walker import load_repo_configs, owner_for
+
+    configs = {c.name: c for c in load_repo_configs(PROJECT_ROOT / "repos.toml")}
+
+    gamehub = configs["GameHub"]
+    assert gamehub.default_owner == "course template"
+    assert owner_for("services/user-service/app/service.py", gamehub) == "me"
+    assert owner_for("services/auth-service/app/main.py", gamehub) == "course template"
+    assert configs["synergyhack"].default_owner == "me"

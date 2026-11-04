@@ -25,6 +25,7 @@ class Reference(BaseModel):
     start_line: int | None = None
     end_line: int | None = None
     cell: int | None = None  # notebook cell number
+    owner: str = "me"  # "me", a teammate, or "course template"
     text: str  # the chunk itself, so the UI can show it when you click
 
 

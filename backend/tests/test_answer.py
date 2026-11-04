@@ -155,3 +155,23 @@ def test_request_limits():
     with pytest.raises(ValueError):
         AskRequest(question="a fine question", top_k=21)
     assert AskRequest(question="a fine question").top_k == 6
+
+
+def test_files_written_by_someone_else_are_marked_in_the_prompt_and_in_the_reference(tmp_path):
+    fake = FakeEmbedder()
+    store = ChunkStore(tmp_path / "db", fake.name)
+    chunks = [
+        Chunk("GameHub", "services/user-service/app/service.py", "add_user", "function", "python",
+              "def add_user: hash the password and save the user", 10, 14),
+        Chunk("GameHub", "services/auth-service/app/security.py", "create_access_token", "function", "python",
+              "def create_access_token: sign a jwt token for the user", 5, 9, owner="course template"),
+    ]
+    store.upsert(chunks, fake.embed_documents([c.embed_text() for c in chunks]))
+    chat = FakeChat(reply(answer="The token is signed in create_access_token (course template).", used=(1,)))
+
+    response = ask(store, chat, question="sign a jwt token for the user", top_k=2)
+
+    user_prompt = chat.calls[0][1]
+    assert "security.py | function create_access_token | lines 5-9 | written by: course template" in user_prompt
+    assert "service.py | function add_user | lines 10-14\n" in user_prompt  # my own file: no label
+    assert response.references[0].owner == "course template"

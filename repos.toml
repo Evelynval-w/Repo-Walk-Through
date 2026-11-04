@@ -33,6 +33,13 @@ owner = "Hetvi (teammate)"
 name = "GameHub"
 # modules/ holds the course exercises, not my own code.
 exclude = ["modules/"]
+# GameHub is a fork of a course template. Git history shows 39 commits by the
+# course author and 3 by me (the user-service implementation plus two merges).
+# So everything is tagged "course template" unless a rule below says it is mine.
+default_owner = "course template"
+[[repos.owners]]
+glob = "services/user-service/*"
+owner = "me"
 
 [[repos]]
 name = "fracton-scanner"

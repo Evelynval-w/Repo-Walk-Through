@@ -32,6 +32,7 @@ class RepoConfig:
     name: str
     exclude: tuple[str, ...] = ()
     owners: tuple[OwnerRule, ...] = ()
+    default_owner: str = "me"  # who gets a file that no owner rule matches
 
 
 def load_repo_configs(path: Path) -> list[RepoConfig]:
@@ -39,7 +40,14 @@ def load_repo_configs(path: Path) -> list[RepoConfig]:
     configs = []
     for entry in data.get("repos", []):
         owners = tuple(OwnerRule(o["glob"], o["owner"]) for o in entry.get("owners", []))
-        configs.append(RepoConfig(entry["name"], tuple(entry.get("exclude", [])), owners))
+        configs.append(
+            RepoConfig(
+                entry["name"],
+                tuple(entry.get("exclude", [])),
+                owners,
+                entry.get("default_owner", "me"),
+            )
+        )
     return configs
 
 
@@ -92,11 +100,18 @@ def skip_reason(rel_path: str, size: int, config: RepoConfig, settings: Settings
 
 
 def owner_for(rel_path: str, config: RepoConfig) -> str:
+    """The first matching rule wins. If no rule matches, the repo's default owner is used.
+
+    A glob without a slash (like "*Plane*") is matched against the file name only.
+    A glob with a slash (like "services/user-service/*") is matched against the
+    whole path inside the repo.
+    """
     name = rel_path.rsplit("/", 1)[-1]
     for rule in config.owners:
-        if fnmatch.fnmatch(name, rule.glob):
+        target = rel_path if "/" in rule.glob else name
+        if fnmatch.fnmatch(target, rule.glob):
             return rule.owner
-    return "me"
+    return config.default_owner
 
 
 def read_text(path: Path) -> str | None:

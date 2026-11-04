@@ -57,7 +57,8 @@ def main(argv: list[str] | None = None) -> int:
     if response.references:
         print("References:")
         for ref in response.references:
-            print(f"  - {ref.repo}/{ref.path} | {ref.kind} {ref.name} | {where(ref)}")
+            who = "" if ref.owner == "me" else f" | written by: {ref.owner}"
+            print(f"  - {ref.repo}/{ref.path} | {ref.kind} {ref.name} | {where(ref)}{who}")
     else:
         print("References: none (the model did not point at any excerpt)")
     print(f"\nanswered by {response.model_used}" + (" (fallback)" if response.fell_back else ""))
