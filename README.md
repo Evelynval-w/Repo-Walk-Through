@@ -2,7 +2,7 @@
 
 A chatbot that answers questions about my own GitHub repos and points to the file and function the answer comes from.
 
-**Status: phase 2 of 8 (first working answers).** The project reads five repos, cuts the code into pieces, turns each piece into a vector and stores it in a local database (phase 1). Now it can also answer a question: it finds the closest pieces, asks Gemini, checks the reply, and returns the answer with the file and function it came from (phase 2). It has no UI yet, no way to say "I don't know", and nobody has measured how good the answers are. Those come in later phases. The plan for all phases is in [docs/PLAN.md](docs/PLAN.md).
+**Status: phase 3 of 8 (evaluation, runner built, baseline not run yet).** The project reads five repos, cuts the code into pieces, turns each piece into a vector and stores it in a local database (phase 1). Now it can also answer a question: it finds the closest pieces, asks Gemini, checks the reply, and returns the answer with the file and function it came from (phase 2). It has no UI yet, no way to say "I don't know", and nobody has measured how good the answers are. Those come in later phases. The plan for all phases is in [docs/PLAN.md](docs/PLAN.md).
 
 ## The five repos
 
@@ -109,6 +109,19 @@ To pick a fallback model: `python -m app.tools.list_openrouter_models`. Models m
 4. The references are built from the metadata of the excerpts the model pointed at (repo, file, function, lines or notebook cell, plus the chunk text). The model never writes a file name, so it cannot invent one.
 5. If Gemini is rate limited or down (429, 5xx, no network) after its own retries, the same prompt goes to OpenRouter. A 400 does not trigger the fallback, because a wrong request would fail there too.
 
+## Measure it (phase 3)
+
+`eval/questions.toml` holds 37 questions: 31 whose answer is in the code and 6 whose answer is not. Each answerable one lists the files that hold the answer and the facts a correct answer must contain.
+
+```
+python -m app.evaluation.run --runs 1 --only cr-01 sh-01   # quick try
+python -m app.evaluation.run --runs 3                      # the numbers to report
+```
+
+Three separate numbers: **retrieval hit** (an expected file was among the chunks shown), **citation hit** (the model cited an expected file), **answer correct** (a second model call finds every required fact in the answer). Reports go to `eval/reports/` as `.md` and `.json`. The report ends with 10 answers to check by hand against the judge.
+
+Limits: the same chat model judges its own answers, so I read the hand-check list before trusting the number. The 6 unanswerable questions are not scored yet; the report only shows whether the answer refused. That is the starting point for phase 5.
+
 ## What is tested and what is not
 
 - Tested with `pytest` and fakes: the walker, all chunkers, secret handling, the Chroma store, the index command, the Gemini embedding client against a fake HTTP server, the chat clients (Gemini and OpenRouter) against a fake HTTP server, the fallback switch, the answer checks, and the `/ask` and `/health` endpoints.
@@ -120,7 +133,7 @@ To pick a fallback model: `python -m app.tools.list_openrouter_models`. Models m
 
 - A class attribute that sits after the first method is not in the class chunk. It ends up in a "top-level code" chunk.
 - Some chunks are very small, for example `app.use('/auth', authRoutes);`. They are kept so every route has a reference.
-- The owner tags for `timeout-airline` come from the repo README. Git history only shows my teammate committing the three model files (Plane, Airport, Flight). I still have to decide the tags with that in mind.
+- The owner tags for `timeout-airline` come from the repo README. Git history only shows my teammate committing the three model files (Plane, Airport, Flight), so only those three are tagged as hers.
 - Parts of a long function are cut with no overlap.
 - The chatbot tries to answer every question. It cannot say "this is not in the code" yet. That is phase 5.
 - A reference proves the chunk was shown to the model. It does not prove the chunk supports the claim. The model can point at the wrong excerpt.

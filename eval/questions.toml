@@ -14,7 +14,8 @@
 #
 # Status: DRAFT. Every gold answer was read from the real files, but you check them.
 # Change anything you would not say yourself. Delete questions you could not defend.
-# The six unanswerable questions at the bottom are yours to write.
+# The last 12 entries are yours (6 harder answerable ones) and 6 unanswerable ones whose
+# topics were checked by grep to be absent from the repos.
 
 # ---------------------------------------------------------------------------
 # credit_risk_ML_model
@@ -436,22 +437,189 @@ answerable = true
 note = "Ownership test. The file is template code with a stub. A good answer says so and does not claim the call works."
 
 # ---------------------------------------------------------------------------
-# YOUR SIX: questions whose answer is NOT in the code.
-#
-# Write them yourself. Good ones are close to something real, because a question
-# about Kubernetes in an airline app is too easy. Ideas for the kind to write:
-#   - a feature that sounds like it should exist but does not
-#   - something one repo has and another does not
-#   - a detail the code never states (a deadline, a score, a team size)
-# Copy this block six times and fill it in. Keep expected_files and must_say empty.
-#
-# [[questions]]
-# id = "un-01"
-# repo = "synergyhack"
-# kind = "unanswerable"
-# question = "..."
-# expected_files = []
-# must_say = []
-# answerable = false
-# note = "why you know it is not in the code"
+# Harder answerable questions (written by Makuo, gold facts read from the files)
 # ---------------------------------------------------------------------------
+
+[[questions]]
+id = "gh-06"
+repo = "GameHub"
+kind = "how"
+question = "How does the gateway decide which backend service to forward a request to, and what does it return when the resource is unknown or the service is down?"
+expected_files = [
+  "GameHub/services/gateway/app/main.py",
+]
+must_say = [
+  "ROUTES maps users, games and activities to service URLs",
+  "the resource is the first path segment",
+  "404 for an unknown resource",
+  "503 when the service cannot be reached",
+  "course template",
+]
+answerable = true
+note = "Template code. A good answer says so."
+
+[[questions]]
+id = "gh-07"
+repo = "GameHub"
+kind = "how"
+question = "How does the logging service receive messages and what does it do when the user has not given consent?"
+expected_files = [
+  "GameHub/services/logging-service/app/consumer.py",
+]
+must_say = [
+  "consumes the gamehub.logs queue from RabbitMQ",
+  "checks consent for the user",
+  "messages without consent are discarded and acknowledged",
+  "otherwise an ActivityLog is stored",
+]
+answerable = true
+note = "Template code. A good answer says so."
+
+[[questions]]
+id = "sh-06"
+repo = "synergyhack"
+kind = "why"
+question = "How does synergyhack stop two users from taking the last slot in a team?"
+expected_files = [
+  "synergyhack/server/src/services/slot.service.js",
+  "synergyhack/docs/redis-schema.md",
+]
+must_say = [
+  "Redis HINCRBY on the filled counter, which is atomic",
+  "if filled goes above capacity it is rolled back",
+  "claimSlot returns false",
+]
+answerable = true
+note = "Needs the code and the doc together."
+
+[[questions]]
+id = "sh-07"
+repo = "synergyhack"
+kind = "how"
+question = "How is rate limiting done per IP in synergyhack?"
+expected_files = [
+  "synergyhack/server/src/middleware/rateLimit.js",
+  "synergyhack/docs/redis-schema.md",
+]
+must_say = [
+  "Redis INCR on a key per IP",
+  "EXPIRE set when the count is 1",
+  "limit of 60 per window",
+  "returns 429 Too many requests",
+]
+answerable = true
+note = "Middleware plus doc."
+
+[[questions]]
+id = "ta-06"
+repo = "timeout-airline"
+kind = "list"
+question = "What endpoints does the BookingController expose and which service methods do they call?"
+expected_files = [
+  "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java",
+]
+must_say = [
+  "base path /api/v1/bookings",
+  "POST /book calls createBookingFromRequest",
+  "GET /available-seats/{flightNumber}",
+  "GET by id, PUT and DELETE exist",
+]
+answerable = true
+note = "List question. Limited by top-k, a good test for Phase 4."
+
+[[questions]]
+id = "cr-06"
+repo = "credit_risk_ML_model"
+kind = "list"
+question = "What transformations does the feature engineering notebook apply, and in what order?"
+expected_files = [
+  "credit_risk_ML_model/notebooks/03_feature_engineering.ipynb",
+]
+must_say = [
+  "time-based split on issue date with 2018 as the test set",
+  "features built per row such as fico_avg and loan_to_income",
+  "leakage and string columns dropped",
+  "median imputation fit on train only",
+  "one-hot encoding and target encoding for addr_state",
+  "StandardScaler fit on train",
+]
+answerable = true
+note = "Spans several cells. Order matters."
+
+# ---------------------------------------------------------------------------
+# Unanswerable: the topic sounds normal for the repo but is not in the code.
+# Checked by grep. A good answer says it is not in the code.
+# ---------------------------------------------------------------------------
+
+[[questions]]
+id = "un-01"
+repo = "synergyhack"
+kind = "unanswerable"
+question = "How does the app send email notifications to users?"
+expected_files = [
+]
+must_say = [
+]
+answerable = false
+note = "no email library or smtp anywhere"
+
+[[questions]]
+id = "un-02"
+repo = "synergyhack"
+kind = "unanswerable"
+question = "Which encryption algorithm protects the data stored in the databases?"
+expected_files = [
+]
+must_say = [
+]
+answerable = false
+note = "no encryption code; bcrypt hashing exists but is not encryption"
+
+[[questions]]
+id = "un-03"
+repo = "timeout-airline"
+kind = "unanswerable"
+question = "How does the system take payment for a booking?"
+expected_files = [
+]
+must_say = [
+]
+answerable = false
+note = "no payment code"
+
+[[questions]]
+id = "un-04"
+repo = "timeout-airline"
+kind = "unanswerable"
+question = "How are users logged in and authenticated?"
+expected_files = [
+]
+must_say = [
+]
+answerable = false
+note = "no login, JWT or Spring Security"
+
+[[questions]]
+id = "un-05"
+repo = "credit_risk_ML_model"
+kind = "unanswerable"
+question = "What neural network architecture was tried and how did it score?"
+expected_files = [
+]
+must_say = [
+]
+answerable = false
+note = "no keras, torch or tensorflow"
+
+[[questions]]
+id = "un-06"
+repo = "fracton-scanner"
+kind = "unanswerable"
+question = "How does the scanner listen to live Twitch events over EventSub websockets?"
+expected_files = [
+]
+must_say = [
+]
+answerable = false
+note = "no eventsub or websocket code"
+
