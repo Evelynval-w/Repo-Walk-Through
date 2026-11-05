@@ -52,20 +52,17 @@ def parse_model_answer(text: str, chunk_count: int) -> ModelAnswer:
     return parsed
 
 
-def answer_question(
-    request: AskRequest,
-    *,
-    embedder: Embedder,
-    store: ChunkStore,
-    chat: ChatModel,
-) -> AskResponse:
+def fetch_chunks(request: AskRequest, *, embedder: Embedder, store: ChunkStore) -> list:
+    """Step 1 on its own, so the evaluation can see exactly which chunks the model is shown."""
     if store.count() == 0:
         raise IndexEmpty("The index is empty. Run `python -m app.ingest.index` first.")
-
     chunks = retrieve(request.question, embedder, store, request.top_k, request.repo)
     if not chunks:
         raise IndexEmpty(f"No chunks found for repo '{request.repo}'.")
+    return chunks
 
+
+def answer_from_chunks(request: AskRequest, chunks: list, *, chat: ChatModel) -> AskResponse:
     reply = chat.generate_json(SYSTEM, build_user_prompt(request.question, chunks))
     parsed = parse_model_answer(reply.text, len(chunks))
 
@@ -95,3 +92,14 @@ def answer_question(
         model_used=reply.model,
         fell_back=reply.fell_back,
     )
+
+
+def answer_question(
+    request: AskRequest,
+    *,
+    embedder: Embedder,
+    store: ChunkStore,
+    chat: ChatModel,
+) -> AskResponse:
+    chunks = fetch_chunks(request, embedder=embedder, store=store)
+    return answer_from_chunks(request, chunks, chat=chat)

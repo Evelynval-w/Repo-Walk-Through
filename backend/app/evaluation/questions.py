@@ -15,6 +15,7 @@ class Question:
     expected_files: list[str] = field(default_factory=list)
     must_say: list[str] = field(default_factory=list)
     answerable: bool = True
+    evidence: list[str] = field(default_factory=list)
     note: str = ""
 
 
@@ -28,6 +29,8 @@ def load_questions(path: Path) -> list[Question]:
     for q in questions:
         if q.answerable and not (q.expected_files and q.must_say):
             raise ValueError(f"{q.id}: an answerable question needs expected_files and must_say")
+        if not q.answerable and q.evidence:
+            raise ValueError(f"{q.id}: an unanswerable question cannot have evidence")
         if not q.answerable and (q.expected_files or q.must_say):
             raise ValueError(f"{q.id}: an unanswerable question must have empty expected_files and must_say")
     return questions

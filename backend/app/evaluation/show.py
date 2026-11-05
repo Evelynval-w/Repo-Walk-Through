@@ -21,6 +21,8 @@ def diagnose(q, r) -> str:
         return "ERROR"
     if not r["retrieval_hit"]:
         return "SEARCH (expected file not in the top-k)"
+    if r.get("evidence_hit") is False:
+        return "SEARCH (right file, but the chunk with the answer was not shown)"
     if not r["citation_hit"]:
         return "CITATION (file was shown but not cited)"
     if not r["correct"]:
@@ -45,7 +47,11 @@ def render(questions, report, ids=None, all_runs=False) -> str:
                   f"expected: {', '.join(q.expected_files)}",
                   f"retrieved: {', '.join(r['retrieved_files']) or '-'}",
                   f"cited:     {', '.join(r['cited_files']) or '-'}",
-                  f"A: {r['answer']}", "facts:"]
+                  f"A: {r['answer']}"]
+        if q.evidence and r.get("evidence_found"):
+            lines.append("evidence in the shown chunks:")
+            lines += [f"  [{'x' if f else ' '}] {e}" for e, f in zip(q.evidence, r["evidence_found"])]
+        lines.append("facts:")
         flags = r["facts_found"] or [False] * len(q.must_say)
         lines += [f"  [{'x' if f else ' '}] {fact}" for fact, f in zip(q.must_say, flags)]
         lines.append("")

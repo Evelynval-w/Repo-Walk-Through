@@ -20,9 +20,9 @@ from typing import Callable
 
 from app.evaluation.judge import JudgeError, judge_facts, judge_refusal
 from app.evaluation.questions import Question
-from app.ingest.embedder import Embedder
+from app.ingest.embedder import Embedder, EmbeddingError
 from app.ingest.store import ChunkStore
-from app.qa.answer import BadModelAnswer, answer_question
+from app.qa.answer import BadModelAnswer, answer_from_chunks, fetch_chunks
 from app.qa.chat import ChatError, ChatModel
 from app.qa.models import AskRequest
 
@@ -36,12 +36,24 @@ class RunResult:
     retrieved_files: list[str] = field(default_factory=list)
     cited_files: list[str] = field(default_factory=list)
     retrieval_hit: bool | None = None
+    evidence_found: list[bool] = field(default_factory=list)
+    evidence_hit: bool | None = None
     citation_hit: bool | None = None
     facts_found: list[bool] = field(default_factory=list)
     correct: bool | None = None
     refused: bool | None = None
     judge_error: str = ""
     model_used: str = ""
+
+
+def _norm(text: str) -> str:
+    return " ".join(text.lower().split())
+
+
+def evidence_found(phrases: list[str], chunk_texts: list[str]) -> list[bool]:
+    """For each phrase: does it appear in the text of any chunk the model was shown?"""
+    shown = [_norm(t) for t in chunk_texts]
+    return [any(_norm(p) in t for t in shown) for p in phrases]
 
 
 def file_of(chunk_id: str) -> str:
@@ -60,14 +72,18 @@ def run_one(
     top_k: int,
 ) -> RunResult:
     result = RunResult(q.id, run)
+    request = AskRequest(question=q.question, top_k=top_k)
+    chunks = []
     try:
-        response = answer_question(
-            AskRequest(question=q.question, top_k=top_k), embedder=embedder, store=store, chat=chat
-        )
-    except (ChatError, BadModelAnswer) as error:
+        chunks = fetch_chunks(request, embedder=embedder, store=store)
+        response = answer_from_chunks(request, chunks, chat=chat)
+    except (ChatError, BadModelAnswer, EmbeddingError) as error:
         result.error = f"{type(error).__name__}: {error}"
         if q.answerable:  # a failed answer is a miss, not a skipped question
             result.retrieval_hit = result.citation_hit = result.correct = False
+            if q.evidence:
+                result.evidence_found = evidence_found(q.evidence, [c.text for c in chunks])
+                result.evidence_hit = all(result.evidence_found)
         return result
 
     result.answer = response.answer
@@ -79,6 +95,9 @@ def run_one(
         wanted = set(q.expected_files)
         result.retrieval_hit = bool(wanted & set(result.retrieved_files))
         result.citation_hit = bool(wanted & set(result.cited_files))
+        if q.evidence:
+            result.evidence_found = evidence_found(q.evidence, [c.text for c in chunks])
+            result.evidence_hit = all(result.evidence_found)
 
     if judge_chat is None:
         return result
@@ -113,7 +132,7 @@ def run_all(
         for run in range(1, runs + 1):
             result = run_one(q, run, embedder=embedder, store=store, chat=chat, judge_chat=judge_chat, top_k=top_k)
             results.append(result)
-            progress(f"{q.id} run {run}: " + (result.error or f"retrieval={result.retrieval_hit} citation={result.citation_hit} correct={result.correct}"))
+            progress(f"{q.id} run {run}: " + (result.error or f"retrieval={result.retrieval_hit} evidence={result.evidence_hit} citation={result.citation_hit} correct={result.correct}"))
             if pause:
                 sleep(pause)
     return results
@@ -138,7 +157,7 @@ def summarize(questions: list[Question], results: list[RunResult]) -> dict:
 
     def block(rs: list[RunResult]) -> dict:
         out = {}
-        for name in ("retrieval_hit", "citation_hit", "correct"):
+        for name in ("retrieval_hit", "evidence_hit", "citation_hit", "correct"):
             hit, total = _rate([getattr(r, name) for r in rs])
             out[name] = {"hit": hit, "total": total}
         flags = [f for r in rs for f in r.facts_found]  # one flag per required fact
@@ -172,9 +191,9 @@ def format_report(questions: list[Question], results: list[RunResult], summary: 
     lines = ["# Baseline evaluation", ""]
     lines += [f"- {k}: {v}" for k, v in meta.items()]
     lines += ["", "## Scores (answerable questions only)", "",
-              "| group | retrieval hit | citation hit | answer correct (all facts) | facts found | errors |", "|---|---|---|---|---|---|"]
+              "| group | retrieval hit (file) | evidence shown (chunk) | citation hit | answer correct (all facts) | facts found | errors |", "|---|---|---|---|---|---|---|"]
     for name, b in summary["groups"].items():
-        lines.append(f"| {name} | {pct(b, 'retrieval_hit')} | {pct(b, 'citation_hit')} | {pct(b, 'correct')} | {pct(b, 'facts')} | {b['errors']} |")
+        lines.append(f"| {name} | {pct(b, 'retrieval_hit')} | {pct(b, 'evidence_hit')} | {pct(b, 'citation_hit')} | {pct(b, 'correct')} | {pct(b, 'facts')} | {b['errors']} |")
     u = summary["unanswerable"]
     lines += ["", "## Unanswerable questions (not scored in phase 3)", "",
               f"Asked {u['asked']} times. The judge said the answer refused in {u['refused']} of {u['judged']} judged. Errors: {u['errors']}.",
@@ -185,8 +204,8 @@ def format_report(questions: list[Question], results: list[RunResult], summary: 
     lines += ["## Misses", ""]
     for r in results:
         q = by_id[r.question_id]
-        if q.answerable and not (r.retrieval_hit and r.citation_hit and r.correct):
-            lines.append(f"- {r.question_id} run {r.run}: retrieval={r.retrieval_hit} citation={r.citation_hit} correct={r.correct}"
+        if q.answerable and (r.evidence_hit is False or not (r.retrieval_hit and r.citation_hit and r.correct)):
+            lines.append(f"- {r.question_id} run {r.run}: retrieval={r.retrieval_hit} evidence={r.evidence_hit} citation={r.citation_hit} correct={r.correct}"
                          + (f" | error: {r.error}" if r.error else "") + (f" | judge error: {r.judge_error}" if r.judge_error else ""))
     lines += ["", "## Hand check (read these yourself and say if you agree with the judge)", ""]
     for r in pick_for_hand_check(questions, results):

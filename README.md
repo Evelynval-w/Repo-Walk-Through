@@ -118,7 +118,9 @@ python -m app.evaluation.run --runs 1 --only cr-01 sh-01   # quick try
 python -m app.evaluation.run --runs 3                      # the numbers to report
 ```
 
-Three separate numbers: **retrieval hit** (an expected file was among the chunks shown), **citation hit** (the model cited an expected file), **answer correct** (a second model call finds every required fact in the answer). Reports go to `eval/reports/` as `.md` and `.json`. The report ends with 10 answers to check by hand against the judge.
+Four separate numbers: **retrieval hit** (an expected file was among the chunks shown), **evidence shown** (a short exact phrase from the code that holds the answer was in the text of the chunks shown, so it catches "right file, wrong part of it"), **citation hit** (the model cited an expected file), **answer correct** (a second model call finds every required fact in the answer). Reports go to `eval/reports/` as `.md` and `.json`. The report ends with 10 answers to check by hand against the judge.
+
+`python -m app.evaluation.show REPORT.json` prints every miss with its cause. `python -m app.evaluation.rejudge REPORT.json` judges saved answers again after the gold facts change.
 
 Limits: the same chat model judges its own answers, so I read the hand-check list before trusting the number. The 6 unanswerable questions are not scored yet; the report only shows whether the answer refused. That is the starting point for phase 5.
 

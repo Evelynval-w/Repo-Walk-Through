@@ -128,7 +128,7 @@ def test_loader_rejects_bad_entries(tmp_path):
 
 def test_the_real_question_file_is_valid_and_every_expected_file_exists():
     questions = load_questions(REAL_FILE)
-    assert len(questions) == 37
+    assert len(questions) == 37 and sum(bool(q.evidence) for q in questions) == 31
     assert sum(q.answerable for q in questions) == 31
     repos = Path(__file__).resolve().parents[2] / "data" / "repos"
     if not repos.exists():
@@ -174,3 +174,63 @@ def test_rejudge_keeps_failed_runs_as_they_were(store):
     failed = {"question_id": "ta-x", "run": 1, "error": "ChatError: down", "retrieval_hit": False, "citation_hit": False, "correct": False}
     [r] = rejudge([ANSWERABLE], [failed], ScriptedChat())
     assert r.error and r.correct is False
+
+
+def test_evidence_is_checked_against_the_text_of_the_shown_chunks(store):
+    q = Question("ta-e", "airline", "how", "book a flight and check seats", ["airline/Booking.java"],
+                 ["checks seats"], True, ["book a FLIGHT   and check seats", "discount code every third flight"])
+    [r] = go([q], store, answer_chat(), ScriptedChat('{"facts": [true]}'))
+    assert r.evidence_found == [True, True] and r.evidence_hit is True  # case and spacing are ignored
+
+    missing = Question("ta-f", "airline", "how", "book a flight and check seats", ["airline/Booking.java"],
+                       ["checks seats"], True, ["refund policy"])
+    [r2] = go([missing], store, answer_chat(), ScriptedChat('{"facts": [true]}'))
+    assert r2.retrieval_hit is True and r2.evidence_hit is False  # right file, answer chunk not shown
+
+
+def test_questions_without_evidence_are_not_counted_in_the_evidence_column(store):
+    results = go([ANSWERABLE], store, answer_chat(), ScriptedChat('{"facts": [true, true]}'))
+    assert results[0].evidence_hit is None
+    assert summarize([ANSWERABLE], results)["groups"]["all"]["evidence_hit"] == {"hit": 0, "total": 0}
+
+
+def test_a_failing_embedding_service_is_recorded_not_fatal(store):
+    from app.ingest.embedder import EmbeddingError
+
+    class BrokenEmbedder(FakeEmbedder):
+        def embed_query(self, text):
+            raise EmbeddingError("Gemini returned 503")
+    results = run_all([ANSWERABLE], embedder=BrokenEmbedder(), store=store, chat=answer_chat(), judge_chat=None, top_k=2)
+    assert "EmbeddingError" in results[0].error and results[0].correct is False
+
+
+def test_show_reports_right_file_wrong_chunk(store):
+    from app.evaluation.runner import results_to_json
+    from app.evaluation.show import diagnose
+    missing = Question("ta-f", "airline", "how", "book a flight and check seats", ["airline/Booking.java"],
+                       ["checks seats"], True, ["refund policy"])
+    [r] = go([missing], store, answer_chat(), ScriptedChat('{"facts": [false]}'))
+    assert "wrong chunk" in diagnose(missing, results_to_json([r])[0]) or "not shown" in diagnose(missing, results_to_json([r])[0])
+
+
+def test_every_evidence_phrase_exists_in_a_real_chunk_of_the_same_repo():
+    """The phrases must come from the real code, never from memory."""
+    from app.config import load_settings
+    from app.ingest.pipeline import chunk_repo
+    from app.ingest.walker import load_repo_configs
+    settings = load_settings()
+    if not settings.repos_dir.exists():
+        pytest.skip("repos are not cloned here")
+    texts = {}
+    for cfg in load_repo_configs(settings.repos_config):
+        root = settings.repos_dir / cfg.name
+        if root.exists():
+            texts[cfg.name] = [" ".join(c.text.lower().split()) for c in chunk_repo(cfg, root, settings).chunks]
+    missing = []
+    for q in load_questions(REAL_FILE):
+        for phrase in q.evidence:
+            if q.repo not in texts:
+                continue
+            if not any(" ".join(phrase.lower().split()) in t for t in texts[q.repo]):
+                missing.append((q.id, phrase))
+    assert missing == []

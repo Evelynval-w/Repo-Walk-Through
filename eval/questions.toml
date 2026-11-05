@@ -9,6 +9,9 @@
 #                   Written as repo/path. Several files are listed when the README
 #                   or a doc says the same thing as the code.
 #   must_say        the short facts a correct answer has to contain (the judge checks these)
+#   evidence        (eval-v2) short exact phrases from the code. ALL of them must appear in the
+#                   text of the chunks shown to the model, or search failed at chunk level.
+#                   Optional. Each phrase is checked against the real repos by a test.
 #   answerable      false means the answer is NOT in the code and the bot should say so
 #   note            why the question is here, or what to check
 #
@@ -36,6 +39,9 @@ expected_files = [
 must_say = [
   "Charged Off, Default and the late statuses (16-30 and 31-120 days) count as default",
 ]
+evidence = [
+  "isin(default_statuses)",
+]
 answerable = true
 note = "Cells 11 and 12 of notebook 01."
 
@@ -51,6 +57,9 @@ expected_files = [
 must_say = [
   "the imputer (median, mean, scaler) must be fit on the training split only",
   "fitting it before the split leaks test information into training",
+]
+evidence = [
+  "fit on train",
 ]
 answerable = true
 note = "Cell 19 of notebook 01. Notebook 03 does the split first, then fits."
@@ -68,6 +77,9 @@ must_say = [
   "about 80 percent of loans are fully paid, so always predicting paid already gets 80 percent accuracy",
   "PR-AUC is the primary metric",
 ]
+evidence = [
+  "gets 80% accuracy",
+]
 answerable = true
 note = "Cell 5 of notebook 04."
 
@@ -83,6 +95,9 @@ expected_files = [
 must_say = [
   "a majority-class baseline, logistic regression variants, a random forest and XGBoost",
   "XGBoost is the champion",
+]
+evidence = [
+  "Champion is XGBoost",
 ]
 answerable = true
 note = "Cell 1 and the later sections of notebook 04. Check the README agrees."
@@ -100,6 +115,10 @@ must_say = [
   "threshold 0.58",
   "approves 95.5 percent of applications",
   "about 1.76 million dollars (13 percent) more than approving everyone",
+]
+evidence = [
+  "approves 95.5% of applications",
+  "by only $1.76M",
 ]
 answerable = true
 note = "Cell 22 of notebook 05. These numbers come from your own notebook text."
@@ -121,6 +140,10 @@ must_say = [
   "passwords are hashed with bcrypt using 10 salt rounds",
   "tokens are JWTs that expire after 24 hours by default (JWT_EXPIRES_IN)",
 ]
+evidence = [
+  "SALT_ROUNDS = 10",
+  "|| '24h'",
+]
 answerable = true
 note = "auth.service.js: SALT_ROUNDS = 10, getExpiresIn() defaults to 24h."
 
@@ -139,6 +162,10 @@ must_say = [
   "it sums the COMPLEMENTS strengths from those skills to the team's skills",
   "candidates with a score of zero are dropped and the top N (20 by default) are returned",
 ]
+evidence = [
+  "gapCoverage > 0",
+  "LIMIT toInteger($limit)",
+]
 answerable = true
 note = "findMatches in match.service.js."
 
@@ -153,6 +180,10 @@ expected_files = [
 must_say = [
   "a random state value is saved in Redis and expires after 10 minutes",
   "the state is deleted when it is used, so it works only once",
+]
+evidence = [
+  "const STATE_TTL = 600",
+  "client.del(key",
 ]
 answerable = true
 note = "createState and consumeState, STATE_TTL = 600."
@@ -171,6 +202,9 @@ must_say = [
   "Neo4j for the skill graph and the matching",
   "Redis for sessions and chat streams",
 ]
+evidence = [
+  "**MongoDB** for profiles, teams, events",
+]
 answerable = true
 note = "Aggregate question: the answer is spread over several chunks, so top-k may hurt."
 
@@ -186,6 +220,9 @@ expected_files = [
 must_say = [
   "graph-sync.service is the single place that touches both databases",
   "it uses MERGE, so operations can be repeated safely",
+]
+evidence = [
+  "MERGE (u:User",
 ]
 answerable = true
 note = "Header comment and syncUser in graph-sync.service.js."
@@ -207,6 +244,10 @@ must_say = [
   "on every third flight of the client in the current year",
   "the code is DISC- followed by 8 random uppercase characters taken from a UUID",
 ]
+evidence = [
+  "% 3 == 0",
+  "\"DISC-\"",
+]
 answerable = true
 note = "recordMilesReward and generateDiscountCode in BookingService."
 
@@ -223,6 +264,9 @@ must_say = [
   "a NoSeatAvailableException is thrown",
   "this happens when the number of booked seats is at least the flight's number of seats",
 ]
+evidence = [
+  "bookedSeats >= existingFlight.getNumberOfSeat()",
+]
 answerable = true
 note = "createBooking in BookingService."
 
@@ -237,6 +281,9 @@ expected_files = [
 must_say = [
   "it looks the client up by passport number",
   "if none exists it creates and saves a new client from the request data",
+]
+evidence = [
+  "findByNumPassport",
 ]
 answerable = true
 note = "The 'Feature #7' method."
@@ -253,6 +300,9 @@ expected_files = [
 must_say = [
   "the flight's total number of seats minus the number of bookings for that flight",
 ]
+evidence = [
+  "getNumberOfSeat() - ",
+]
 answerable = true
 note = "getAvailableSeats in BookingService, exposed by BookingController."
 
@@ -267,6 +317,9 @@ expected_files = [
 must_say = [
   "a link to the client and a link to the flight",
   "a date and a discount code",
+]
+evidence = [
+  "private String discountCode",
 ]
 answerable = true
 note = "MilesReward.java."
@@ -287,6 +340,9 @@ must_say = [
   "the score is the rounded sum of five parts and is at most 100",
   "engagement up to 30, consistency 20, giveaway and brand signal 20, location 15, audience size 15",
 ]
+evidence = [
+  "def fit_score",
+]
 answerable = true
 note = "fit_score."
 
@@ -303,6 +359,10 @@ must_say = [
   "on 429 or a 5xx error it waits until the rate limit reset time",
   "on 401 it refreshes the token",
 ]
+evidence = [
+  "range(8)",
+  "Ratelimit-Reset",
+]
 answerable = true
 note = "Twitch.get."
 
@@ -317,6 +377,9 @@ expected_files = [
 must_say = [
   "follower totals can be read with a client-credentials token",
   "so the scheduled job needs no browser login and no refresh token in CI secrets",
+]
+evidence = [
+  "Follower totals are readable with a client-credentials",
 ]
 answerable = true
 note = "README, design decisions."
@@ -334,6 +397,9 @@ must_say = [
   "location is inferred because Twitch publishes no country",
   "profile text gives high confidence, timezone mentions medium, streaming hours alone only a low-confidence guess",
 ]
+evidence = [
+  "does not publish",
+]
 answerable = true
 note = "guess_region and the README."
 
@@ -349,6 +415,9 @@ expected_files = [
 must_say = [
   "they are detected by name patterns, title patterns and average stream length",
   "they are excluded with the reason recorded, because they would dominate engagement rankings",
+]
+evidence = [
+  "MAX_STREAM_HOURS = 14",
 ]
 answerable = true
 note = "README: 'Excluding the easy wins'."
@@ -371,6 +440,9 @@ expected_files = [
 must_say = [
   "routes handle HTTP, the service layer holds the business logic, the repository does the database queries",
 ]
+evidence = [
+  "never the repository directly",
+]
 answerable = true
 note = "Header comments of the three files."
 
@@ -385,6 +457,10 @@ expected_files = [
 must_say = [
   "it is only a placeholder that appends _hashed to the plain password",
   "it is not real hashing and is meant to be replaced with passlib later",
+]
+evidence = [
+  "plain + \"_hashed\"",
+  "passlib",
 ]
 answerable = true
 note = "Tests honesty: the correct answer admits the code is a placeholder."
@@ -403,6 +479,9 @@ must_say = [
   "limit and offset parameters, defaulting to 20 and 0",
   "the result contains the items plus the total, limit and offset",
 ]
+evidence = [
+  "limit: int = 20, offset: int = 0",
+]
 answerable = true
 note = "list_users, fetch_all_users, the GET / route."
 
@@ -419,6 +498,9 @@ must_say = [
   "the service raises a ValueError saying the user was not found",
   "the route turns it into an HTTP 404",
 ]
+evidence = [
+  "raise ValueError(f\"User {user_id} not found\")",
+]
 answerable = true
 note = "fetch_user and the GET /{user_id} route."
 
@@ -433,6 +515,9 @@ expected_files = [
 must_say = [
   "validate_user is not implemented in the repo, it raises NotImplementedError",
   "the intended behaviour is described in its docstring and the code comes from the course template, not from the repo owner",
+]
+evidence = [
+  "async def validate_user",
 ]
 answerable = true
 note = "Ownership test. The file is template code with a stub. A good answer says so and does not claim the call works."
@@ -456,6 +541,10 @@ must_say = [
   "503 when the service cannot be reached",
   "course template",
 ]
+evidence = [
+  "ROUTES: dict[str, str] = {",
+  "Unknown resource",
+]
 answerable = true
 note = "Template code. A good answer says so."
 
@@ -473,6 +562,10 @@ must_say = [
   "messages without consent are discarded and acknowledged",
   "otherwise an ActivityLog is stored",
 ]
+evidence = [
+  "QUEUE_NAME = \"gamehub.logs\"",
+  "if not has_consent(user_id)",
+]
 answerable = true
 note = "Template code. A good answer says so."
 
@@ -489,6 +582,9 @@ must_say = [
   "Redis HINCRBY on the filled counter, which is atomic",
   "if filled goes above capacity it is rolled back",
   "claimSlot returns false",
+]
+evidence = [
+  "'filled', -1",
 ]
 answerable = true
 note = "Needs the code and the doc together."
@@ -508,6 +604,10 @@ must_say = [
   "limit of 60 per window",
   "returns 429 Too many requests",
 ]
+evidence = [
+  "client.incr",
+  "client.expire(key, WINDOW)",
+]
 answerable = true
 note = "Middleware plus doc."
 
@@ -524,6 +624,11 @@ must_say = [
   "POST /book calls createBookingFromRequest",
   "GET /available-seats/{flightNumber}",
   "GET by id, PUT and DELETE exist",
+]
+evidence = [
+  "/available-seats/{flightNumber}",
+  "@DeleteMapping",
+  "@PutMapping",
 ]
 answerable = true
 note = "List question. Limited by top-k, a good test for Phase 4."
@@ -543,6 +648,11 @@ must_say = [
   "median imputation fit on train only",
   "one-hot encoding and target encoding for addr_state",
   "StandardScaler fit on train",
+]
+evidence = [
+  "fit a `StandardScaler`",
+  "handle_unknown",
+  "strategy=\"median\"",
 ]
 answerable = true
 note = "Spans several cells. Order matters."
