@@ -141,6 +141,8 @@ def summarize(questions: list[Question], results: list[RunResult]) -> dict:
         for name in ("retrieval_hit", "citation_hit", "correct"):
             hit, total = _rate([getattr(r, name) for r in rs])
             out[name] = {"hit": hit, "total": total}
+        flags = [f for r in rs for f in r.facts_found]  # one flag per required fact
+        out["facts"] = {"hit": sum(flags), "total": len(flags)}
         out["errors"] = sum(1 for r in rs if r.error)
         return out
 
@@ -170,9 +172,9 @@ def format_report(questions: list[Question], results: list[RunResult], summary: 
     lines = ["# Baseline evaluation", ""]
     lines += [f"- {k}: {v}" for k, v in meta.items()]
     lines += ["", "## Scores (answerable questions only)", "",
-              "| group | retrieval hit | citation hit | answer correct | errors |", "|---|---|---|---|---|"]
+              "| group | retrieval hit | citation hit | answer correct (all facts) | facts found | errors |", "|---|---|---|---|---|---|"]
     for name, b in summary["groups"].items():
-        lines.append(f"| {name} | {pct(b, 'retrieval_hit')} | {pct(b, 'citation_hit')} | {pct(b, 'correct')} | {b['errors']} |")
+        lines.append(f"| {name} | {pct(b, 'retrieval_hit')} | {pct(b, 'citation_hit')} | {pct(b, 'correct')} | {pct(b, 'facts')} | {b['errors']} |")
     u = summary["unanswerable"]
     lines += ["", "## Unanswerable questions (not scored in phase 3)", "",
               f"Asked {u['asked']} times. The judge said the answer refused in {u['refused']} of {u['judged']} judged. Errors: {u['errors']}.",

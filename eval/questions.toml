@@ -591,7 +591,7 @@ note = "no payment code"
 id = "un-04"
 repo = "timeout-airline"
 kind = "unanswerable"
-question = "How are users logged in and authenticated?"
+question = "How are users logged in and authenticated in the airline booking app?"
 expected_files = [
 ]
 must_say = [

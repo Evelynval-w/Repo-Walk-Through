@@ -18,9 +18,10 @@ If the answer is vague, wrong about it, or leaves it out, the fact is not presen
 Reply with JSON only: {"facts": [true, false, ...]} with one true or false per fact, in order."""
 
 REFUSAL_SYSTEM = """You read an answer to a question about a code repository.
-Decide whether the answer says that the repository does not contain this, or that
-it cannot find the information (a refusal). An answer that describes how
-something works, even loosely, is not a refusal.
+Decide whether the answer says that the repository does not contain this, does not do
+this, or that it cannot find the information (a refusal). Saying "it does not do X,
+it does Y instead" is still a refusal. An answer that describes how the asked thing
+works, even loosely, is not a refusal.
 Reply with JSON only: {"refused": true} or {"refused": false}."""
 
 

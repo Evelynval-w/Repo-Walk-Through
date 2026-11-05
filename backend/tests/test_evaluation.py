@@ -135,3 +135,22 @@ def test_the_real_question_file_is_valid_and_every_expected_file_exists():
         pytest.skip("repos are not cloned here")
     missing = [(q.id, f) for q in questions for f in q.expected_files if not (repos / f).exists()]
     assert missing == []
+
+
+def test_summary_counts_facts_separately_from_all_or_nothing(store):
+    judge = ScriptedChat('{"facts": [true, false]}')
+    results = go([ANSWERABLE], store, answer_chat(), judge)
+    s = summarize([ANSWERABLE], results)["groups"]["all"]
+    assert s["correct"] == {"hit": 0, "total": 1} and s["facts"] == {"hit": 1, "total": 2}
+
+
+def test_show_names_where_a_run_went_wrong(store):
+    from app.evaluation.runner import results_to_json
+    from app.evaluation.show import diagnose, render
+    results = go([ANSWERABLE], store, answer_chat(), ScriptedChat('{"facts": [true, false]}'))
+    report = {"results": results_to_json(results)}
+    assert diagnose(ANSWERABLE, report["results"][0]).startswith("ANSWER")
+    text = render([ANSWERABLE], report)
+    assert "[x] checks seats" in text and "[ ] books" in text
+    miss = dict(report["results"][0], retrieval_hit=False, citation_hit=False)
+    assert diagnose(ANSWERABLE, miss).startswith("SEARCH")
