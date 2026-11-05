@@ -154,3 +154,23 @@ def test_show_names_where_a_run_went_wrong(store):
     assert "[x] checks seats" in text and "[ ] books" in text
     miss = dict(report["results"][0], retrieval_hit=False, citation_hit=False)
     assert diagnose(ANSWERABLE, miss).startswith("SEARCH")
+
+
+def test_rejudge_scores_saved_answers_again_without_asking_the_question_again(store):
+    from app.evaluation.rejudge import rejudge
+    from app.evaluation.runner import results_to_json
+    first = go([ANSWERABLE], store, answer_chat(), ScriptedChat('{"facts": [true, false]}'))
+    assert first[0].correct is False
+    fixed = Question("ta-x", "airline", "how", "book a flight and check seats", ["airline/Booking.java"], ["checks seats"])
+    judge = ScriptedChat('{"facts": [true]}')
+    [again] = rejudge([fixed], results_to_json(first), judge)
+    assert again.correct is True and again.facts_found == [True]
+    assert again.answer == first[0].answer and again.retrieval_hit is True  # search result is kept
+    assert len(judge.calls) == 1
+
+
+def test_rejudge_keeps_failed_runs_as_they_were(store):
+    from app.evaluation.rejudge import rejudge
+    failed = {"question_id": "ta-x", "run": 1, "error": "ChatError: down", "retrieval_hit": False, "citation_hit": False, "correct": False}
+    [r] = rejudge([ANSWERABLE], [failed], ScriptedChat())
+    assert r.error and r.correct is False

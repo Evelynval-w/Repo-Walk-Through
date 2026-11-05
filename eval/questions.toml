@@ -12,6 +12,9 @@
 #   answerable      false means the answer is NOT in the code and the bot should say so
 #   note            why the question is here, or what to check
 #
+# Gold fixes after the first baseline (2026-11-05): cr-01 (dropped a fact that belongs to another
+# question), ta-05 (code never says the discount code is optional), fs-01 (vague fact),
+# gh-06 (path segment wording), gh-01 (dropped an implicit fact).
 # Status: DRAFT. Every gold answer was read from the real files, but you check them.
 # Change anything you would not say yourself. Delete questions you could not defend.
 # The last 12 entries are yours (6 harder answerable ones) and 6 unanswerable ones whose
@@ -32,7 +35,6 @@ expected_files = [
 ]
 must_say = [
   "Charged Off, Default and the late statuses (16-30 and 31-120 days) count as default",
-  "Current loans are dropped because their outcome is unknown",
 ]
 answerable = true
 note = "Cells 11 and 12 of notebook 01."
@@ -264,7 +266,7 @@ expected_files = [
 ]
 must_say = [
   "a link to the client and a link to the flight",
-  "a date and an optional discount code",
+  "a date and a discount code",
 ]
 answerable = true
 note = "MilesReward.java."
@@ -282,7 +284,7 @@ expected_files = [
   "fracton-scanner/streamer_finder_v3.py",
 ]
 must_say = [
-  "a score from 0 to 100 with the breakdown kept visible",
+  "the score is the rounded sum of five parts and is at most 100",
   "engagement up to 30, consistency 20, giveaway and brand signal 20, location 15, audience size 15",
 ]
 answerable = true
@@ -368,7 +370,6 @@ expected_files = [
 ]
 must_say = [
   "routes handle HTTP, the service layer holds the business logic, the repository does the database queries",
-  "routes call the service and never the repository directly",
 ]
 answerable = true
 note = "Header comments of the three files."
@@ -450,7 +451,7 @@ expected_files = [
 ]
 must_say = [
   "ROUTES maps users, games and activities to service URLs",
-  "the resource is the first path segment",
+  "the resource name is read from the URL path, for example /users/...",
   "404 for an unknown resource",
   "503 when the service cannot be reached",
   "course template",
