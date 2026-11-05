@@ -126,3 +126,18 @@ def test_repos_toml_marks_gamehub_as_template_except_the_user_service():
     assert owner_for("services/user-service/app/service.py", gamehub) == "me"
     assert owner_for("services/auth-service/app/main.py", gamehub) == "course template"
     assert configs["synergyhack"].default_owner == "me"
+
+
+def test_repos_toml_tags_only_the_three_airline_model_files_as_the_teammates():
+    from app.config import PROJECT_ROOT
+    from app.ingest.walker import load_repo_configs, owner_for
+
+    airline = {c.name: c for c in load_repo_configs(PROJECT_ROOT / "repos.toml")}["timeout-airline"]
+    base = "src/main/java/fr/epita/timeoutairline/"
+
+    for name in ("Plane", "Airport", "Flight"):
+        assert owner_for(f"{base}model/{name}.java", airline) == "Hetvi (teammate)"
+    for mine in ("service/FlightService.java", "controller/PlaneController.java",
+                 "repository/AirportRepository.java", "dto/FlightSearchRequest.java",
+                 "service/BookingService.java"):
+        assert owner_for(base + mine, airline) == "me"

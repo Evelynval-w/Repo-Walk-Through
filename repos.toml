@@ -17,16 +17,18 @@ exclude = ["scripts/fixtures/", "server/src/data/"]
 name = "timeout-airline"
 # bin/ is build output, docs/ is generated Javadoc
 exclude = ["bin/", "docs/", ".mvn/"]
-# From the repo README: the teammate did Plane, Airport, Flight and Flight Search.
-# Check this list against the real history before relying on it.
+# Git history: my teammate Hetvi has one commit ("added plane, airport,flight code",
+# 2025-12-15) that adds the three model files below. Every service, controller,
+# repository and DTO for Plane, Airport and Flight was committed by me, so only
+# these three files are tagged as hers. Full paths, because the rule has a slash.
 [[repos.owners]]
-glob = "*Plane*"
+glob = "src/main/java/fr/epita/timeoutairline/model/Plane.java"
 owner = "Hetvi (teammate)"
 [[repos.owners]]
-glob = "*Airport*"
+glob = "src/main/java/fr/epita/timeoutairline/model/Airport.java"
 owner = "Hetvi (teammate)"
 [[repos.owners]]
-glob = "*Flight*"
+glob = "src/main/java/fr/epita/timeoutairline/model/Flight.java"
 owner = "Hetvi (teammate)"
 
 [[repos]]
