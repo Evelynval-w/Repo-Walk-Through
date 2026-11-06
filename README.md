@@ -2,7 +2,7 @@
 
 A chatbot that answers questions about my own GitHub repos and points to the file and function the answer comes from.
 
-**Status: phase 3 of 8 (evaluation, runner built, baseline not run yet).** The project reads five repos, cuts the code into pieces, turns each piece into a vector and stores it in a local database (phase 1). Now it can also answer a question: it finds the closest pieces, asks Gemini, checks the reply, and returns the answer with the file and function it came from (phase 2). It has no UI yet, no way to say "I don't know", and nobody has measured how good the answers are. Those come in later phases. The plan for all phases is in [docs/PLAN.md](docs/PLAN.md).
+**Status: phase 3 of 8 done (evaluation).** The project reads five repos, cuts the code into pieces, stores them in a local database (phase 1), answers questions with the file and function each answer comes from (phase 2), and is now measured on 37 hand-written questions (phase 3). It has no UI yet and no real way to say "I don't know" (the model already says it in prose, but nothing checks it). Search and answer quality are the next work. The plan for all phases is in [docs/PLAN.md](docs/PLAN.md).
 
 ## The five repos
 
@@ -124,6 +124,34 @@ Four separate numbers: **retrieval hit** (an expected file was among the chunks 
 
 Limits: the same chat model judges its own answers, so I read the hand-check list before trusting the number. The 6 unanswerable questions are not scored yet; the report only shows whether the answer refused. That is the starting point for phase 5.
 
+### Results (phase 3 reference run)
+
+Setup: `gemini-3.5-flash` answers and judges, `gemini-embedding-001` for search, top-k 6, 3 runs per question, 31 answerable questions (93 runs) and 6 unanswerable ones.
+
+| What is measured | Result |
+|---|---|
+| An expected file is among the chunks shown | 86/93 (92%) |
+| The chunk with the key phrase is among the chunks shown | 69/93 (74%) |
+| The model cites an expected file | 80/93 (86%) |
+| Every required fact is in the answer | 66/93 (70%) |
+| Required facts found, counted one by one | 184/229 (80%) |
+| Unanswerable questions where the answer says it is not in the code | 18/18 |
+
+By type of question: "why" and "numbers" questions are 100% correct. "List" questions are the weakest (3/12 correct), because the items sit in different chunks.
+
+How the correct-answer number moved, on the same questions: 45/93 (48%) in the first run, 56/93 (60%) after I fixed gold facts that were wrong or too vague (same saved answers, only the judging changed), 66/93 (70%) after changing the prompt from "keep the answer short" to "include every condition, number and name". So about 12 points came from fixing my own ruler and about 10 from the prompt.
+
+One extra run with top-k 12 (1 run, so noisy): chunk with the key phrase shown 83%, citation 96%, correct still 70%. More chunks help search and do not help the answer, and one unanswerable question got an answer built from a different repo. The default stays at 6.
+
+What is left, in my reading: search misses on questions that do not name the repo (sh-01) and on list questions (ta-06), and answer misses where the right chunks were shown (gh-05: the model described a docstring as working code, but the function only raises `NotImplementedError`).
+
+How far to trust these numbers:
+- 31 questions is small. A change of one or two questions is noise.
+- I wrote the questions and gold facts myself, and I fixed some of them once after seeing the first results. The first-run number is not comparable to the later ones for that reason.
+- The same model that writes the answers also judges them. I read ten judged answers by hand each run.
+- "Chunk with the key phrase shown" is strict. For fs-04 and fs-05 the answers were right without it.
+- Two runs in 124 failed because the model returned JSON that was cut off. They count as misses. The error now says the finish reason, so the next one shows the cause.
+
 ## What is tested and what is not
 
 - Tested with `pytest` and fakes: the walker, all chunkers, secret handling, the Chroma store, the index command, the Gemini embedding client against a fake HTTP server, the chat clients (Gemini and OpenRouter) against a fake HTTP server, the fallback switch, the answer checks, and the `/ask` and `/health` endpoints.
@@ -142,7 +170,7 @@ Limits: the same chat model judges its own answers, so I read the hand-check lis
 - Retrieval is vector search only. Exact names (a function called `rewardMiles`) can be missed. Hybrid search is phase 4.
 - If the model returns broken JSON, the request fails with a 502. There is no second try yet.
 - Free OpenRouter models may ignore the JSON request or be slow. The fallback has not been run for real.
-- Answers are not measured. The evaluation set is phase 3.
+- The numbers above come from one model, one judge and 37 questions. See how far to trust them.
 
 ## Files in phase 2
 

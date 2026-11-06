@@ -1,0 +1,3479 @@
+{
+  "meta": {
+    "date": "2026-11-06 09:38",
+    "chat model": "gemini:gemini-3.5-flash",
+    "embedder": "gemini:gemini-embedding-001",
+    "top_k": 6,
+    "runs per question": 3,
+    "questions": 37,
+    "judge": "same chat model"
+  },
+  "summary": {
+    "groups": {
+      "all": {
+        "retrieval_hit": {
+          "hit": 85,
+          "total": 93
+        },
+        "evidence_hit": {
+          "hit": 69,
+          "total": 93
+        },
+        "citation_hit": {
+          "hit": 79,
+          "total": 93
+        },
+        "correct": {
+          "hit": 64,
+          "total": 93
+        },
+        "facts": {
+          "hit": 179,
+          "total": 225
+        },
+        "errors": 2
+      },
+      "kind:fact": {
+        "retrieval_hit": {
+          "hit": 11,
+          "total": 15
+        },
+        "evidence_hit": {
+          "hit": 12,
+          "total": 15
+        },
+        "citation_hit": {
+          "hit": 11,
+          "total": 15
+        },
+        "correct": {
+          "hit": 8,
+          "total": 15
+        },
+        "facts": {
+          "hit": 14,
+          "total": 23
+        },
+        "errors": 1
+      },
+      "kind:how": {
+        "retrieval_hit": {
+          "hit": 44,
+          "total": 48
+        },
+        "evidence_hit": {
+          "hit": 36,
+          "total": 48
+        },
+        "citation_hit": {
+          "hit": 41,
+          "total": 48
+        },
+        "correct": {
+          "hit": 35,
+          "total": 48
+        },
+        "facts": {
+          "hit": 90,
+          "total": 115
+        },
+        "errors": 1
+      },
+      "kind:list": {
+        "retrieval_hit": {
+          "hit": 12,
+          "total": 12
+        },
+        "evidence_hit": {
+          "hit": 3,
+          "total": 12
+        },
+        "citation_hit": {
+          "hit": 9,
+          "total": 12
+        },
+        "correct": {
+          "hit": 3,
+          "total": 12
+        },
+        "facts": {
+          "hit": 33,
+          "total": 45
+        },
+        "errors": 0
+      },
+      "kind:numbers": {
+        "retrieval_hit": {
+          "hit": 6,
+          "total": 6
+        },
+        "evidence_hit": {
+          "hit": 6,
+          "total": 6
+        },
+        "citation_hit": {
+          "hit": 6,
+          "total": 6
+        },
+        "correct": {
+          "hit": 6,
+          "total": 6
+        },
+        "facts": {
+          "hit": 15,
+          "total": 15
+        },
+        "errors": 0
+      },
+      "kind:why": {
+        "retrieval_hit": {
+          "hit": 12,
+          "total": 12
+        },
+        "evidence_hit": {
+          "hit": 12,
+          "total": 12
+        },
+        "citation_hit": {
+          "hit": 12,
+          "total": 12
+        },
+        "correct": {
+          "hit": 12,
+          "total": 12
+        },
+        "facts": {
+          "hit": 27,
+          "total": 27
+        },
+        "errors": 0
+      },
+      "repo:GameHub": {
+        "retrieval_hit": {
+          "hit": 17,
+          "total": 21
+        },
+        "evidence_hit": {
+          "hit": 18,
+          "total": 21
+        },
+        "citation_hit": {
+          "hit": 17,
+          "total": 21
+        },
+        "correct": {
+          "hit": 11,
+          "total": 21
+        },
+        "facts": {
+          "hit": 31,
+          "total": 49
+        },
+        "errors": 1
+      },
+      "repo:credit_risk_ML_model": {
+        "retrieval_hit": {
+          "hit": 18,
+          "total": 18
+        },
+        "evidence_hit": {
+          "hit": 12,
+          "total": 18
+        },
+        "citation_hit": {
+          "hit": 15,
+          "total": 18
+        },
+        "correct": {
+          "hit": 12,
+          "total": 18
+        },
+        "facts": {
+          "hit": 42,
+          "total": 48
+        },
+        "errors": 0
+      },
+      "repo:fracton-scanner": {
+        "retrieval_hit": {
+          "hit": 15,
+          "total": 15
+        },
+        "evidence_hit": {
+          "hit": 9,
+          "total": 15
+        },
+        "citation_hit": {
+          "hit": 15,
+          "total": 15
+        },
+        "correct": {
+          "hit": 15,
+          "total": 15
+        },
+        "facts": {
+          "hit": 33,
+          "total": 33
+        },
+        "errors": 0
+      },
+      "repo:synergyhack": {
+        "retrieval_hit": {
+          "hit": 18,
+          "total": 21
+        },
+        "evidence_hit": {
+          "hit": 15,
+          "total": 21
+        },
+        "citation_hit": {
+          "hit": 15,
+          "total": 21
+        },
+        "correct": {
+          "hit": 12,
+          "total": 21
+        },
+        "facts": {
+          "hit": 41,
+          "total": 57
+        },
+        "errors": 0
+      },
+      "repo:timeout-airline": {
+        "retrieval_hit": {
+          "hit": 17,
+          "total": 18
+        },
+        "evidence_hit": {
+          "hit": 15,
+          "total": 18
+        },
+        "citation_hit": {
+          "hit": 17,
+          "total": 18
+        },
+        "correct": {
+          "hit": 14,
+          "total": 18
+        },
+        "facts": {
+          "hit": 32,
+          "total": 38
+        },
+        "errors": 1
+      }
+    },
+    "unanswerable": {
+      "refused": 18,
+      "judged": 18,
+      "asked": 18,
+      "errors": 0
+    }
+  },
+  "results": [
+    {
+      "question_id": "cr-01",
+      "run": 1,
+      "error": "",
+      "answer": "In `credit_risk_ML_model/notebooks/01_data_cleaning.ipynb`, a loan is marked as a default (1) in the `target` column if its `loan_status` is contained within the `default_statuses` list:\n\n```python\ndefault_statuses = [\n    \"Charged Off\",\n    \"Default\",\n    \"Late (31-120 days)\",\n    \"Late (16-30 days)\",\n    \"Does not meet the credit policy. Status:Charged Off\",\n]\n```\n\nThe target column is created by checking if `loan_status` is in `default_statuses` and converting the boolean result to an integer (1 for default, 0 otherwise):\n```python\ndf_clean[\"target\"] = df_clean[\"loan_status\"].isin(default_statuses).astype(int)\n```",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+        "credit_risk_ML_model/notebooks/02_eda.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-01",
+      "run": 2,
+      "error": "",
+      "answer": "A loan is marked as a default (value of 1) in the `target` column by checking if its `loan_status` is contained within a list of `default_statuses` and converting the boolean result to an integer using `.astype(int)`:\n\n```python\ndf_clean[\"target\"] = df_clean[\"loan_status\"].isin(default_statuses).astype(int)\n```\n\nThe `default_statuses` defined as the positive class (1 = defaulted) are:\n- `\"Charged Off\"`\n- `\"Default\"`\n- `\"Late (31-120 days)\"`\n- `\"Late (16-30 days)\"`\n- `\"Does not meet the credit policy. Status:Charged Off\"`",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+        "credit_risk_ML_model/notebooks/02_eda.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-01",
+      "run": 3,
+      "error": "",
+      "answer": "A loan is marked as a default (positive class `1`) in the `target` column if its `loan_status` is present in the `default_statuses` list, converted to an integer via:\n`df_clean[\"target\"] = df_clean[\"loan_status\"].isin(default_statuses).astype(int)`\n\nThe `default_statuses` list consists of the following values:\n- `\"Charged Off\"`\n- `\"Default\"`\n- `\"Late (31-120 days)\"`\n- `\"Late (16-30 days)\"`\n- `\"Does not meet the credit policy. Status:Charged Off\"`",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+        "credit_risk_ML_model/notebooks/02_eda.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-02",
+      "run": 1,
+      "error": "",
+      "answer": "Missing-value imputation is not done in the data cleaning notebook (01_data_cleaning.ipynb) for the following reasons:\n\n1. **Preventing Data Leakage**: Imputation fits parameters from the data (such as a median or mean). Doing this before the train/test split causes information from the test set to leak into training, making validation metrics artificially better than production performance.\n2. **Fitting on Train Set Only**: To respect the \"fit preprocessing on train only\" rule from the ML course, imputation is deferred to `03_feature_engineering.ipynb`. In notebook 03, a time-aware split by `issue_d` is performed first so that the imputer can be fit on the training set only.\n3. **Separation of Concerns**: Keeping cleaning and feature engineering/imputation in separate notebooks with the train/test split in between makes it harder to accidentally perform imputation before splitting.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+        "credit_risk_ML_model/notebooks/03_feature_engineering.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-02",
+      "run": 2,
+      "error": "",
+      "answer": "Missing-value imputation is not done in the data cleaning notebook (notebook 01) because fitting imputation parameters (such as a median or mean) on the dataset before a train/test split causes data leakage, as information from the test set leaks into training through those parameters. This would make validation metrics look artificially better than production performance. To follow the rule of fitting preprocessing on the training set only, notebook 01 saves the data with its NaN values intact, and imputation is performed in notebook 03 after the train/test split.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+        "credit_risk_ML_model/notebooks/03_feature_engineering.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-02",
+      "run": 3,
+      "error": "",
+      "answer": "Missing-value imputation is not done in the data cleaning notebook (notebook 01) because fitting preprocessing parameters (such as a median) before the train/test split causes data leakage, where information from the test set leaks into training and makes validation metrics look better than production performance. Following the rule to fit preprocessing on training data only, imputation is deferred to `03_feature_engineering.ipynb`, where the train/test split happens first so the imputer can be fit exclusively on the training set.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+        "credit_risk_ML_model/notebooks/03_feature_engineering.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-03",
+      "run": 1,
+      "error": "",
+      "answer": "The modeling notebook does not rely on raw accuracy because default is rare (around 20% in train and probably similar in test), making raw accuracy useless: a model predicting \"Fully Paid\" for everything would get 80% accuracy while catching zero defaults, which is maximally wrong for the actual use case. The main metric is PR-AUC (average precision), which is identified as the primary metric and \"[t]he number that matters\" because it is much more informative than ROC-AUC on imbalanced data.",
+      "retrieved_files": [
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb",
+        "credit_risk_ML_model/notebooks/05_business_metrics.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-03",
+      "run": 2,
+      "error": "",
+      "answer": "The modeling notebook does not rely on accuracy because raw accuracy is useless when default is rare (~20% in train and test); a model that always predicts \"Fully Paid\" would achieve 80% accuracy while catching zero defaults, which is maximally wrong for the actual use case. The main metric is **PR-AUC (average precision)**.",
+      "retrieved_files": [
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb",
+        "credit_risk_ML_model/notebooks/05_business_metrics.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-03",
+      "run": 3,
+      "error": "",
+      "answer": " raw accuracy is not relied upon because default is rare (around 20% in train and probably similar in test), meaning a model that always predicts \"Fully Paid\" would achieve 80% accuracy while catching zero defaults, making raw accuracy useless and maximally wrong for the actual use case. The main metric is PR-AUC (average precision), which is described as the primary metric and the number that matters.",
+      "retrieved_files": [
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb",
+        "credit_risk_ML_model/notebooks/05_business_metrics.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-04",
+      "run": 1,
+      "error": "",
+      "answer": "The models compared in the modeling notebook are:\n1. Majority-class baseline (`baseline (majority)`)\n2. Vanilla logistic regression (`lr-vanilla`)\n3. Regularized logistic regression variants: `lr-balanced`, `lr-smote`, and `lr-tuned`\n4. Random forest (`random-forest`)\n5. XGBoost (`xgboost`)\n\nThe champion model is selected by test-set PR-AUC. The provided excerpts reference this selected model via the `champion_name` variable, but do not explicitly state which specific model achieved the top test-set PR-AUC score.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-04",
+      "run": 2,
+      "error": "",
+      "answer": "In the modeling notebook, the following models are compared side-by-side:\n- Baseline / Majority-class baseline (`baseline (majority)`)\n- Vanilla logistic regression (`lr-vanilla`)\n- Regularized logistic regression with balanced class weights (`lr-balanced`)\n- Logistic regression with SMOTE (`lr-smote`)\n- Tuned regularized logistic regression (`lr-tuned`)\n- Random forest (`random-forest`)\n- XGBoost (`xgboost`)\n\nThe champion model is selected based on having the highest test-set PR-AUC (referenced programmatically via `champion_name`). The specific winning model's string value is not hardcoded in the provided text, but is evaluated dynamically by test-set PR-AUC and saved as the champion to `models/best_model.joblib`.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-04",
+      "run": 3,
+      "error": "",
+      "answer": "The models compared in the modeling notebook are:\n1. Majority-class baseline (`baseline (majority)` / `baseline_metrics`)\n2. Vanilla logistic regression (`lr-vanilla` / `lr_vanilla_metrics`)\n3. Regularized/class-imbalance treated logistic regression variants: `lr-balanced`, `lr-smote`, and `lr-tuned`\n4. Tree ensembles: Random Forest (`random-forest` / `rf_metrics`) and XGBoost (`xgboost` / `xgb_metrics`)\n\nRegarding the champion: The excerpts state that the champion is determined by test-set PR-AUC and its name is stored in the `champion_name` variable (saved to `models/best_model.joblib`), but the excerpts do not contain the output showing which specific model was selected as the champion.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-05",
+      "run": 1,
+      "error": "",
+      "answer": "At the best decision threshold (t* = 0.58), the model approves 95.5% of applications and makes $1.76M more profit than approving everyone.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/05_business_metrics.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-05",
+      "run": 2,
+      "error": "",
+      "answer": "At the best decision threshold (t* = 0.58), the model approves 95.5% of applications and makes $1.76M more profit than approving everyone.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/05_business_metrics.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-05",
+      "run": 3,
+      "error": "",
+      "answer": "At the best decision threshold (t* = 0.58), the model approves 95.5% of applications and makes $1.76M (1.76 million dollars) more profit than approving everyone.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/05_business_metrics.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-01",
+      "run": 1,
+      "error": "",
+      "answer": "Based on the provided excerpts:\n\n- **Password Storage:** In `synergyhack/server/src/routes/auth.routes.js`, passwords are stored as `password_hash` in the `users` database collection (or not stored at all for SSO-only accounts, which have no `password_hash`).\n- **Token Duration:**\n  - In `synergyhack/server/src/services/session.service.js`, `createSession` sets the session token expiration in key-value storage using `{ EX: TTL }`, though the numeric value for `TTL` is not defined in the provided excerpt.\n  - In `fracton-scanner/streamer_finder_v3.py`, `app_token()` sets a token's `expires_at` to `time.time() + t.get(\"expires_in\", 3600) - 120`, and `save_token(t)` sets `expires_at` to `time.time() + t.get(\"expires_in\", 3600) - 60` (where `expires_in` defaults to 3600 seconds).",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/services/auth-service/app/main.py",
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "cited_files": [
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "retrieval_hit": false,
+      "evidence_found": [
+        false,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-01",
+      "run": 2,
+      "error": "",
+      "answer": "Based on the excerpts provided:\n\n**Password Storage:**\n- In `synergyhack` (`synergyhack/server/src/routes/auth.routes.js`), user accounts store a `password_hash` in the `users` collection. SSO-only accounts (using Google or GitHub sign-in) do not have a `password_hash`. Password verification is performed using `auth.verifyPassword(password, user.password_hash)`.\n\n**Token Expiration / Lifetime:**\n- In `synergyhack` (`synergyhack/server/src/services/session.service.js`), `createSession(token, userId)` sets the session key using `client.set(key(token), userId, { EX: TTL })`, expiring after `TTL` seconds (the exact numeric value of `TTL` is not provided in the excerpt).\n- In `fracton-scanner/streamer_finder_v3.py`:\n  - Function `app_token` calculates expiration as `time.time() + t.get(\"expires_in\", 3600) - 120` seconds.\n  - Function `save_token` calculates expiration as `time.time() + t.get(\"expires_in\", 3600) - 60` seconds.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/services/auth-service/app/main.py",
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "cited_files": [
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "retrieval_hit": false,
+      "evidence_found": [
+        false,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-01",
+      "run": 3,
+      "error": "",
+      "answer": "Based on the provided excerpts:\n\n**synergyhack:**\n- **Password storage:** Passwords for non-SSO accounts are stored as `password_hash` in the `users` MongoDB collection (`db().collection('users')`). SSO accounts (using Google or GitHub sign-in) have no `password_hash` stored. Passwords are verified using `auth.verifyPassword(password, user.password_hash)`.\n- **Token duration:** When a user logs in, a session token is generated via `auth.signToken` and stored in Redis via `createSession(token, user._id)` with an expiration set to `TTL` (`{ EX: TTL }`). The exact numeric value of `TTL` is not specified in the provided excerpt.\n\n**GameHub (written by course template):**\n- `main.py` and `api-contracts.md` show that a user authenticates via `authenticate_user` to receive a JWT access token generated by `create_access_token`, but the excerpts do not state how passwords are stored or how long the token lasts.\n\n**fracton-scanner:**\n- `streamer_finder_v3.py` manages a Twitch client-credentials token (which explicitly requires no browser login). Its duration relies on the `expires_in` value returned by Twitch (defaulting to 3600 seconds), expiring at `time.time() + t.get(\"expires_in\", 3600) - 120` in `app_token()` or `- 60` in `save_token()`.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/services/auth-service/app/main.py",
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "cited_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/services/auth-service/app/main.py",
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "retrieval_hit": false,
+      "evidence_found": [
+        false,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-02",
+      "run": 1,
+      "error": "",
+      "answer": "In SynergyHack's `match.service.js` graph match query, the algorithm scores a candidate using a gap-coverage match as follows:\n\n1. **Collect Team Skills**: It finds the team's current distinct skills (`teamSkills`) by traversing `(t:Team {id: $teamId})<-[:MEMBER_OF]-(m:User)-[:HAS_SKILL]->(ts:Skill)`.\n2. **Identify Candidate Skills**: It finds candidate users (`c:User`) who are not members of the team (`NOT (c)-[:MEMBER_OF]->(t)`) and possess candidate skills (`cs:Skill`) that are not already in `teamSkills` (`NOT cs IN teamSkills`).\n3. **Follow Directed COMPLEMENTS Edges**: For each eligible candidate skill, it follows the directed `COMPLEMENTS` edge to a team skill (`OPTIONAL MATCH (cs)-[r:COMPLEMENTS]->(x:Skill)` where `x IN teamSkills`).\n4. **Sum Strengths**: It calculates the total gap-coverage score (`gapCoverage`) per candidate by summing the strength of those `COMPLEMENTS` edges (`sum(coalesce(r.strength, 0))`).\n5. **Filter and Rank**: Candidates are filtered to keep only those with `gapCoverage > 0`, and the top candidates are ordered by `gapCoverage DESC`.",
+      "retrieved_files": [
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/neo4j-schema.md",
+        "synergyhack/server/src/routes/matches.routes.js",
+        "synergyhack/server/src/services/match.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/neo4j-schema.md",
+        "synergyhack/server/src/services/match.service.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        false,
+        true,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-02",
+      "run": 2,
+      "error": "",
+      "answer": "The team match algorithm (implemented in `findMatches` in `server/src/services/match.service.js` and described in Neo4j documentation and report) scores a candidate using a gap-coverage score (`gapCoverage`) through the following steps:\n\n1. **Collect Team Skills**: It traverses from the `Team` node through its members (`:MEMBER_OF`) to their skills (`:HAS_SKILL`) to collect a distinct set of existing team skills (`teamSkills`).\n2. **Identify Candidate Skills**: It finds candidate users (`User`) who are not members of the team and who possess skills (`cs:Skill`) that are not already present in `teamSkills`.\n3. **Traverse Complementary Relationships**: For each eligible candidate skill, an `OPTIONAL MATCH` follows directed `:COMPLEMENTS` edges (`[r:COMPLEMENTS]`) from the candidate's skill to any team skill in `teamSkills`.\n4. **Calculate Gap Coverage Score**: The score (`gapCoverage`) is calculated by summing the edge strengths: `sum(coalesce(r.strength, 0))`. If a candidate skill does not complement a team skill, `coalesce` evaluates to 0.\n5. **Filter and Rank**: Candidates are filtered to keep only those with `gapCoverage > 0`, and candidates are ordered by `gapCoverage DESC` (limited to `limit`, which defaults to 20).",
+      "retrieved_files": [
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/neo4j-schema.md",
+        "synergyhack/server/src/routes/matches.routes.js",
+        "synergyhack/server/src/services/match.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/neo4j-schema.md",
+        "synergyhack/server/src/services/match.service.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-02",
+      "run": 3,
+      "error": "",
+      "answer": "The team match algorithm in SynergyHack (`server/src/services/match.service.js`) scores a candidate using a gap-coverage score (`gapCoverage`) calculated through the following steps:\n\n1. **Collect Team Skills**: It collects the team's existing distinct skills (`teamSkills`) by traversing from the `Team` node (`t`) through members (`m:User`) via `MEMBER_OF` edges to their skills (`ts:Skill`) via `HAS_SKILL` edges.\n2. **Identify Candidate Skills**: It finds candidate users (`c:User`) with skills (`cs:Skill`) where the candidate is not a member of the team (`NOT (c)-[:MEMBER_OF]->(t)`) and the candidate's skill is not already covered by the team (`NOT cs IN teamSkills`).\n3. **Follow Complementary Relationships**: It uses `OPTIONAL MATCH` to follow directed `COMPLEMENTS` edges (`r`) from each candidate skill (`cs`) to any team skill (`x:Skill`) present in `teamSkills` (`(cs)-[r:COMPLEMENTS]->(x:Skill)`).\n4. **Sum Strengths**: It sums the `COMPLEMENTS` edge strengths across all of the candidate's new skills using `sum(coalesce(r.strength, 0)) AS gapCoverage` (and counts distinct contributing candidate skills as `candidateNewSkillCount`). If `r` is null, `coalesce` evaluates to 0.\n5. **Filter and Rank**: It filters out candidates without gap coverage (`WHERE gapCoverage > 0`), orders the remaining candidates by `gapCoverage DESC`, and returns the top results (up to `limit`, defaulting to 20).",
+      "retrieved_files": [
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/neo4j-schema.md",
+        "synergyhack/server/src/routes/matches.routes.js",
+        "synergyhack/server/src/services/match.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/neo4j-schema.md",
+        "synergyhack/server/src/services/match.service.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-03",
+      "run": 1,
+      "error": "",
+      "answer": "OAuth login protects against forged callbacks by consuming and validating the `state` query parameter using `await oauth.consumeState(state)`. In the callback routes (`GET /github/callback` and `GET /google/callback`), it verifies that the returned provider matches the expected provider (`'github'` or `'google'`). If `provider` does not match, it redirects to `oauth.errorRedirect('Invalid OAuth state')`.",
+      "retrieved_files": [
+        "synergyhack/client/src/pages/AuthCallback.jsx",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/oauth.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/routes/auth.routes.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-03",
+      "run": 2,
+      "error": "",
+      "answer": "OAuth login protects against forged callbacks by consuming and validating a `state` parameter received in the query parameters (`req.query`):\n\n1. In both the `GET /github/callback` and `GET /google/callback` routes, the server reads `state` from `req.query` and calls `await oauth.consumeState(state)`.\n2. The server verifies that the provider returned by `oauth.consumeState(state)` matches the expected provider (`'github'` for GitHub or `'google'` for Google).\n3. If `provider` does not match the expected value, the request is rejected and redirected via `oauth.errorRedirect('Invalid OAuth state')`.",
+      "retrieved_files": [
+        "synergyhack/client/src/pages/AuthCallback.jsx",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/oauth.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/routes/auth.routes.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-03",
+      "run": 3,
+      "error": "",
+      "answer": "OAuth login protects against forged callbacks by consuming and validating the `state` query parameter during the callback handlers:\n\n1. In both the GitHub (`/github/callback`) and Google (`/google/callback`) callback routes, the `state` parameter is retrieved from `req.query` and passed to `await oauth.consumeState(state)`.\n2. The handler checks if the returned provider matches the expected provider (`'github'` for GitHub callbacks and `'google'` for Google callbacks).\n3. If the returned provider does not match the expected provider, the request is aborted and redirected to an error URL with the message `'Invalid OAuth state'`.",
+      "retrieved_files": [
+        "synergyhack/client/src/pages/AuthCallback.jsx",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/oauth.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/routes/auth.routes.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-04",
+      "run": 1,
+      "error": "",
+      "answer": "SynergyHack uses three databases: **MongoDB** (version 7), **Neo4j** (version 5), and **Redis** (version 7).\n\nEach database is used for specific roles:\n\n1. **MongoDB**:\n   - **Document storage & content**: Stores rich, semi-structured data including user profiles (bios, skill objects, skills, skill_names), teams (metadata, roster, hackathonId), hackathons/events, registrations, leaderboards, notifications, past projects (write-ups, ratings, members), and a durable archive/chat mirror of messages.\n   - **Text search**: Performs text search using a compound text index (`skill_names:10, role:5, bio:3`).\n   - **Analytics**: Runs analytical aggregation pipelines (e.g., skill demand per role, successful team patterns).\n\n2. **Neo4j**:\n   - **Graph storage**: Holds the skill-complementarity graph with nodes (`:User`, `:Skill`, `:Team`, `:Hackathon`) and relationships (`HAS_SKILL`, `COMPLEMENTS`, `MEMBER_OF`, `PARTICIPATES_IN`, `TEAMED_WITH`).\n   - **Matching engine & checks**: Executes the gap-coverage match algorithm via path traversal and performs team membership checks.\n\n3. **Redis**:\n   - **Ephemeral state & caching**: Handles session storage (`session:{token}` with 24h TTL), presence with auto-expiry (`presence:{userId}` with 60s TTL, `online:users` set), and rate limiting (`ratelimit:{ip}` with 1s TTL).\n   - **Counters**: Manages atomic team slot counters (`team:{id}:slots` hash).\n   - **Real-time messaging**: Handles live chat via Streams (`chat:team:{id}`, `chat:dm:{sortedA}:{sortedB}` capped at ~500 messages).",
+      "retrieved_files": [
+        "synergyhack/README.md",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md"
+      ],
+      "cited_files": [
+        "synergyhack/README.md",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-04",
+      "run": 2,
+      "error": "",
+      "answer": "SynergyHack uses three databases:\n\n1. **MongoDB** (MongoDB 7):\n   - **Purpose**: Holds rich, semi-structured profile content, documents, text search, durable message archives, notifications, events, teams, registrations, leaderboards, and analytical aggregations.\n   - **Collections & Data**: Stores `users` (profile, bio, skills, skill_names), `teams` (metadata, roster, hackathonId), `hackathons` (events, dates), `past_projects` (write-ups, ratings, members), and `messages` (chat mirror, channel-indexed).\n   - **Features**: Uses a compound text index (`skill_names:10, role:5, bio:3`) for text search and runs two aggregation pipelines (skill demand per role and successful team patterns).\n\n2. **Neo4j** (Neo4j 5):\n   - **Purpose**: Manages the skill-complementarity graph, team membership checks, graph traversals, and the gap-coverage matching algorithm.\n   - **Graph Entities & Relationships**: Stores nodes `(:User)`, `(:Skill)`, `(:Team)`, and `(:Hackathon)` with relationships `HAS_SKILL` `{level, years}`, `COMPLEMENTS` `{strength 0-1}` (both directions), `MEMBER_OF`, `PARTICIPATES_IN`, and `TEAMED_WITH` `{rating, projectId}`.\n\n3. **Redis** (Redis 7):\n   - **Purpose**: Manages ephemeral state, sessions with TTL, presence with auto-expiry, atomic slot counters, rate limiting, and real-time live chat logs.\n   - **Data Structures**: \n     - `STRING`: `session:{token}` (TTL 24h), `presence:{userId}` (TTL 60s), and `ratelimit:{ip}` (TTL 1s).\n     - `SET`: `online:users`.\n     - `HASH`: `team:{id}:slots` `{capacity, filled}`.\n     - `STREAM`: `chat:team:{id}` and `chat:dm:{sortedA}:{sortedB}` (MAXLEN ~ 500) for real-time chat.",
+      "retrieved_files": [
+        "synergyhack/README.md",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md"
+      ],
+      "cited_files": [
+        "synergyhack/README.md",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-04",
+      "run": 3,
+      "error": "",
+      "answer": "SynergyHack uses three databases: MongoDB (MongoDB 7), Neo4j (Neo4j 5), and Redis (Redis 7).\n\nHere is what each database is used for:\n\n1. **MongoDB** (Document & Search Store):\n   - Holds rich, semi-structured profile content (bios, skill objects, past project text, user profiles, teams metadata, hackathons/events, registrations, leaderboards, notifications, and messages/chat mirror).\n   - Executes text search via a compound index (`skill_names:10, role:5, bio:3`).\n   - Runs two analytical aggregation pipelines (skill demand per role and successful team patterns).\n   - Serves as a durable archive of every chat message beyond Redis's stream cap.\n\n2. **Neo4j** (Graph Store):\n   - Maintains the sparse, skill-complementarity graph (nodes for `:User`, `:Skill`, `:Team`, `:Hackathon` and relationships like `HAS_SKILL`, `COMPLEMENTS`, `MEMBER_OF`, `PARTICIPATES_IN`, and `TEAMED_WITH`).\n   - Runs the gap-coverage matching algorithm via path traversal to match teammates based on complementary skills.\n   - Handles team membership checks.\n\n3. **Redis** (In-Memory Ephemeral State & Real-Time Streams):\n   - Manages sessions with auto-expiry/TTL (`session:{token}` with TTL 24h).\n   - Handles presence tracking (`presence:{userId}` with TTL 60s, `online:users` set).\n   - Implements rate limiting (`ratelimit:{ip}` with TTL 1s).\n   - Stores atomic team slot counters (`team:{id}:slots`).\n   - Powers real-time chat via capped Streams (`chat:team:{id}`, `chat:dm:{sortedA}:{sortedB}` with `MAXLEN ~ 500`).",
+      "retrieved_files": [
+        "synergyhack/README.md",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md"
+      ],
+      "cited_files": [
+        "synergyhack/README.md",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-05",
+      "run": 1,
+      "error": "",
+      "answer": "A user is kept in sync using a dual-write pattern following the rule: write to MongoDB first as the source of truth, then sync to Neo4j as a derived secondary.\n\n1. **User Node Creation (`syncUser`)**:\n   - After creating/inserting the user document in MongoDB (e.g., `user.service.createUser()`), `graphSync.syncUser(mongoDoc)` in `server/src/services/graph-sync.service.js` is called.\n   - `syncUser` opens a Neo4j session and runs the following Cypher query to mirror the Mongo document as a `User` node:\n     ```cypher\n     MERGE (u:User {id: $id})\n     SET u.username = $username\n     ```\n     where `id` is `mongoDoc._id.toString()` and `username` is `mongoDoc.username`.\n\n2. **User Skills Synchronization (`syncUserSkills`)**:\n   - When updating a profile, the new skills array is written to Mongo wholesale.\n   - `graphSync.syncUserSkills(userId, skills)` reconciles `HAS_SKILL` edges in Neo4j by diffing:\n     - It reads existing `HAS_SKILL` edges for `(u:User {id: $userId})` from Neo4j.\n     - It deletes edges for skills that are no longer present in the new list (`DELETE r`).\n     - For each skill in the new list matching a `Skill` node in the catalogue, it runs `MERGE` to add/update the `HAS_SKILL` edge and sets `r.level = $level` and `r.years = $years`.\n\n3. **Idempotency & Cross-DB Integrity**:\n   - All sync operations use `MERGE` instead of `CREATE` so that operations are idempotent and safe to re-run if drift occurs or a sync fails.",
+      "retrieved_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/server/src/services/graph-sync.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/server/src/services/graph-sync.service.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        false,
+        true
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-05",
+      "run": 2,
+      "error": "",
+      "answer": "A user is kept in sync between MongoDB and Neo4j through the single sync point module `server/src/services/graph-sync.service.js` using a \"Mongo first, then Neo4j\" ordering rule, where MongoDB is the canonical source of truth and Neo4j is the derived secondary:\n\n1. **User Node Creation / Sync (`syncUser`)**:\n   - Called after `user.service.createUser()` (such as during registration) to mirror a user from MongoDB to Neo4j as a `User` node.\n   - Runs the Cypher query:\n     `MERGE (u:User {id: $id}) SET u.username = $username`\n     with `id` set to `mongoDoc._id.toString()` and `username` set to `mongoDoc.username`.\n\n2. **User Skills Sync (`syncUserSkills`)**:\n   - When a user updates profile skills, new skills are written to MongoDB wholesale, and `graphSync.syncUserSkills` uses diff-and-apply to reconcile `HAS_SKILL` edges in Neo4j:\n     1. Reads existing skill edges for the user (`MATCH (u:User {id: $userId})-[:HAS_SKILL]->(sk:Skill) RETURN sk.name AS name`).\n     2. Drops edges removed from the new skill list (`DELETE r`).\n     3. Executes a `MERGE` loop for each skill in `newSkills` to merge the user node and the `(u)-[r:HAS_SKILL]->(sk)` edge, setting `r.level = $level` and `r.years = $years` (skills not in the catalog are skipped by `MATCH (sk:Skill {name: $name})`).\n\n3. **Idempotency & Failure Handling**:\n   - Graph sync operations use `MERGE` instead of `CREATE` so they are idempotent and safe to re-run.\n   - If a Neo4j sync call fails during registration, the error is logged, the MongoDB document remains intact, and the missing graph data can be recovered later.",
+      "retrieved_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/server/src/services/graph-sync.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/server/src/services/graph-sync.service.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-05",
+      "run": 3,
+      "error": "",
+      "answer": "A user is kept in sync between MongoDB and Neo4j following a Mongo-first, then Neo4j write ordering using the `graph-sync.service.js` service:\n\n1. **User Node Sync (`syncUser`)**:\n   - Writes are committed to MongoDB first as the source of truth.\n   - `syncUser(mongoDoc)` in `server/src/services/graph-sync.service.js` mirrors the user into Neo4j by executing the Cypher query:\n     ```cypher\n     MERGE (u:User {id: $id})\n     SET u.username = $username\n     ```\n     passing `id` as `mongoDoc._id.toString()` and `username` as `mongoDoc.username`.\n   - Operations use `MERGE` instead of `CREATE` so that syncing is idempotent and safe to re-run if drift occurs.\n\n2. **User Skills Sync (`syncUserSkills`)**:\n   - When user skills are updated, `graphSync.syncUserSkills(userId, skills)` uses a diff-and-apply process.\n   - It reads current `(u:User)-[:HAS_SKILL]->(sk:Skill)` edges from Neo4j.\n   - It removes edges no longer present in the updated skills list (`DELETE r`).\n   - It uses `MERGE` to add or update `HAS_SKILL` edges for skills in the catalogue, setting properties `r.level = $level` and `r.years = $years`.",
+      "retrieved_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/server/src/services/graph-sync.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/server/src/services/graph-sync.service.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        false,
+        true
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-01",
+      "run": 1,
+      "error": "",
+      "answer": "A discount code is generated for a client when recording a miles reward if the flight is the client's 3rd flight (or a multiple of 3) in the current year (checked via `(flightsThisYear + 1) % 3 == 0`).\n\nThe code consists of the prefix `\"DISC-\"` followed by the first 8 characters of a random UUID in uppercase (generated by `\"DISC-\" + UUID.randomUUID().toString().substring(0, 8).toUpperCase()`), for example: `DISC-EDDB7CDE`.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/MilesRewardService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-01",
+      "run": 2,
+      "error": "",
+      "answer": "A discount code is generated for a client when `(flightsThisYear + 1) % 3 == 0` (i.e., on their 3rd flight or a multiple of 3 flights in the current year).\n\nThe generated code consists of `\"DISC-\"` followed by the first 8 characters of a random UUID converted to uppercase: `\"DISC-\" + UUID.randomUUID().toString().substring(0, 8).toUpperCase()` (for example, `DISC-EDDB7CDE`).",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/MilesRewardService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-01",
+      "run": 3,
+      "error": "",
+      "answer": "A discount code is generated when recording a miles reward for a client's flight if it is their 3rd flight (or a multiple of 3) in the current year, specifically when `(flightsThisYear + 1) % 3 == 0` where `flightsThisYear` is determined by `countFlightsByClientAndYear(client, currentYear)`.\n\nThe discount code consists of the prefix `\"DISC-\"` followed by the first 8 uppercase characters of a random UUID (`\"DISC-\" + UUID.randomUUID().toString().substring(0, 8).toUpperCase()`). An example of a generated code is `DISC-EDDB7CDE`.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/MilesRewardService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-02",
+      "run": 1,
+      "error": "",
+      "answer": "When someone attempts to book a flight with no seats left (where `bookedSeats >= existingFlight.getNumberOfSeat()` in `BookingService.createBooking`), the following occurs:\n\n1. The system checks seat availability before booking to prevent overbooking.\n2. `BookingService.createBooking` throws a `NoSeatAvailableException` instantiated with `existingFlight.getFlightNumber()`, `existingFlight.getNumberOfSeat()`, and `bookedSeats`.\n3. The `NoSeatAvailableException` class is annotated with `@ResponseStatus(value = HttpStatus.BAD_REQUEST)`.\n4. `GlobalExceptionHandler.handleNoSeatAvailableException` catches the exception and returns a `ResponseEntity` with HTTP status `HttpStatus.BAD_REQUEST` containing a body map with the following key-value pairs:\n   - `\"timestamp\"`: `LocalDateTime.now()`\n   - `\"status\"`: `HttpStatus.BAD_REQUEST.value()`\n   - `\"error\"`: `\"Bad Request\"`\n   - `\"message\"`: `ex.getMessage()`\n   - `\"path\"`: `request.getDescription(false).replace(\"uri=\", \"\")`",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/GlobalExceptionHandler.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/NoSeatAvailableException.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/GlobalExceptionHandler.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/NoSeatAvailableException.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-02",
+      "run": 2,
+      "error": "",
+      "answer": "When someone tries to book a flight with no seats left, the following happens:\n\n1. In `BookingService.createBooking`, the system checks seat availability by calling `bookingRepository.countByFlight(existingFlight)`.\n2. If `bookedSeats >= existingFlight.getNumberOfSeat()`, the system prevents overbooking by throwing a `NoSeatAvailableException` with `existingFlight.getFlightNumber()`, `existingFlight.getNumberOfSeat()`, and `bookedSeats`.\n3. The `NoSeatAvailableException` class is annotated with `@ResponseStatus(value = HttpStatus.BAD_REQUEST)`.\n4. `GlobalExceptionHandler.handleNoSeatAvailableException` catches the exception and returns a `ResponseEntity` with status `HttpStatus.BAD_REQUEST` containing a JSON body map with:\n   - `\"timestamp\"`: `LocalDateTime.now()`\n   - `\"status\"`: `HttpStatus.BAD_REQUEST.value()`\n   - `\"error\"`: `\"Bad Request\"`\n   - `\"message\"`: `ex.getMessage()`\n   - `\"path\"`: `request.getDescription(false).replace(\"uri=\", \"\")`",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/GlobalExceptionHandler.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/NoSeatAvailableException.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/GlobalExceptionHandler.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/NoSeatAvailableException.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-02",
+      "run": 3,
+      "error": "",
+      "answer": "When a booking is made via `BookingService.createBooking`, the system checks seat availability by calling `bookingRepository.countByFlight(existingFlight)`. If the number of `bookedSeats` is greater than or equal to the flight's total seats (`existingFlight.getNumberOfSeat()`), the system prevents overbooking by throwing a `NoSeatAvailableException` instantiated with `existingFlight.getFlightNumber()`, `existingFlight.getNumberOfSeat()`, and `bookedSeats`.\n\n`NoSeatAvailableException` is annotated with `@ResponseStatus(value = HttpStatus.BAD_REQUEST)`. When thrown, `GlobalExceptionHandler.handleNoSeatAvailableException` handles it and returns a `ResponseEntity` with HTTP status `HttpStatus.BAD_REQUEST` containing a body map with the following key-value pairs:\n- `\"timestamp\"`: `LocalDateTime.now()`\n- `\"status\"`: `HttpStatus.BAD_REQUEST.value()`\n- `\"error\"`: `\"Bad Request\"`\n- `\"message\"`: `ex.getMessage()`\n- `\"path\"`: `request.getDescription(false).replace(\"uri=\", \"\")`",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/GlobalExceptionHandler.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/NoSeatAvailableException.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/GlobalExceptionHandler.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/NoSeatAvailableException.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-03",
+      "run": 1,
+      "error": "",
+      "answer": "When a passenger is not a client yet, `createBookingFromRequest` uses `clientRepository.findByNumPassport(request.getPassportNumber())` and falls back via `orElseGet(...)` to create and save a new client. Specifically, it:\n1. Instantiates a `new Client()`.\n2. Sets its fields using data from the `BookingRequest`:\n   - `firstname` (`request.getFirstname()`)\n   - `lastname` (`request.getLastname()`)\n   - `numPassport` (`request.getPassportNumber()`)\n   - `email` (`request.getEmail()`)\n   - `birthdate` (`request.getBirthdate()`)\n3. Saves and returns the new client by calling `clientRepository.save(newClient)`.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/ClientController.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/ClientService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-03",
+      "run": 2,
+      "error": "",
+      "answer": "When a passenger is not yet a client, `createBookingFromRequest` attempts to find the client by passport number using `clientRepository.findByNumPassport(request.getPassportNumber())`. If no client is found, it creates a new `Client` instance, sets its properties using the request details (`firstname`, `lastname`, `numPassport`, `email`, and `birthdate`), and saves the new client to the repository using `clientRepository.save(newClient)`.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/ClientController.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/ClientService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-03",
+      "run": 3,
+      "error": "",
+      "answer": "In `createBookingFromRequest`, if a client is not found by passport number via `clientRepository.findByNumPassport(request.getPassportNumber())`, a new client is created and saved using `clientRepository.save(newClient)` with details populated from the `BookingRequest`: `firstname`, `lastname`, `passportNumber` (via `numPassport`), `email`, and `birthdate`.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/ClientController.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/ClientService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-04",
+      "run": 1,
+      "error": "",
+      "answer": "In `BookingService.getAvailableSeats`, the number of available seats on a flight is calculated by finding the `Flight` by its `flightNumber` via `flightRepository.findById(flightNumber)` (throwing a `ResourceNotFoundException` if not found), getting the number of booked seats (`bookedSeats`) via `bookingRepository.countByFlight(flight)`, and returning `flight.getNumberOfSeat() - bookedSeats`.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/NoSeatAvailableException.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/repository/BookingRepository.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-04",
+      "run": 2,
+      "error": "",
+      "answer": "In `BookingService.getAvailableSeats`, the number of available seats on a flight is calculated by retrieving the `Flight` object using its `flightNumber`, getting the number of booked seats via `bookingRepository.countByFlight(flight)`, and subtracting `bookedSeats` from the total number of seats on the flight (`flight.getNumberOfSeat()`).",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/exception/NoSeatAvailableException.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/repository/BookingRepository.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-04",
+      "run": 3,
+      "error": "BadModelAnswer: the model did not return JSON: '{\"answer\": \"In `BookingService.getAvailableSeats` (in `fr/epita/timeoutairline/service/BookingService.java`), the number of available seats on a flight is calculated by:\\\\n1. Retrieving the `Flight` ob'",
+      "answer": "",
+      "retrieved_files": [],
+      "cited_files": [],
+      "retrieval_hit": false,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": false,
+      "facts_found": [],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": ""
+    },
+    {
+      "question_id": "ta-05",
+      "run": 1,
+      "error": "",
+      "answer": "Based on excerpt [1], the `MilesReward` entity stores the following fields:\n- `id`: a `Long` (primary key generated using `GenerationType.IDENTITY`)\n- `client`: a `Client` (associated via a `@ManyToOne` relationship joined on column `client_id`)\n- `flight`: a `Flight` (associated via a `@ManyToOne` relationship joined on column `flight_number`)\n- `date`: a `LocalDate`\n- `discountCode`: a `String`",
+      "retrieved_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/repository/MilesRewardRepository.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/MilesRewardService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-05",
+      "run": 2,
+      "error": "",
+      "answer": "Based on excerpt [1], the MilesReward entity stores the following fields:\n- `id`: a `Long` serving as the primary key (`@Id`, generated via `GenerationType.IDENTITY`)\n- `client`: a `Client` object (`@ManyToOne`, joined via column `client_id`)\n- `flight`: a `Flight` object (`@ManyToOne`, joined via column `flight_number`)\n- `date`: a `LocalDate`\n- `discountCode`: a `String`",
+      "retrieved_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/repository/MilesRewardRepository.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/MilesRewardService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-05",
+      "run": 3,
+      "error": "",
+      "answer": "The MilesReward entity stores the following fields:\n- id (Long, generated identity primary key)\n- client (Client, associated via a @ManyToOne relationship with join column \"client_id\")\n- flight (Flight, associated via a @ManyToOne relationship with join column \"flight_number\")\n- date (LocalDate)\n- discountCode (String)",
+      "retrieved_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/repository/MilesRewardRepository.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/MilesRewardService.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/MilesReward.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-01",
+      "run": 1,
+      "error": "",
+      "answer": "The fit score of a streamer is computed by the `fit_score(r, sweep_days)` function in `fracton-scanner/streamer_finder_v3.py` as a rounded total score from 0 to 100 (`round(eng + consistency + signal + loc + size)`), along with a breakdown string. Its five parts are computed as follows:\n\n1. **Engagement (`eng`, up to 30 points):**\n   - Computed as `min(r[\"engagement_pct\"] / 10, 1) * 30` (10%+ engagement gives full marks).\n\n2. **Consistency (`consistency`, up to 20 points):**\n   - Computed as `min(r[\"days_seen_live\"] / max(sweep_days, 1), 1) * 20`.\n\n3. **Giveaway and Sponsor Signal (`signal`, up to 20 points):**\n   - **20 points** if `r[\"does_giveaways\"]` is true and either `r[\"has_sponsor_signal\"]` or `r[\"brand_count\"]` is true.\n   - **15 points** if only `r[\"does_giveaways\"]` is true.\n   - **10 points** if `r[\"has_sponsor_signal\"]` or `r[\"brand_count\"]` is true (without giveaways).\n   - **0 points** otherwise.\n\n4. **Location Confidence (`loc`, up to 15 points):**\n   - Evaluated using a lookup table based on `r[\"location_confidence\"]`:\n     - `\"high\"`: 15 points\n     - `\"medium\"`: 11 points\n     - `\"low\"`: 6 points\n     - `\"none\"`: 0 points\n\n5. **Audience Size (`size`, up to 15 points):**\n   - Evaluated based on average viewers `v = r[\"avg_viewers\"]`:\n     - **15 points** if `20 <= v <= 80`\n     - **10 points** if `VIEWERS_MIN <= v <= VIEWERS_MAX`\n     - **3 points** otherwise.",
+      "retrieved_files": [
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-01",
+      "run": 2,
+      "error": "",
+      "answer": "The fit score of a streamer is computed in `fracton-scanner/streamer_finder_v3.py` by the `fit_score(r, sweep_days)` function. It calculates a rounded score from 0 to 100 (`round(eng + consistency + signal + loc + size)`) by summing five components:\n\n1. **Engagement (`eng`, max 30 points):**\n   - Formula: `min(r[\"engagement_pct\"] / 10, 1) * 30` (10%+ engagement achieves full marks).\n\n2. **Consistency (`consistency`, max 20 points):**\n   - Formula: `min(r[\"days_seen_live\"] / max(sweep_days, 1), 1) * 20`.\n\n3. **Giveaway / Brand Signal (`signal`, max 20 points):**\n   - `20` if `r[\"does_giveaways\"]` is truthy AND either `r[\"has_sponsor_signal\"]` or `r[\"brand_count\"]` is truthy.\n   - `15` if only `r[\"does_giveaways\"]` is truthy.\n   - `10` if either `r[\"has_sponsor_signal\"]` or `r[\"brand_count\"]` is truthy.\n   - `0` otherwise.\n\n4. **Location Confidence (`loc`, max 15 points):**\n   - Looks up `r[\"location_confidence\"]` in a dictionary:\n     - `\"high\"`: 15\n     - `\"medium\"`: 11\n     - `\"low\"`: 6\n     - `\"none\"`: 0\n\n5. **Audience Size (`size`, max 15 points):**\n   - Evaluates average viewers `v = r[\"avg_viewers\"]`:\n     - `15` if `20 <= v <= 80`\n     - `10` if `VIEWERS_MIN <= v <= VIEWERS_MAX`\n     - `3` otherwise\n\nThe function returns `total` (the rounded total score) and `breakdown` (a text breakdown formatted as `\"engagement {eng:.0f}/30, consistency {consistency:.0f}/20, giveaway+brand {signal}/20, location {loc}/15, audience size {size}/15\"`).",
+      "retrieved_files": [
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-01",
+      "run": 3,
+      "error": "",
+      "answer": "The fit score of a streamer is computed by the `fit_score(r, sweep_days)` function on a 0\u2013100 scale, calculated as `round(eng + consistency + signal + loc + size)`. It returns the rounded total score along with a breakdown string.\n\nIts parts and scoring logic are:\n1. **Engagement (`eng`, up to 30 points)**: `min(r[\"engagement_pct\"] / 10, 1) * 30` (10%+ engagement gets full marks).\n2. **Consistency (`consistency`, up to 20 points)**: `min(r[\"days_seen_live\"] / max(sweep_days, 1), 1) * 20`.\n3. **Giveaway + Brand Signal (`signal`, up to 20 points)**:\n   - `20` if `r[\"does_giveaways\"]` and either `r[\"has_sponsor_signal\"]` or `r[\"brand_count\"]` is true/non-zero.\n   - `15` if `r[\"does_giveaways\"]` only.\n   - `10` if `r[\"has_sponsor_signal\"]` or `r[\"brand_count\"]` only.\n   - `0` otherwise.\n4. **Location Confidence (`loc`, up to 15 points)** based on `r[\"location_confidence\"]`:\n   - `\"high\"`: 15\n   - `\"medium\"`: 11\n   - `\"low\"`: 6\n   - `\"none\"`: 0\n5. **Audience Size (`size`, up to 15 points)** based on `v = r[\"avg_viewers\"]`:\n   - `15` if `20 <= v <= 80`\n   - `10` if `VIEWERS_MIN <= v <= VIEWERS_MAX`\n   - `3` otherwise.",
+      "retrieved_files": [
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-02",
+      "run": 1,
+      "error": "",
+      "answer": "In `fracton-scanner/streamer_finder_v3.py`, the `Twitch.get` method handles rate limits and failed requests across up to 8 attempts (`range(8)`):\n\n- **Network Exceptions**: On `requests.exceptions.RequestException`, it calculates a wait time `wait = min(60, 5 * (attempt + 1))`, prints `f\"    network hiccup ({type(e).__name__}); retrying in {wait}s\"`, sleeps for `wait` seconds, and retries.\n- **Authentication Errors (401)**: If `r.status_code == 401`, it calls `self._set_auth(force=True)` and retries.\n- **Rate Limit Exceeded (429) & Server Errors (>= 500)**: If `r.status_code == 429` or `r.status_code >= 500`, it reads `reset = int(r.headers.get(\"Ratelimit-Reset\", time.time() + 5))`, sleeps for `max(1, reset - time.time()) + 1` seconds, and retries.\n- **Low Remaining Rate Limit**: After calling `r.raise_for_status()`, if `int(r.headers.get(\"Ratelimit-Remaining\", 100)) < 10`, it proactively reads `reset = int(r.headers.get(\"Ratelimit-Reset\", time.time() + 5))` and sleeps for `max(1, reset - time.time()) + 1` seconds before returning `r.json()`.\n- **Failure Limit**: If all 8 attempts are exhausted, it raises a `RuntimeError(f\"Twitch API kept failing on {path}\")`.",
+      "retrieved_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-02",
+      "run": 2,
+      "error": "",
+      "answer": "In `streamer_finder_v3.py`, the `Twitch.get` method handles rate limits and failed API requests across up to 8 attempts (`range(8)`) as follows:\n\n- **Network Exceptions**: On a `requests.exceptions.RequestException`, it calculates a wait time `wait = min(60, 5 * (attempt + 1))`, prints `\"    network hiccup ({type(e).__name__}); retrying in {wait}s\"`, sleeps for `wait` seconds, and retries.\n- **Authentication Errors (401)**: If `r.status_code == 401`, it re-authenticates by calling `self._set_auth(force=True)` and retries.\n- **Rate Limits (429) & Server Errors (>= 500)**: If `r.status_code == 429` or `r.status_code >= 500`, it reads `reset = int(r.headers.get(\"Ratelimit-Reset\", time.time() + 5))`, sleeps for `max(1, reset - time.time()) + 1` seconds, and retries.\n- **Other Status Codes**: It calls `r.raise_for_status()` to raise any unhandled HTTP errors.\n- **Proactive Rate Limiting**: If `int(r.headers.get(\"Ratelimit-Remaining\", 100)) < 10`, it reads `reset = int(r.headers.get(\"Ratelimit-Reset\", time.time() + 5))` and sleeps for `max(1, reset - time.time()) + 1` seconds before returning `r.json()`.\n- **Exhausted Attempts**: If all 8 attempts fail, it raises `RuntimeError(f\"Twitch API kept failing on {path}\")`.",
+      "retrieved_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-02",
+      "run": 3,
+      "error": "",
+      "answer": "In `fracton-scanner/streamer_finder_v3.py`, the `Twitch.get` method handles rate limits and failed requests using a loop of up to 8 attempts:\n\n1. **Network exceptions (`requests.exceptions.RequestException`)**:\n   - Calculates a wait time of `min(60, 5 * (attempt + 1))` seconds.\n   - Prints `\"    network hiccup ({type(e).__name__}); retrying in {wait}s\"`.\n   - Sleeps for `wait` seconds and retries.\n\n2. **401 Status Code (Unauthorized)**:\n   - Calls `self._set_auth(force=True)` and retries.\n\n3. **429 Status Code or Status Codes >= 500**:\n   - Reads the `Ratelimit-Reset` header (defaulting to `time.time() + 5`) and converts it to an integer `reset`.\n   - Sleeps for `max(1, reset - time.time()) + 1` seconds and retries.\n\n4. **Other HTTP Errors**:\n   - Calls `r.raise_for_status()` for any status codes not handled by the specific conditions above.\n\n5. **Rate Limit Prevention (Remaining Quota < 10)**:\n   - If `Ratelimit-Remaining` (defaulting to 100) is less than 10, it reads `Ratelimit-Reset` (defaulting to `time.time() + 5`) as integer `reset` and sleeps for `max(1, reset - time.time()) + 1` seconds before returning `r.json()`.\n\n6. **Failure Limit**:\n   - If all 8 attempts are exhausted, it raises `RuntimeError(f\"Twitch API kept failing on {path}\")`.",
+      "retrieved_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-03",
+      "run": 1,
+      "error": "",
+      "answer": "The scanner uses an app access token (client-credentials token) instead of user OAuth because follower totals, stream lists, and profiles are readable with it\u2014which is everything the script reads. As a result, no browser login is needed, and the scheduled job does not require a browser login or a refresh token in CI secrets.",
+      "retrieved_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-03",
+      "run": 2,
+      "error": "",
+      "answer": "The scanner uses an app access token (client-credentials token) instead of user OAuth for the following reasons:\n\n1. Follower totals, stream lists, and profiles\u2014which is everything the script reads\u2014are readable with a client-credentials token.\n2. No browser login is needed.\n3. No refresh token is needed in CI secrets.\n\n(The script automatically falls back to a user token when one is present locally.)",
+      "retrieved_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-03",
+      "run": 3,
+      "error": "",
+      "answer": "The scanner uses an app access token (client-credentials token) instead of user OAuth because:\n1. No browser login is needed (Excerpts 1, 5).\n2. It is enough to read stream lists, profiles, and follower totals, which is everything the script reads (Excerpts 1, 5).\n3. The scheduled job does not need a refresh token in CI secrets (Excerpt 5).\n\nAdditionally, the script automatically falls back to a user token when one is present locally (Excerpt 5).",
+      "retrieved_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-04",
+      "run": 1,
+      "error": "",
+      "answer": "The scanner infers a streamer's location using a function named `guess_region`, which checks profile text, timezone mentions, and go-live hours in a priority order where profile words beat timezone mentions, which beat go-live hours:\n\n1. **Target Profile Words and Flags**: Checks profile text against target patterns (`TARGET_WORDS` for UK, US, CA) and flags. If matches are found, it selects the region with the most hits, returning it with **high** confidence. (Note: If \"british columbia\" is present in the text, \"british\" is discarded when evaluating for UK).\n2. **Exclude Words**: If profile text matches `EXCLUDE_PATTERN` (outside target market words), it assigns region `other` with **high** confidence.\n3. **Timezone Words**: If profile text contains timezone patterns (`TZ_PATTERNS`), it assigns the corresponding region with **medium** confidence.\n4. **Go-Live / Streaming Hours**: If start hours are provided, it evaluates the proportion of go-live hours:\n   - \u2265 70% between 07:00 and 13:00: region `other`, **low** confidence (\"goes live in Asia-Pacific hours\").\n   - \u2265 70% between 16:00 and 22:00: region `UK?`, **low** confidence (\"goes live in UK evening (could be Europe)\").\n   - \u2265 70% at or after 23:00 or at or before 06:00: region `US/CA?`, **low** confidence (\"goes live in North American evening\").\n5. **Fallback**: If no signals match, it returns region `unknown` with **none** confidence.\n\n### Reliability\n- Because Twitch publishes no official country data, location is strictly inferred and explicitly labelled with a confidence rating (`high`, `medium`, `low`, or `none`).\n- Profile text and timezone mentions provide high and medium confidence.\n- Streaming hours alone are considered a low-confidence guess. As a known limit, location inference cannot distinguish a UK streamer from a European streamer streaming in English during the same hours, which is why hours-only guesses are marked with low confidence and carrying a question mark (e.g., `UK?`).",
+      "retrieved_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-04",
+      "run": 2,
+      "error": "",
+      "answer": "The scanner infers location using the `guess_region(text, start_hours)` function, prioritizing profile text words over timezone mentions, and timezone mentions over streaming start hours:\n\n1. **Profile Words (High Confidence)**: Checks the profile text for target region terms (`TARGET_WORDS` for UK, US, CA) and flags. If matches are found, it selects the region with the most pattern hits (with a rule discarding \"british\" for UK if \"british columbia\" is present). If words matching non-target regions (`EXCLUDE_WORDS`) are found, it returns a region of `\"other\"` with high confidence.\n2. **Timezone Mentions (Medium Confidence)**: Checks profile text for timezone patterns (`TIMEZONE_WORDS` such as GMT/BST for UK, EST/PST/etc. for US, Atlantic time/NST for CA) and assigns medium confidence.\n3. **Go-Live / Start Hours (Low Confidence)**: If 70% (`>= 0.7`) or more of a streamer's start hours fall into specific ranges, it returns a region guess with low confidence:\n   - 7\u201313: `\"other\"` (\"goes live in Asia-Pacific hours\")\n   - 16\u201322: `\"UK?\"` (\"goes live in UK evening (could be Europe)\")\n   - `>= 23` or `<= 6`: `\"US/CA?\"` (\"goes live in North American evening\")\n4. **Unknown (No Confidence)**: If no signals match, it returns `\"unknown\"` with confidence `\"none\"`.\n\n### Reliability:\n- Twitch publishes no country data, so all location values are inferred and explicitly labelled by confidence (`high`, `medium`, `low`, or `none`).\n- Profile text and timezone mentions provide high and medium confidence, whereas start hours alone are marked as low-confidence guesses.\n- A key limitation is that location inference cannot distinguish a UK streamer from a European streamer streaming in English at the same hour, which is why hours-only guesses are given a `?` tag (e.g., `\"UK?\"`) and labelled separately.",
+      "retrieved_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-04",
+      "run": 3,
+      "error": "",
+      "answer": "The scanner infers a streamer's location using the `guess_region` function based on profile text and streaming start hours (`start_hours`). Twitch does not publish country data, so location is inferred using a precedence order of profile words > timezone > start hours:\n\n1. **Profile Words (High Confidence)**: Checks text against target region words (`TARGET_PATTERNS`) and flags (`FLAGS`). If evaluating the UK region and \"british columbia\" appears in lowercase text, \"british\" is discarded. The region with the most matches is returned with confidence `\"high\"`.\n2. **Exclusion Patterns (High Confidence)**: If text matches `EXCLUDE_PATTERN`, it returns region `\"other\"` with confidence `\"high\"` (\"outside target market\").\n3. **Timezone Words (Medium Confidence)**: Checks for timezone mentions (`TZ_PATTERNS`). If matched, it returns the region with confidence `\"medium\"`.\n4. **Start Hours (Low Confidence)**: If profile checks yield no match, it analyzes the proportion of stream start hours:\n   - Asia-Pacific (7\u201313): if \u2265 70% (0.7), returns region `\"other\"`, confidence `\"low\"`.\n   - UK evening (16\u201322): if \u2265 70% (0.7), returns region `\"UK?\"`, confidence `\"low\"` (\"goes live in UK evening (could be Europe)\").\n   - North American evening (\u2265 23 or \u2264 6): if \u2265 70% (0.7), returns region `\"US/CA?\"`, confidence `\"low\"`.\n5. If none of these match, it returns region `\"unknown\"` with confidence `\"none\"`.\n\n### Reliability\n- Profile text matches are rated as **high confidence** and timezone mentions as **medium confidence**.\n- Hours-only guesses are marked as **low confidence** (guesses).\n- The scanner cannot distinguish a UK streamer from a European streamer streaming in English at the same hour, which is why hours-only guesses are labelled separately (e.g., \"UK?\") and confidence levels are carried through to outputs.",
+      "retrieved_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-05",
+      "run": 1,
+      "error": "",
+      "answer": "The scanner detects 24/7 rerun channels using name patterns, title patterns (such as `JUNK_PATTERN` matching terms like `24/7`, `24hr`, `rerun`, `re-run`, `replay stream`, `watch party`/`watch parties`, or `afk stream`/`afk farm`), and average stream length. It excludes them from the shortlist, recording the reason for exclusion (which is listed in the `All channels` sheet).\n\nIt does this because 24/7 rerun channels show very high viewer-to-follower ratios (high viewers with no real community) and would otherwise dominate any naive engagement ranking. Recording the reason for exclusion ensures the filter can be audited and reversed.",
+      "retrieved_files": [
+        "fracton-scanner/.github/workflows/twitch-scan.yml",
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-05",
+      "run": 2,
+      "error": "",
+      "answer": "The scanner detects 24/7 rerun channels using name patterns (specifically matching regex patterns like `JUNK_PATTERN`), title patterns, and average stream length. It excludes these channels and records the specific exclusion reason (listing every scanned channel and why it failed to make the shortlist on the 'All channels' sheet) so the filter can be audited, challenged, and reversed.\n\nIt does this because 24/7 rerun channels show very high viewer-to-follower ratios (bringing high viewer counts without a real community) and would dominate any naive engagement ranking.",
+      "retrieved_files": [
+        "fracton-scanner/.github/workflows/twitch-scan.yml",
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "fs-05",
+      "run": 3,
+      "error": "",
+      "answer": "The scanner detects 24/7 rerun channels using name patterns, title patterns, and average stream length, and excludes them while recording the exclusion reason (which is listed in the 'All channels' sheet so the filter can be audited and reversed).\n\nIt excludes them because 24/7 rerun channels (and drop farms/watch parties) show very high viewer-to-follower ratios that would dominate any naive engagement ranking, and they have high viewers with no real community.",
+      "retrieved_files": [
+        "fracton-scanner/.github/workflows/twitch-scan.yml",
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md",
+        "fracton-scanner/streamer_finder_v3.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-01",
+      "run": 1,
+      "error": "",
+      "answer": "The `user-service` is organized into the following layers within the `app/` directory:\n\n1. **Interface / HTTP Layer (`app/routes.py`)**:\n   - Contains FastAPI router and endpoint handlers.\n   - Maps HTTP verbs and paths to service function calls.\n   - It is the only layer that knows about HTTP.\n   - Never calls repository functions directly (always calls the service layer).\n   - Catches `ValueError` from the service layer and raises `HTTPException` instead.\n\n2. **Application / Business Logic Layer (`app/service.py`)**:\n   - Handles business logic and decisions (e.g., hashing passwords, raising errors when a user is not found, converting ORM objects into Pydantic schemas before returning).\n   - Only calls repository functions and never queries the database directly.\n   - Raises `ValueError` for business errors.\n\n3. **Repository / Data Access & Database Layer**:\n   - `app/repository.py`: Handles raw DB queries with no business logic.\n   - `app/database.py`: Manages the database engine and session factory (`get_db`).\n   - `app/models.py`: Defines the SQLAlchemy ORM model (`User`).\n\n4. **Schemas / DTOs (`app/schemas.py`)**:\n   - Defines Pydantic DTOs (such as `UserCreate`, `UserOut`, and `UserList`).\n\nAdditionally, `app/main.py` initializes the FastAPI application and mounts the router.",
+      "retrieved_files": [
+        "GameHub/services/user-service/README.md",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/README.md",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-01",
+      "run": 2,
+      "error": "",
+      "answer": "The `user-service` is organized into distinct layers within the `app/` directory:\n\n- **Interface / HTTP Layer (`app/routes.py`)**: Contains FastAPI router and endpoint handlers. It maps HTTP verbs and paths to service function calls and is the only layer aware of HTTP. It calls service functions and never calls repository functions directly.\n- **Application / Business Logic Layer (`app/service.py`)**: Handles business decisions (such as password hashing, handling business errors by raising `ValueError`, and converting ORM objects into Pydantic schemas). It only calls repository functions and never queries the database directly.\n- **Repository Layer (`app/repository.py`)**: Executes raw database queries and contains no business logic.\n\nSupporting files in the `app/` directory include:\n- `app/database.py`: Engine and session factory.\n- `app/models.py`: SQLAlchemy ORM model (`User`).\n- `app/schemas.py`: Pydantic DTOs (`UserCreate`, `UserOut`).\n- `app/main.py`: Initializes the FastAPI application and mounts the router.",
+      "retrieved_files": [
+        "GameHub/services/user-service/README.md",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/README.md",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-01",
+      "run": 3,
+      "error": "",
+      "answer": "The `user-service` is organized into distinct layers inside the `app/` folder:\n\n1. **Interface Layer (`app/routes.py`)**: Handles HTTP endpoints using FastAPI. It maps HTTP verbs and paths to service function calls and is the only layer aware of HTTP. It calls service functions (never repository functions directly) and converts business errors (`ValueError`) from the service layer into HTTP exceptions (`HTTPException`).\n2. **Application / Business Logic Layer (`app/service.py`)**: Contains business logic decisions (such as hashing passwords, raising business errors like `ValueError` when a user is not found, and converting ORM objects to Pydantic schemas). It only calls repository functions and never queries the database directly.\n3. **Repository Layer (`app/repository.py`)**: Handles raw database queries and contains no business logic.\n\nAdditionally, `app/` contains `models.py` (SQLAlchemy ORM model), `schemas.py` (Pydantic DTOs), `database.py` (database engine and session factory), and `main.py` (FastAPI app initialization, mounting the router).",
+      "retrieved_files": [
+        "GameHub/services/user-service/README.md",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/README.md",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-02",
+      "run": 1,
+      "error": "",
+      "answer": "The user-service stores passwords by hashing them in the service layer using the `_hash_password` function in `GameHub/services/user-service/app/service.py`, which currently appends `\"_hashed\"` to the plain password string (`plain + \"_hashed\"`) as a placeholder. In `add_user`, this hashed string is generated and passed to `repository.create_user`. The password is stored in the database as the `hashed_password` string column (`Column(String, nullable=False)`) on the `User` model (`users` table) defined in `GameHub/services/user-service/app/models.py`.",
+      "retrieved_files": [
+        "GameHub/services/auth-service/app/users.py",
+        "GameHub/services/user-service/app/models.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py",
+        "synergyhack/server/src/services/auth.service.js"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/app/models.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-02",
+      "run": 2,
+      "error": "",
+      "answer": "In GameHub's user-service, passwords are stored in the `hashed_password` column (`Column(String, nullable=False)`) of the `User` database model (table `users`). When creating a user, incoming plain-text passwords (`data.password` in `UserCreate`) are passed to `add_user`, which calls `_hash_password(data.password)`. Currently, `_hash_password` is a placeholder function that appends `\"_hashed\"` to the plain-text password (`return plain + \"_hashed\"`).",
+      "retrieved_files": [
+        "GameHub/services/auth-service/app/users.py",
+        "GameHub/services/user-service/app/models.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py",
+        "synergyhack/server/src/services/auth.service.js"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/app/models.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-02",
+      "run": 3,
+      "error": "",
+      "answer": "In the user-service, passwords are submitted as plain text in the `UserCreate` schema (`app/schemas.py`). When adding a user via `add_user` in `app/service.py`, the password is hashed using `_hash_password`, which currently uses a placeholder implementation that appends `\"_hashed\"` to the plain password (`plain + \"_hashed\"`). The resulting hashed string is then saved to the database via `repository.create_user` in the `hashed_password` column of the `User` model (`users` table in `app/models.py`), defined as `Column(String, nullable=False)`.",
+      "retrieved_files": [
+        "GameHub/services/auth-service/app/users.py",
+        "GameHub/services/user-service/app/models.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py",
+        "synergyhack/server/src/services/auth.service.js"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/app/models.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-03",
+      "run": 1,
+      "error": "",
+      "answer": "In user-service, pagination for listing users works as follows:\n\n1. **Route layer (`routes.py`)**: The `list_users` GET endpoint accepts query parameters `limit` (default `20`) and `offset` (default `0`), and calls `service.fetch_all_users(db, limit=limit, offset=offset)`.\n2. **Service layer (`service.py`)**: `fetch_all_users` calls `repository.list_users(db, limit=limit, offset=offset)`. It then wraps the result into a `UserList` schema.\n3. **Repository layer (`repository.py`)**: `list_users` queries the total user count using `db.query(User).count()` and fetches the paginated user list using `db.query(User).offset(offset).limit(limit).all()`, returning a tuple `(users, total)`.\n4. **Response envelope (`schemas.py`)**: `fetch_all_users` returns a `UserList` schema containing:\n   - `items`: users validated as `UserOut` models (`[UserOut.model_validate(u) for u in users]`)\n   - `total`: total count of users\n   - `limit`: the limit parameter\n   - `offset`: the offset parameter",
+      "retrieved_files": [
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py",
+        "synergyhack/server/src/routes/users.routes.js",
+        "synergyhack/server/src/services/users.service.js"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-03",
+      "run": 2,
+      "error": "",
+      "answer": "In user-service, listing users with pagination works as follows:\n\n1. **Route layer (`app/routes.py`)**: The `list_users` endpoint handles `GET /` requests. It accepts optional `limit` (default `20`) and `offset` (default `0`) parameters and delegates to `service.fetch_all_users(db, limit=limit, offset=offset)`.\n2. **Service layer (`app/service.py`)**: The `fetch_all_users` function calls `repository.list_users(db, limit=limit, offset=offset)` to retrieve the users and the total count. It then constructs and returns a `UserList` schema containing:\n   - `items`: a list of users validated with `UserOut.model_validate(u)`\n   - `total`: total count of users\n   - `limit`: limit used\n   - `offset`: offset used\n3. **Repository layer (`app/repository.py`)**: The `list_users` function queries the database using `db.query(User).count()` to get the total number of users and fetches the page slice with `db.query(User).offset(offset).limit(limit).all()`, returning a tuple `(users, total)`.\n4. **Schema (`app/schemas.py`)**: The paginated envelope shape is defined by the `UserList` class, which holds `items: list[UserOut]`, `total: int`, `limit: int`, and `offset: int`.",
+      "retrieved_files": [
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py",
+        "synergyhack/server/src/routes/users.routes.js",
+        "synergyhack/server/src/services/users.service.js"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-03",
+      "run": 3,
+      "error": "",
+      "answer": "In user-service, pagination for listing users works across the route, service, repository, and schema layers:\n\n1. **Route (`list_users` in `GameHub/services/user-service/app/routes.py`)**: The `GET /` endpoint accepts query parameters `limit` (default `20`) and `offset` (default `0`), and passes them to `service.fetch_all_users`.\n2. **Service (`fetch_all_users` in `GameHub/services/user-service/app/service.py`)**: Calls `repository.list_users(db, limit=limit, offset=offset)` to retrieve `users` and `total`. It returns a `UserList` object containing `items` (a list of `UserOut` models validated from `users`), `total`, `limit`, and `offset`.\n3. **Repository (`list_users` in `GameHub/services/user-service/app/repository.py`)**: Counts all users using `db.query(User).count()` to get `total`, and fetches the paginated user list using `db.query(User).offset(offset).limit(limit).all()`, returning `(users, total)`.\n4. **Schema (`UserList` in `GameHub/services/user-service/app/schemas.py`)**: Defines the paginated response envelope structure with fields `items: list[UserOut]`, `total: int`, `limit: int`, and `offset: int`.",
+      "retrieved_files": [
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py",
+        "synergyhack/server/src/routes/users.routes.js",
+        "synergyhack/server/src/services/users.service.js"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/schemas.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-04",
+      "run": 1,
+      "error": "",
+      "answer": "When a user id does not exist in the user-service:\n1. `repository.get_user` queries `db.query(User).filter(User.id == user_id).first()`, which returns `None`.\n2. `service.fetch_user` checks `if user is None:` and raises `ValueError(f\"User {user_id} not found\")`.\n3. `routes.get_user` catches the `ValueError as e` and raises an `HTTPException(status_code=404, detail=str(e))`.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/services/activity-service/app/main.py",
+        "GameHub/services/logging-service/app/main.py",
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-04",
+      "run": 2,
+      "error": "",
+      "answer": "When a user ID does not exist in user-service:\n1. `repository.get_user` queries the database and returns `None`.\n2. `service.fetch_user` checks if `user` is `None` and raises a `ValueError(f\"User {user_id} not found\")`.\n3. `routes.get_user` catches the `ValueError` and raises an `HTTPException(status_code=404, detail=str(e))`.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/services/activity-service/app/main.py",
+        "GameHub/services/logging-service/app/main.py",
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-04",
+      "run": 3,
+      "error": "",
+      "answer": "When a user id does not exist in user-service:\n1. In `repository.get_user`, `db.query(User).filter(User.id == user_id).first()` returns `None`.\n2. In `service.fetch_user`, because `user is None`, it raises a `ValueError(f\"User {user_id} not found\")`.\n3. In `routes.get_user`, the `ValueError` is caught, and it raises an `HTTPException(status_code=404, detail=str(e))`.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/services/activity-service/app/main.py",
+        "GameHub/services/logging-service/app/main.py",
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "cited_files": [
+        "GameHub/services/user-service/app/repository.py",
+        "GameHub/services/user-service/app/routes.py",
+        "GameHub/services/user-service/app/service.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-05",
+      "run": 1,
+      "error": "",
+      "answer": "In `GameHub/services/activity-service/app/main.py` (written by course template), the `create_activity` route handler calls `await validate_user(data.user_id)` before creating the activity in the database.\n\nThe `validate_user` function (written by course template) checks for the user's existence by sending an HTTP GET request to `{settings.user_service_url}/v1/users/{user_id}` using `async with httpx.AsyncClient(timeout=5.0) as client:` with the following behavior:\n- **200 OK**: The user exists, and the function returns `None` normally.\n- **404 Not Found**: Raises `HTTPException(status_code=404, detail=\"User not found\")`.\n- **Network error (`httpx.RequestError`)**: Retries the call once, and if it fails again, raises `HTTPException(status_code=503, detail=\"user-service unavailable\")`.\n- **Any other non-2xx status**: Raises `HTTPException(status_code=503, ...)`.",
+      "retrieved_files": [
+        "GameHub/services/activity-service/README.md",
+        "GameHub/services/activity-service/app/main.py",
+        "GameHub/services/activity-service/app/models.py",
+        "GameHub/services/logging-service/app/models.py"
+      ],
+      "cited_files": [
+        "GameHub/services/activity-service/app/main.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-05",
+      "run": 2,
+      "error": "",
+      "answer": "In `GameHub/services/activity-service/app/main.py` (written by course template), the `create_activity` route calls `await validate_user(data.user_id)` before creating an activity in the repository.\n\nThe `validate_user` function (written by course template) performs the check as follows:\n- Makes an HTTP request: `GET {settings.user_service_url}/v1/users/{user_id}` using `async with httpx.AsyncClient(timeout=5.0) as client:`.\n- On `200` status code: The user exists, and the function returns normally (`None`).\n- On `404` status code: Raises `HTTPException(status_code=404, detail=\"User not found\")`.\n- On network error (`httpx.RequestError`): Retries the call once, then raises `HTTPException(status_code=503, detail=\"user-service unavailable\")`.\n- On any other non-2xx status: Raises `HTTPException(status_code=503, ...)`.",
+      "retrieved_files": [
+        "GameHub/services/activity-service/README.md",
+        "GameHub/services/activity-service/app/main.py",
+        "GameHub/services/activity-service/app/models.py",
+        "GameHub/services/logging-service/app/models.py"
+      ],
+      "cited_files": [
+        "GameHub/services/activity-service/app/main.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-05",
+      "run": 3,
+      "error": "",
+      "answer": "According to excerpts [1] and [2] (written by course template), before logging an activity in `create_activity` in `GameHub/services/activity-service/app/main.py`, the service calls `await validate_user(data.user_id)`.\n\nThe `validate_user` function checks if the user exists by performing the following:\n- Calls `GET {settings.user_service_url}/v1/users/{user_id}` using `async with httpx.AsyncClient(timeout=5.0) as client:`.\n- If the response is `200`, the user exists and it returns normally (`None`).\n- If the response is `404`, it raises `HTTPException(status_code=404, detail=\"User not found\")`.\n- On a network error (`httpx.RequestError`), it retries the call once, and if it still fails, raises `HTTPException(status_code=503, detail=\"user-service unavailable\")`.\n- On any other non-2xx status, it raises `HTTPException(status_code=503, ...)`.",
+      "retrieved_files": [
+        "GameHub/services/activity-service/README.md",
+        "GameHub/services/activity-service/app/main.py",
+        "GameHub/services/activity-service/app/models.py",
+        "GameHub/services/logging-service/app/models.py"
+      ],
+      "cited_files": [
+        "GameHub/services/activity-service/app/main.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-06",
+      "run": 1,
+      "error": "",
+      "answer": "Based on `GameHub/services/gateway/app/main.py` (written by course template):\n\n1. **How the gateway decides which backend service to forward a request to:**\n   - In the `proxy` function, the gateway parses the resource name by splitting `path` by `\"/\"` (`segments = path.split(\"/\")`).\n   - If `len(segments) < 2`, it returns `Response(status_code=404, content=\"Not found\")`.\n   - Otherwise, it gets the resource name from `resource = segments[1]` and looks up `target_base = ROUTES.get(resource)`. The `ROUTES` dictionary maps resource names to service configuration settings (`\"users\"` to `settings.user_service_url`, `\"games\"` to `settings.game_service_url`, and `\"activities\"` to `settings.activity_service_url`).\n   - If a target service base URL is found, it constructs `target_url = f\"{target_base}/{path}\"` and forwards the request using an `httpx.AsyncClient` with `timeout=10.0`.\n\n2. **What it returns when the resource is unknown:**\n   - If `target_base is None`, it returns a `Response` with `status_code=404` and `content=f\"Unknown resource: {resource}\"`.\n\n3. **What it returns when the service is down:**\n   - When an `httpx.RequestError` exception is raised during the forwarded request, it catches the exception and returns a `Response` with `status_code=503` and `content=\"Service unavailable\"`.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/frontend/README.md",
+        "GameHub/services/gateway/app/main.py"
+      ],
+      "cited_files": [
+        "GameHub/services/gateway/app/main.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-06",
+      "run": 2,
+      "error": "",
+      "answer": "Based on the code written by course template in `GameHub/services/gateway/app/main.py`:\n\n1. **How the gateway decides which backend service to forward to:**\n   - It splits the incoming request `path` by `\"/\"` (`segments = path.split(\"/\")`).\n   - If `len(segments) < 2`, it returns a 404 `Response` with content `\"Not found\"`.\n   - Otherwise, it extracts `resource = segments[1]`.\n   - It looks up `resource` in the `ROUTES` dictionary (`ROUTES.get(resource)`), which maps resource names (e.g., `\"users\"`, `\"games\"`, `\"activities\"`) to backend service URLs (`settings.user_service_url`, `settings.game_service_url`, `settings.activity_service_url`).\n\n2. **What it returns when the resource is unknown or the service is down:**\n   - **Unknown resource:** If `ROUTES.get(resource)` returns `None`, it returns a 404 response: `Response(status_code=404, content=f\"Unknown resource: {resource}\")`.\n   - **Service down (unreachable):** If an `httpx.RequestError` is caught during the forward request, it returns a 503 response: `Response(status_code=503, content=\"Service unavailable\")`.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/frontend/README.md",
+        "GameHub/services/gateway/app/main.py"
+      ],
+      "cited_files": [
+        "GameHub/services/gateway/app/main.py"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-06",
+      "run": 3,
+      "error": "BadModelAnswer: the model did not return JSON: '{\\n  \"answer\": \"Based on code written by course template, the gateway (`proxy` function in `GameHub/services/gateway/app/main.py`) decides which backend service to forward a request to using the follow'",
+      "answer": "",
+      "retrieved_files": [],
+      "cited_files": [],
+      "retrieval_hit": false,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": false,
+      "facts_found": [],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": ""
+    },
+    {
+      "question_id": "gh-07",
+      "run": 1,
+      "error": "",
+      "answer": "According to excerpts written by course template:\n\n- **How it receives messages:** The logging service acts as a RabbitMQ consumer that receives `activity.logged` messages from `activity-service`.\n- **What it does when consent is not given:** The consumer checks consent by calling `has_consent(payload[\"user_id\"])` before writing every log entry. If the user has not given consent (opted out / `has_consent` returns `False`), the service skips silently and does not record their actions to the database.",
+      "retrieved_files": [
+        "GameHub/docs/logging-service.md",
+        "GameHub/docs/specs.md",
+        "GameHub/services/logging-service/app/main.py",
+        "GameHub/services/logging-service/app/models.py"
+      ],
+      "cited_files": [
+        "GameHub/docs/logging-service.md",
+        "GameHub/docs/specs.md",
+        "GameHub/services/logging-service/app/models.py"
+      ],
+      "retrieval_hit": false,
+      "evidence_found": [
+        false,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-07",
+      "run": 2,
+      "error": "",
+      "answer": "According to documentation written by course template, the logging service receives messages as a RabbitMQ consumer that gets `activity.logged` messages from `activity-service`. When a user has not given consent (opted out), the service skips silently and does not record their actions or write a log entry to the database.",
+      "retrieved_files": [
+        "GameHub/docs/logging-service.md",
+        "GameHub/docs/specs.md",
+        "GameHub/services/logging-service/app/main.py",
+        "GameHub/services/logging-service/app/models.py"
+      ],
+      "cited_files": [
+        "GameHub/docs/logging-service.md",
+        "GameHub/docs/specs.md"
+      ],
+      "retrieval_hit": false,
+      "evidence_found": [
+        false,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-07",
+      "run": 3,
+      "error": "",
+      "answer": "Based on Excerpt [1] (written by course template):\n- **Receiving messages:** The logging service acts as a RabbitMQ consumer, receiving `activity.logged` messages from `activity-service`.\n- **When user has not given consent:** If the user has opted out / not given consent, the logging service skips silently (it does not write a log entry to the database). Excerpt [3] (also written by course template) notes that their actions are not recorded, and the user may lose specific features such as personalized recommendations or social elements.",
+      "retrieved_files": [
+        "GameHub/docs/logging-service.md",
+        "GameHub/docs/specs.md",
+        "GameHub/services/logging-service/app/main.py",
+        "GameHub/services/logging-service/app/models.py"
+      ],
+      "cited_files": [
+        "GameHub/docs/logging-service.md",
+        "GameHub/docs/specs.md"
+      ],
+      "retrieval_hit": false,
+      "evidence_found": [
+        false,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-06",
+      "run": 1,
+      "error": "",
+      "answer": "In `synergyhack`, the `claimSlot` function in `synergyhack/server/src/services/slot.service.js` prevents two users from taking the last slot by using atomic Redis operations:\n\n1. It calls `client.hIncrBy(k, 'filled', 1)` to increment the team's `filled` slot count.\n2. It checks `filled` against the team's `capacity` retrieved with `client.hGet(k, 'capacity')`.\n3. If `filled > capacity`, it rolls back the count by calling `client.hIncrBy(k, 'filled', -1)` and returns `false`.\n4. If `filled` does not exceed `capacity`, it returns `true`.",
+      "retrieved_files": [
+        "synergyhack/server/src/routes/hackathons.routes.js",
+        "synergyhack/server/src/routes/teamRequests.routes.js",
+        "synergyhack/server/src/services/chat.service.js",
+        "synergyhack/server/src/services/graph-sync.service.js",
+        "synergyhack/server/src/services/slot.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/services/slot.service.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-06",
+      "run": 2,
+      "error": "",
+      "answer": "In `synergyhack/server/src/services/slot.service.js`, the `claimSlot` function prevents two users from taking the last slot by atomically incrementing the `filled` count in Redis using `client.hIncrBy(k, 'filled', 1)` and checking it against the team's `capacity` (retrieved via `client.hGet(k, 'capacity')`). If `filled` exceeds `capacity`, it rolls back the operation by decrementing `filled` by `-1` (`client.hIncrBy(k, 'filled', -1)`) and returns `false`.",
+      "retrieved_files": [
+        "synergyhack/server/src/routes/hackathons.routes.js",
+        "synergyhack/server/src/routes/teamRequests.routes.js",
+        "synergyhack/server/src/services/chat.service.js",
+        "synergyhack/server/src/services/graph-sync.service.js",
+        "synergyhack/server/src/services/slot.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/services/slot.service.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-06",
+      "run": 3,
+      "error": "",
+      "answer": "In `synergyhack/server/src/services/slot.service.js`, the `claimSlot` function prevents two users from taking the last slot by atomically incrementing the `filled` field using `client.hIncrBy(k, 'filled', 1)`. It then compares `filled` against the team's parsed `capacity` obtained via `client.hGet(k, 'capacity')`. If `filled` exceeds `capacity`, it performs a rollback by decrementing `filled` by 1 (`client.hIncrBy(k, 'filled', -1)`) and returns `false`.",
+      "retrieved_files": [
+        "synergyhack/server/src/routes/hackathons.routes.js",
+        "synergyhack/server/src/routes/teamRequests.routes.js",
+        "synergyhack/server/src/services/chat.service.js",
+        "synergyhack/server/src/services/graph-sync.service.js",
+        "synergyhack/server/src/services/slot.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/services/slot.service.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-07",
+      "run": 1,
+      "error": "",
+      "answer": "In synergyhack, per-IP rate limiting is implemented in the `rateLimit` middleware function in `synergyhack/server/src/middleware/rateLimit.js` as follows:\n\n1. It gets the client IP address from `req.ip` (defaulting to `'unknown'`) and constructs a Redis key formatted as `ratelimit:${ip}`.\n2. It increments the counter for that key using `client.incr(key)`.\n3. If `count === 1`, it sets an expiration on the Redis key using `client.expire(key, WINDOW)`, where `WINDOW` is defined as `1`.\n4. If `count > LIMIT` (where `LIMIT` is defined as `60`), it returns a `429` HTTP status response with the JSON object `{ error: 'Too many requests' }`.\n5. Otherwise, it calls `next()` to continue.\n6. If an exception occurs, it catches the error and calls `next()` (failing open).",
+      "retrieved_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/redis-schema.md",
+        "synergyhack/server/src/middleware/rateLimit.js",
+        "synergyhack/server/src/services/slot.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/middleware/rateLimit.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-07",
+      "run": 2,
+      "error": "",
+      "answer": "In synergyhack, rate limiting per IP is handled by the `rateLimit` middleware in `synergyhack/server/src/middleware/rateLimit.js`:\n\n1. It gets the IP from `req.ip || 'unknown'` and forms a Redis key named `ratelimit:${ip}`.\n2. It increments the counter for that key using `await client.incr(key)` (imported from `../db/redis`).\n3. If `count === 1`, it sets an expiration on the key using `await client.expire(key, WINDOW)`, where `WINDOW` is defined as `1`.\n4. If `count > LIMIT` (where `LIMIT` is `60`), it returns a `429` status with JSON `{ error: 'Too many requests' }`.\n5. Otherwise, it calls `next()` to continue.\n6. If an error is thrown in the `try` block, it fails open by catching the error and calling `next()`.",
+      "retrieved_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/redis-schema.md",
+        "synergyhack/server/src/middleware/rateLimit.js",
+        "synergyhack/server/src/services/slot.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/middleware/rateLimit.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-07",
+      "run": 3,
+      "error": "",
+      "answer": "In `synergyhack/server/src/middleware/rateLimit.js`, rate limiting per IP is handled by the `rateLimit` middleware using Redis:\n\n1. It determines the IP address using `req.ip || 'unknown'` and creates a Redis key `ratelimit:${ip}`.\n2. It increments the counter for the key using `client.incr(key)`.\n3. If `count === 1`, it sets a key expiration using `client.expire(key, WINDOW)`, where `WINDOW` is 1.\n4. If `count > LIMIT` (where `LIMIT` is 60), it returns a 429 status response with `{ error: 'Too many requests' }`.\n5. Otherwise, it calls `next()` to proceed.\n6. If an error occurs, it catches the error and calls `next()` to fail open.",
+      "retrieved_files": [
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/redis-schema.md",
+        "synergyhack/server/src/middleware/rateLimit.js",
+        "synergyhack/server/src/services/slot.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/middleware/rateLimit.js"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        true
+      ],
+      "evidence_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "correct": true,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-06",
+      "run": 1,
+      "error": "",
+      "answer": "Based on the BookingController excerpts (which has a base path of `@RequestMapping(\"/api/v1/bookings\")`), the controller exposes the following endpoints and calls these respective `BookingService` methods:\n\n1. **`POST /api/v1/bookings`** (method `createBooking`): Calls `bookingService.createBooking(booking)`.\n2. **`POST /api/v1/bookings/book`** (method `bookFlight`): Calls `bookingService.createBookingFromRequest(request)`.\n3. **`GET /api/v1/bookings`** (method `getAllBookings`): Calls `bookingService.getAllBookings()`.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        false,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-06",
+      "run": 2,
+      "error": "",
+      "answer": "Based on the provided excerpts, the `BookingController` class has a base path of `/api/v1/bookings` and exposes the following endpoints:\n\n1. `POST /api/v1/bookings` (method `createBooking`): Calls `bookingService.createBooking(booking)`.\n2. `POST /api/v1/bookings/book` (method `bookFlight`): Calls `bookingService.createBookingFromRequest(request)`.\n3. `GET /api/v1/bookings` (method `getAllBookings`): Calls `bookingService.getAllBookings()`.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        false,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "ta-06",
+      "run": 3,
+      "error": "",
+      "answer": "Based on the `BookingController` source code, under the base route `/api/v1/bookings`, the controller exposes the following endpoints and calls these corresponding `BookingService` methods:\n\n1. **`POST /api/v1/bookings`** (`createBooking` method): calls `bookingService.createBooking(booking)`.\n2. **`POST /api/v1/bookings/book`** (`bookFlight` method): calls `bookingService.createBookingFromRequest(request)`.\n3. **`GET /api/v1/bookings`** (`getAllBookings` method): calls `bookingService.getAllBookings()`.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java"
+      ],
+      "cited_files": [
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/controller/BookingController.java"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        true,
+        false,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-06",
+      "run": 1,
+      "error": "",
+      "answer": "According to the repository documentation, the feature engineering notebook applies the following transformations in order:\n\n1. Time-aware split by `issue_d` (2007\u20132017 to train, 2018 to test).\n2. Six row-wise features: `fico_avg`, `credit_history_years = issue_d \u2212 earliest_cr_line`, `loan_to_income`, `monthly_debt_burden`, `emp_length_num`, and `grade_num`.\n3. Median imputation, fit on train only.\n4. One-hot encoding for `home_ownership`, `verification_status`, and `purpose` (fit on train with `handle_unknown='ignore'`).\n5. Smoothed target encoding for `addr_state` (50 categories, using per-state default rate on train pooled toward the global mean with `k=50`).\n6. StandardScaler, fit on train.",
+      "retrieved_files": [
+        "credit_risk_ML_model/HOW_TO_RUN.md",
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/03_feature_engineering.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false,
+        true,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-06",
+      "run": 2,
+      "error": "",
+      "answer": "According to the feature engineering section of the repository, the notebook applies the following transformations in this order:\n\n1. **Time-aware split by `issue_d`**: Splits data into 2007\u20132017 for train and 2018 for test.\n2. **Six row-wise features**: Computes `fico_avg`, `credit_history_years = issue_d \u2212 earliest_cr_line`, `loan_to_income`, `monthly_debt_burden`, `emp_length_num`, and `grade_num`.\n3. **Median imputation**: Fits the imputer on train only.\n4. **One-hot encoding**: Encodes `home_ownership`, `verification_status`, and `purpose` fit on train with `handle_unknown='ignore'`.\n5. **Smoothed target encoding for `addr_state`**: Calculates per-state default rate on train pooled toward the global mean with `k=50` across 50 categories.\n6. **StandardScaler**: Fits scaler on train to save both scaled and unscaled matrices.",
+      "retrieved_files": [
+        "credit_risk_ML_model/HOW_TO_RUN.md",
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/03_feature_engineering.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/HOW_TO_RUN.md",
+        "credit_risk_ML_model/README.md"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false,
+        true,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "cr-06",
+      "run": 3,
+      "error": "",
+      "answer": "According to the repository documentation, the feature engineering notebook applies the following transformations in this exact order:\n\n1. **Time-aware split by `issue_d`**: Splits data into train (2007\u20132017) and test (2018).\n2. **Six row-wise features**: Computes `fico_avg`, `credit_history_years = issue_d \u2212 earliest_cr_line`, `loan_to_income`, `monthly_debt_burden`, `emp_length_num`, and `grade_num` on both train and test sets.\n3. **Median imputation**: Fits on train only.\n4. **One-hot encoding**: Fits on train for `home_ownership`, `verification_status`, and `purpose` using `handle_unknown='ignore'`.\n5. **Smoothed target encoding for `addr_state`**: Calculates per-state default rate on train, pooled toward the global mean with `k=50`.\n6. **StandardScaler**: Fits on train to produce scaled (and unscaled) matrices.",
+      "retrieved_files": [
+        "credit_risk_ML_model/HOW_TO_RUN.md",
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/03_feature_engineering.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md"
+      ],
+      "retrieval_hit": true,
+      "evidence_found": [
+        false,
+        true,
+        false
+      ],
+      "evidence_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-01",
+      "run": 1,
+      "error": "",
+      "answer": "Based on the provided excerpts, there is no information on how the app sends email notifications to users.",
+      "retrieved_files": [
+        "GameHub/services/notification-service/readme.md",
+        "GameHub/services/notification-service/src/routes.ts",
+        "synergyhack/server/src/index.js",
+        "synergyhack/server/src/routes/notifications.routes.js",
+        "synergyhack/server/src/services/registration.service.js"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-01",
+      "run": 2,
+      "error": "",
+      "answer": "Based on the provided excerpts, there is no information about how the app sends email notifications to users.",
+      "retrieved_files": [
+        "GameHub/services/notification-service/readme.md",
+        "GameHub/services/notification-service/src/routes.ts",
+        "synergyhack/server/src/index.js",
+        "synergyhack/server/src/routes/notifications.routes.js",
+        "synergyhack/server/src/services/registration.service.js"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-01",
+      "run": 3,
+      "error": "",
+      "answer": "Based on the provided excerpts, there is no information on how the app sends email notifications to users. The excerpts only describe storing notifications in a local SQLite database via RabbitMQ messages, exposing stored notifications over HTTP endpoints, and creating in-app/database notifications when inviting a user to an event.",
+      "retrieved_files": [
+        "GameHub/services/notification-service/readme.md",
+        "GameHub/services/notification-service/src/routes.ts",
+        "synergyhack/server/src/index.js",
+        "synergyhack/server/src/routes/notifications.routes.js",
+        "synergyhack/server/src/services/registration.service.js"
+      ],
+      "cited_files": [
+        "GameHub/services/notification-service/readme.md",
+        "GameHub/services/notification-service/src/routes.ts",
+        "synergyhack/server/src/index.js",
+        "synergyhack/server/src/routes/notifications.routes.js",
+        "synergyhack/server/src/services/registration.service.js"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-02",
+      "run": 1,
+      "error": "",
+      "answer": "The provided excerpts do not contain information about any encryption algorithm used to protect data stored in the databases.",
+      "retrieved_files": [
+        "GameHub/docs/specs.md",
+        "GameHub/services/logging-service/app/models.py",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md",
+        "synergyhack/server/src/services/event.service.js"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-02",
+      "run": 2,
+      "error": "",
+      "answer": "The provided excerpts do not contain information about an encryption algorithm protecting the data stored in the databases.",
+      "retrieved_files": [
+        "GameHub/docs/specs.md",
+        "GameHub/services/logging-service/app/models.py",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md",
+        "synergyhack/server/src/services/event.service.js"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-02",
+      "run": 3,
+      "error": "",
+      "answer": "Based on the provided excerpts, there is no mention of any encryption algorithm protecting data stored in the databases.",
+      "retrieved_files": [
+        "GameHub/docs/specs.md",
+        "GameHub/services/logging-service/app/models.py",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md",
+        "synergyhack/server/src/services/event.service.js"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-03",
+      "run": 1,
+      "error": "",
+      "answer": "I am sorry, but the provided excerpts do not contain information on how the system takes payment for a booking.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/Booking.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-03",
+      "run": 2,
+      "error": "",
+      "answer": "Based on the provided excerpts, there is no information about how the system takes payment for a booking.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/Booking.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-03",
+      "run": 3,
+      "error": "",
+      "answer": "I am sorry, but the provided excerpts do not contain information on how the system takes payment for a booking.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/Booking.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-04",
+      "run": 1,
+      "error": "",
+      "answer": "The provided excerpts do not contain details on how users are logged in or authenticated in the airline booking app. They only mention that the app's Smart Booking System checks if a passport number is found to use an existing customer, or creates a new customer if they do not exist.",
+      "retrieved_files": [
+        "GameHub/services/auth-service/app/main.py",
+        "timeout-airline/README.md"
+      ],
+      "cited_files": [
+        "timeout-airline/README.md"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-04",
+      "run": 2,
+      "error": "",
+      "answer": "The provided excerpts do not describe how users log in or are authenticated in the airline booking app (timeout-airline). The excerpts only state that the database includes a `users` table storing base info (name, email, phone, etc.) and that when booking, the system creates a new customer if they do not exist or uses an existing customer if their passport number is found.",
+      "retrieved_files": [
+        "GameHub/services/auth-service/app/main.py",
+        "timeout-airline/README.md"
+      ],
+      "cited_files": [
+        "timeout-airline/README.md"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-04",
+      "run": 3,
+      "error": "",
+      "answer": "Based on the provided excerpts, there are no details explaining how users log in or are authenticated in the airline booking app (timeout-airline). The excerpts only state that during booking, the smart booking system creates a new customer if they do not exist or uses an existing customer if their passport number is found. (Note: Login and JWT authentication details in the excerpts belong to the GameHub auth-service, not the airline booking app).",
+      "retrieved_files": [
+        "GameHub/services/auth-service/app/main.py",
+        "timeout-airline/README.md"
+      ],
+      "cited_files": [
+        "timeout-airline/README.md"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-05",
+      "run": 1,
+      "error": "",
+      "answer": "The provided excerpts do not mention any neural network architecture being tried or scored. The models described and evaluated in the excerpts are a majority-class baseline, vanilla logistic regression, regularized logistic regression (with balanced class weights, SMOTE, and hyperparameter tuning), random forest, and XGBoost.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-05",
+      "run": 2,
+      "error": "",
+      "answer": "Based on the provided excerpts, no neural network architecture was tried. The models evaluated in the notebooks were a majority-class baseline, vanilla logistic regression, regularized logistic regression (evaluated with balanced class weights, SMOTE, and hyperparameter tuning), random forest, and XGBoost.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-05",
+      "run": 3,
+      "error": "",
+      "answer": "Based on the provided excerpts, no neural network architecture is mentioned as having been tried or evaluated. The models evaluated in the excerpts are a majority-class baseline, several logistic regression variants (vanilla, regularized with balanced class weights, SMOTE, and tuned), a random forest, and XGBoost.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-06",
+      "run": 1,
+      "error": "",
+      "answer": "Based on the provided excerpts, the scanner does not listen to live Twitch events over EventSub websockets. Instead, it sweeps live streams hourly using the Twitch Helix API (with an app access token and client credentials).",
+      "retrieved_files": [
+        "fracton-scanner/.github/workflows/twitch-scan.yml",
+        "fracton-scanner/README.md"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-06",
+      "run": 2,
+      "error": "",
+      "answer": "Based on the provided excerpts, the scanner does not listen to Twitch events over EventSub websockets. Instead, it performs hourly sweeps of live English-language streams via HTTP requests to the Twitch Helix API (using Python `requests`, an app access token, and client credentials) triggered by a GitHub Actions hourly cron job.",
+      "retrieved_files": [
+        "fracton-scanner/.github/workflows/twitch-scan.yml",
+        "fracton-scanner/README.md"
+      ],
+      "cited_files": [
+        "fracton-scanner/.github/workflows/twitch-scan.yml",
+        "fracton-scanner/README.md"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-06",
+      "run": 3,
+      "error": "",
+      "answer": "Based on the provided excerpts, the scanner does not use EventSub websockets to listen to live events. Instead, it sweeps live streams hourly via the Twitch Helix API using an app access token and client credentials.",
+      "retrieved_files": [
+        "fracton-scanner/.github/workflows/twitch-scan.yml",
+        "fracton-scanner/README.md"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md"
+      ],
+      "retrieval_hit": null,
+      "evidence_found": [],
+      "evidence_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    }
+  ]
+}

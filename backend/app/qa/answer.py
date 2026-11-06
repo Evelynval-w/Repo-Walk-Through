@@ -34,13 +34,14 @@ class BadModelAnswer(RuntimeError):
 _FENCE = re.compile(r"^```(?:json)?\s*|\s*```$", re.IGNORECASE)
 
 
-def parse_model_answer(text: str, chunk_count: int) -> ModelAnswer:
+def parse_model_answer(text: str, chunk_count: int, finish_reason: str = "") -> ModelAnswer:
     """Turn the model's text into a ModelAnswer, or raise BadModelAnswer."""
     cleaned = _FENCE.sub("", text.strip())  # some models wrap JSON in ```json fences
     try:
         data = json.loads(cleaned)
     except json.JSONDecodeError as error:
-        raise BadModelAnswer(f"the model did not return JSON: {text[:200]!r}") from error
+        why = f" (finish reason: {finish_reason})" if finish_reason and finish_reason != "STOP" else ""
+        raise BadModelAnswer(f"the model did not return JSON{why}: {text[:200]!r}") from error
     try:
         parsed = ModelAnswer.model_validate(data)
     except ValidationError as error:
@@ -64,7 +65,7 @@ def fetch_chunks(request: AskRequest, *, embedder: Embedder, store: ChunkStore) 
 
 def answer_from_chunks(request: AskRequest, chunks: list, *, chat: ChatModel) -> AskResponse:
     reply = chat.generate_json(SYSTEM, build_user_prompt(request.question, chunks))
-    parsed = parse_model_answer(reply.text, len(chunks))
+    parsed = parse_model_answer(reply.text, len(chunks), reply.finish_reason)
 
     references: list[Reference] = []
     for number in dict.fromkeys(parsed.used):  # drop repeats, keep the model's order

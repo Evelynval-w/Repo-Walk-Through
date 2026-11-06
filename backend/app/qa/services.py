@@ -15,6 +15,7 @@ def build_chat(settings: Settings) -> FallbackChat:
         settings.gemini_api_key,
         settings.gemini_chat_model,
         temperature=settings.chat_temperature,
+        max_output_tokens=settings.chat_max_output_tokens,
     )
     secondary = None
     # The fallback is optional. It is only built when both the key and the model are set.

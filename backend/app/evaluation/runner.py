@@ -80,7 +80,10 @@ def run_one(
     except (ChatError, BadModelAnswer, EmbeddingError) as error:
         result.error = f"{type(error).__name__}: {error}"
         if q.answerable:  # a failed answer is a miss, not a skipped question
-            result.retrieval_hit = result.citation_hit = result.correct = False
+            # Search may have worked even though the answer step failed. Record that honestly.
+            result.retrieved_files = sorted({file_of(c.id) for c in chunks})
+            result.retrieval_hit = bool(set(q.expected_files) & set(result.retrieved_files))
+            result.citation_hit = result.correct = False
             if q.evidence:
                 result.evidence_found = evidence_found(q.evidence, [c.text for c in chunks])
                 result.evidence_hit = all(result.evidence_found)

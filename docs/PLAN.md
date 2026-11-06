@@ -117,6 +117,8 @@ data/chroma/           vector store (git-ignored)
 
 ## Phase 3: Evaluation set and baseline
 
+**Status: done.** What was built differs a little from the plan below: the questions are in `eval/questions.toml`, the runner measures four things (file shown, key phrase shown, citation, answer correct) and there are `show` and `rejudge` commands. Results are in the README.
+
 **Goal:** a fixed set of questions so every change can be measured.
 
 **Builds**
@@ -138,6 +140,8 @@ data/chroma/           vector store (git-ignored)
 ## Phase 4: Better retrieval
 
 **Goal:** hybrid search and reranking, compared on the same set.
+
+**What phase 3 showed (read before building):** raising top-k from 6 to 12 already lifts "key phrase shown" from 74% to 83% for free. The misses left are (a) questions that do not name a repo, where auth code in four repos competes, and (b) list questions whose items sit in separate chunks. Keyword search helps only if the question shares rare words with the chunk. So run the cheap options first and report them next to hybrid and rerank, even if they win.
 
 **Builds**
 - BM25 index over the same chunks

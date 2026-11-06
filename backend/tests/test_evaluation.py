@@ -79,7 +79,8 @@ def test_a_failed_answer_counts_as_a_miss_not_a_skip(store):
         def generate_json(self, s, u):
             raise ChatError("Gemini returned 429", retryable=True)
     [r] = go([ANSWERABLE], store, Down(), None)
-    assert r.error and r.correct is False and r.retrieval_hit is False
+    assert r.error and r.correct is False and r.citation_hit is False
+    assert r.retrieval_hit is True  # search worked; the chat service failed after it
 
 
 def test_bad_judge_output_counts_as_wrong_and_is_recorded(store):
@@ -234,3 +235,10 @@ def test_every_evidence_phrase_exists_in_a_real_chunk_of_the_same_repo():
             if not any(" ".join(phrase.lower().split()) in t for t in texts[q.repo]):
                 missing.append((q.id, phrase))
     assert missing == []
+
+
+def test_a_broken_model_answer_still_counts_the_search_that_worked(store):
+    broken = FakeChat("not json at all")
+    [r] = go([ANSWERABLE], store, broken, None)
+    assert r.error and r.correct is False and r.citation_hit is False
+    assert r.retrieval_hit is True  # the expected file was shown; only the answer step failed

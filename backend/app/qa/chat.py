@@ -36,6 +36,7 @@ class ChatReply:
     text: str
     model: str  # which model really answered
     fell_back: bool = False
+    finish_reason: str = ""  # why the model stopped: STOP is normal, MAX_TOKENS means the answer was cut
 
 
 class ChatModel(Protocol):
@@ -53,6 +54,7 @@ class GeminiChat:
         client: httpx.Client | None = None,
         sleep: Callable[[float], None] = time.sleep,
         max_tries: int = 5,
+        max_output_tokens: int = 0,  # 0 means: do not send a limit, use Gemini's own default
     ):
         if not api_key:
             raise ChatError("GEMINI_API_KEY is empty. Put it in your .env file.")
@@ -65,6 +67,7 @@ class GeminiChat:
         self.client = client or httpx.Client(timeout=90)
         self.sleep = sleep
         self.max_tries = max_tries
+        self.max_output_tokens = max_output_tokens
 
     def generate_json(self, system: str, user: str) -> ChatReply:
         body = {
@@ -75,6 +78,8 @@ class GeminiChat:
                 "temperature": self.temperature,
             },
         }
+        if self.max_output_tokens > 0:
+            body["generationConfig"]["maxOutputTokens"] = self.max_output_tokens
         headers = {"x-goog-api-key": self.api_key}  # header, never the URL
         try:
             response = post_with_retries(
@@ -101,7 +106,7 @@ class GeminiChat:
         text = "".join(p.get("text", "") for p in parts if not p.get("thought"))
         if not text.strip():
             raise ChatError(f"Gemini gave an empty answer (finish reason: {candidates[0].get('finishReason')})")
-        return ChatReply(text=text, model=self.name)
+        return ChatReply(text=text, model=self.name, finish_reason=str(candidates[0].get("finishReason") or ""))
 
 
 class OpenRouterChat:
@@ -159,7 +164,7 @@ class OpenRouterChat:
         text = ((choices[0].get("message") or {}).get("content") or "") if choices else ""
         if not text.strip():
             raise ChatError("OpenRouter gave an empty answer")
-        return ChatReply(text=text, model=self.name)
+        return ChatReply(text=text, model=self.name, finish_reason=str(choices[0].get("finish_reason") or ""))
 
 
 class FallbackChat:
@@ -180,7 +185,7 @@ class FallbackChat:
                 raise ChatError(
                     f"{first} | fallback also failed: {second}", retryable=second.retryable
                 ) from second
-            return ChatReply(text=reply.text, model=reply.model, fell_back=True)
+            return ChatReply(text=reply.text, model=reply.model, fell_back=True, finish_reason=reply.finish_reason)
 
 
 class FakeChat:

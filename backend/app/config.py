@@ -51,6 +51,7 @@ class Settings:
     openrouter_model: str = ""  # no default on purpose, see list_openrouter_models
     top_k: int = 6
     chat_temperature: float = 0.2
+    chat_max_output_tokens: int = 0  # 0 = send no limit
 
 
 def _path(value: str) -> Path:
@@ -79,4 +80,5 @@ def load_settings() -> Settings:
         openrouter_model=get("OPENROUTER_MODEL", ""),
         top_k=int(get("TOP_K", "6")),
         chat_temperature=float(get("CHAT_TEMPERATURE", "0.2")),
+        chat_max_output_tokens=int(get("CHAT_MAX_OUTPUT_TOKENS", "0")),
     )

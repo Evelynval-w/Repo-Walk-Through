@@ -227,3 +227,23 @@ def test_build_chat_adds_the_fallback_only_when_key_and_model_are_set(settings):
 def test_build_chat_without_a_gemini_key_explains_what_to_do(settings):
     with pytest.raises(ChatError, match="GEMINI_API_KEY"):
         build_chat(settings)
+
+
+def test_gemini_reports_why_it_stopped():
+    def handler(request):
+        return httpx.Response(200, json={"candidates": [{"finishReason": "MAX_TOKENS",
+                                                         "content": {"parts": [{"text": '{"answer": "cut'}]}}]})
+
+    assert gemini(handler).generate_json("s", "u").finish_reason == "MAX_TOKENS"
+
+
+def test_output_limit_is_only_sent_when_set():
+    seen = []
+
+    def handler(request):
+        seen.append(json.loads(request.content)["generationConfig"])
+        return gemini_ok('{"answer": "ok"}')
+
+    gemini(handler).generate_json("s", "u")
+    gemini(handler, max_output_tokens=4096).generate_json("s", "u")
+    assert "maxOutputTokens" not in seen[0] and seen[1]["maxOutputTokens"] == 4096

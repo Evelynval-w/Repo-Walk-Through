@@ -175,3 +175,11 @@ def test_files_written_by_someone_else_are_marked_in_the_prompt_and_in_the_refer
     assert "security.py | function create_access_token | lines 5-9 | written by: course template" in user_prompt
     assert "service.py | function add_user | lines 10-14\n" in user_prompt  # my own file: no label
     assert response.references[0].owner == "course template"
+
+
+def test_a_cut_off_answer_says_why_in_the_error():
+    with pytest.raises(BadModelAnswer, match=r"finish reason: MAX_TOKENS"):
+        parse_model_answer('{"answer": "A discount code is gener', chunk_count=2, finish_reason="MAX_TOKENS")
+    with pytest.raises(BadModelAnswer) as normal:
+        parse_model_answer("not json", chunk_count=2, finish_reason="STOP")
+    assert "finish reason" not in str(normal.value)
