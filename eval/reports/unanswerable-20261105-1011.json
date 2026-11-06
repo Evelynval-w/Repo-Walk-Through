@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "date": "2026-11-05 10:11",
+    "chat model": "gemini:gemini-3.5-flash",
+    "embedder": "gemini:gemini-embedding-001",
+    "top_k": 6,
+    "runs per question": 1,
+    "questions": 6,
+    "judge": "same chat model"
+  },
+  "summary": {
+    "groups": {},
+    "unanswerable": {
+      "refused": 6,
+      "judged": 6,
+      "asked": 6,
+      "errors": 0
+    }
+  },
+  "results": [
+    {
+      "question_id": "un-01",
+      "run": 1,
+      "error": "",
+      "answer": "Based on the provided excerpts, there is no information about how the app sends email notifications to users.",
+      "retrieved_files": [
+        "GameHub/services/notification-service/readme.md",
+        "GameHub/services/notification-service/src/routes.ts",
+        "synergyhack/server/src/index.js",
+        "synergyhack/server/src/routes/notifications.routes.js",
+        "synergyhack/server/src/services/registration.service.js"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-02",
+      "run": 1,
+      "error": "",
+      "answer": "I am sorry, but the provided excerpts do not contain information about an encryption algorithm protecting data stored in the databases.",
+      "retrieved_files": [
+        "GameHub/docs/specs.md",
+        "GameHub/services/logging-service/app/models.py",
+        "synergyhack/REPORT.md",
+        "synergyhack/docs/architecture.md",
+        "synergyhack/server/src/services/event.service.js"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-03",
+      "run": 1,
+      "error": "",
+      "answer": "The provided excerpts do not contain any information about how the system takes payment for a booking.",
+      "retrieved_files": [
+        "timeout-airline/README.md",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/model/Booking.java",
+        "timeout-airline/src/main/java/fr/epita/timeoutairline/service/BookingService.java"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-04",
+      "run": 1,
+      "error": "",
+      "answer": "The provided excerpts do not contain information on how users are logged in and authenticated in the Timeout Airline booking app.",
+      "retrieved_files": [
+        "GameHub/services/auth-service/app/main.py",
+        "timeout-airline/README.md"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-05",
+      "run": 1,
+      "error": "",
+      "answer": "Based on the provided excerpts, no neural network architecture was tried. The models evaluated were a majority-class baseline, logistic regression variants, random forest, and XGBoost.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/04_modeling.ipynb"
+      ],
+      "retrieval_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-06",
+      "run": 1,
+      "error": "",
+      "answer": "Based on the provided excerpts, the scanner does not use EventSub websockets. Instead, it periodically sweeps live streams using the Twitch Helix API with app access credentials.",
+      "retrieved_files": [
+        "fracton-scanner/.github/workflows/twitch-scan.yml",
+        "fracton-scanner/README.md"
+      ],
+      "cited_files": [
+        "fracton-scanner/README.md"
+      ],
+      "retrieval_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    }
+  ]
+}

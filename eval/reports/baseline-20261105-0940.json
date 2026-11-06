@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "date": "2026-11-05 09:40",
+    "chat model": "gemini:gemini-3.5-flash",
+    "embedder": "gemini:gemini-embedding-001",
+    "top_k": 6,
+    "runs per question": 1,
+    "questions": 4,
+    "judge": "same chat model"
+  },
+  "summary": {
+    "groups": {
+      "all": {
+        "retrieval_hit": {
+          "hit": 2,
+          "total": 3
+        },
+        "citation_hit": {
+          "hit": 2,
+          "total": 3
+        },
+        "correct": {
+          "hit": 0,
+          "total": 3
+        },
+        "errors": 0
+      },
+      "kind:fact": {
+        "retrieval_hit": {
+          "hit": 1,
+          "total": 2
+        },
+        "citation_hit": {
+          "hit": 1,
+          "total": 2
+        },
+        "correct": {
+          "hit": 0,
+          "total": 2
+        },
+        "errors": 0
+      },
+      "kind:how": {
+        "retrieval_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "citation_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "correct": {
+          "hit": 0,
+          "total": 1
+        },
+        "errors": 0
+      },
+      "repo:GameHub": {
+        "retrieval_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "citation_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "correct": {
+          "hit": 0,
+          "total": 1
+        },
+        "errors": 0
+      },
+      "repo:credit_risk_ML_model": {
+        "retrieval_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "citation_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "correct": {
+          "hit": 0,
+          "total": 1
+        },
+        "errors": 0
+      },
+      "repo:synergyhack": {
+        "retrieval_hit": {
+          "hit": 0,
+          "total": 1
+        },
+        "citation_hit": {
+          "hit": 0,
+          "total": 1
+        },
+        "correct": {
+          "hit": 0,
+          "total": 1
+        },
+        "errors": 0
+      }
+    },
+    "unanswerable": {
+      "refused": 1,
+      "judged": 1,
+      "asked": 1,
+      "errors": 0
+    }
+  },
+  "results": [
+    {
+      "question_id": "cr-01",
+      "run": 1,
+      "error": "",
+      "answer": "A loan is marked as a default (target = 1) if its `loan_status` is included in `default_statuses`: \"Charged Off\", \"Default\", \"Late (31-120 days)\", \"Late (16-30 days)\", or \"Does not meet the credit policy. Status:Charged Off\". This is computed using `df_clean[\"target\"] = df_clean[\"loan_status\"].isin(default_statuses).astype(int)`.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+        "credit_risk_ML_model/notebooks/02_eda.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb"
+      ],
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-01",
+      "run": 1,
+      "error": "",
+      "answer": "Passwords are stored as hashes (`password_hash` in the database). Login tokens are stored in sessions with an expiration set by `TTL` (`EX: TTL`), though the specific numeric duration is not defined in the provided excerpts.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/services/auth-service/app/main.py",
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "retrieval_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-06",
+      "run": 1,
+      "error": "",
+      "answer": "In code written by course template, the gateway parses the resource name from the second segment of the request path (path.split(\"/\")[1]) and looks it up in the ROUTES dictionary to find the backend service URL. If the resource is unknown, it returns a 404 response with 'Unknown resource: <resource>'. If the target service is unreachable or down (httpx.RequestError), it returns a 503 response with 'Service unavailable'.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/frontend/README.md",
+        "GameHub/services/gateway/app/main.py"
+      ],
+      "cited_files": [
+        "GameHub/services/gateway/app/main.py"
+      ],
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-01",
+      "run": 1,
+      "error": "",
+      "answer": "Based on the provided excerpts, there is no information on how the app sends email notifications to users.",
+      "retrieved_files": [
+        "GameHub/services/notification-service/readme.md",
+        "GameHub/services/notification-service/src/routes.ts",
+        "synergyhack/server/src/index.js",
+        "synergyhack/server/src/routes/notifications.routes.js",
+        "synergyhack/server/src/services/registration.service.js"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    }
+  ]
+}

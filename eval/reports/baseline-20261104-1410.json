@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "date": "2026-11-04 14:10",
+    "chat model": "gemini:gemini-3.5-flash",
+    "embedder": "gemini:gemini-embedding-001",
+    "top_k": 6,
+    "runs per question": 1,
+    "questions": 4,
+    "judge": "same chat model"
+  },
+  "summary": {
+    "groups": {
+      "all": {
+        "retrieval_hit": {
+          "hit": 2,
+          "total": 3
+        },
+        "citation_hit": {
+          "hit": 2,
+          "total": 3
+        },
+        "correct": {
+          "hit": 0,
+          "total": 3
+        },
+        "errors": 0
+      },
+      "kind:fact": {
+        "retrieval_hit": {
+          "hit": 1,
+          "total": 2
+        },
+        "citation_hit": {
+          "hit": 1,
+          "total": 2
+        },
+        "correct": {
+          "hit": 0,
+          "total": 2
+        },
+        "errors": 0
+      },
+      "kind:how": {
+        "retrieval_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "citation_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "correct": {
+          "hit": 0,
+          "total": 1
+        },
+        "errors": 0
+      },
+      "repo:GameHub": {
+        "retrieval_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "citation_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "correct": {
+          "hit": 0,
+          "total": 1
+        },
+        "errors": 0
+      },
+      "repo:credit_risk_ML_model": {
+        "retrieval_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "citation_hit": {
+          "hit": 1,
+          "total": 1
+        },
+        "correct": {
+          "hit": 0,
+          "total": 1
+        },
+        "errors": 0
+      },
+      "repo:synergyhack": {
+        "retrieval_hit": {
+          "hit": 0,
+          "total": 1
+        },
+        "citation_hit": {
+          "hit": 0,
+          "total": 1
+        },
+        "correct": {
+          "hit": 0,
+          "total": 1
+        },
+        "errors": 0
+      }
+    },
+    "unanswerable": {
+      "refused": 1,
+      "judged": 1,
+      "asked": 1,
+      "errors": 0
+    }
+  },
+  "results": [
+    {
+      "question_id": "cr-01",
+      "run": 1,
+      "error": "",
+      "answer": "A loan is marked as a default (1) in the `target` column if its `loan_status` is in `default_statuses`, specifically one of: \"Charged Off\", \"Default\", \"Late (31-120 days)\", \"Late (16-30 days)\", or \"Does not meet the credit policy. Status:Charged Off\". This is computed using `df_clean[\"target\"] = df_clean[\"loan_status\"].isin(default_statuses).astype(int)`.",
+      "retrieved_files": [
+        "credit_risk_ML_model/README.md",
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb",
+        "credit_risk_ML_model/notebooks/02_eda.ipynb"
+      ],
+      "cited_files": [
+        "credit_risk_ML_model/notebooks/01_data_cleaning.ipynb"
+      ],
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        true,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "sh-01",
+      "run": 1,
+      "error": "",
+      "answer": "Passwords are stored as hashes in the database (`password_hash` field in the `users` collection). Login tokens last for a duration defined by `TTL` (set as an expiration time in Redis via `createSession`), though the exact value for `TTL` is not specified in the excerpts.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/services/auth-service/app/main.py",
+        "fracton-scanner/streamer_finder_v3.py",
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "cited_files": [
+        "synergyhack/server/src/routes/auth.routes.js",
+        "synergyhack/server/src/services/session.service.js"
+      ],
+      "retrieval_hit": false,
+      "citation_hit": false,
+      "facts_found": [
+        false,
+        false
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "gh-06",
+      "run": 1,
+      "error": "",
+      "answer": "According to code written by course template:\n\n1. The gateway decides which service to forward a request to by splitting the path by `/`, extracting the second segment (`segments[1]`) as the resource name, and looking up the target base URL in the `ROUTES` dictionary.\n2. When the resource is unknown (`target_base` is `None`), it returns a 404 Response with `content=f\"Unknown resource: {resource}\"` (or status code 404 with `content=\"Not found\"` if the path has fewer than 2 segments).\n3. When the service is unreachable (`httpx.RequestError`), it catches the error and returns a 503 Response with `content=\"Service unavailable\"`.",
+      "retrieved_files": [
+        "GameHub/docs/api-contracts.md",
+        "GameHub/frontend/README.md",
+        "GameHub/services/gateway/app/main.py"
+      ],
+      "cited_files": [
+        "GameHub/services/gateway/app/main.py"
+      ],
+      "retrieval_hit": true,
+      "citation_hit": true,
+      "facts_found": [
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "correct": false,
+      "refused": null,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    },
+    {
+      "question_id": "un-01",
+      "run": 1,
+      "error": "",
+      "answer": "Based on the provided excerpts, there is no information on how the app sends email notifications to users.",
+      "retrieved_files": [
+        "GameHub/services/notification-service/readme.md",
+        "GameHub/services/notification-service/src/routes.ts",
+        "synergyhack/server/src/index.js",
+        "synergyhack/server/src/routes/notifications.routes.js",
+        "synergyhack/server/src/services/registration.service.js"
+      ],
+      "cited_files": [],
+      "retrieval_hit": null,
+      "citation_hit": null,
+      "facts_found": [],
+      "correct": null,
+      "refused": true,
+      "judge_error": "",
+      "model_used": "gemini:gemini-3.5-flash"
+    }
+  ]
+}
